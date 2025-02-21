@@ -35,10 +35,8 @@ export function divider(
   if (strSeparators.length > 0) {
     return result.flatMap((part) =>
       part
-        .split(
-          new RegExp(`(${strSeparators.map((s) => `\\${s}`).join('|')})`, 'g')
-        )
-        .filter(Boolean)
+        .split(new RegExp(`[${strSeparators.join('')}]`, 'g'))
+        .filter((s) => s.length > 0)
     );
   }
 

@@ -17,6 +17,8 @@ describe('divider', () => {
   });
 
   test('divide with string', () => {
-    expect(divider('hello', 'l')).toEqual(['he', 'l', 'l', 'o']);
+    expect(divider('hello', 'e')).toEqual(['h', 'llo']);
+    expect(divider('hello', 'l')).toEqual(['he', 'o']);
+    expect(divider('hello', 'a')).toEqual(['hello']);
   });
 });
