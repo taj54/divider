@@ -2,43 +2,56 @@ export function divider(
   input: string,
   ...separators: (number | string)[]
 ): string[] {
-  const result: string[] = [];
-
   if (typeof input !== 'string' || separators.length === 0) {
     return [input];
   }
 
-  let indices: number[] = [];
+  let numSeparators: number[] = [];
   let strSeparators: string[] = [];
 
   // Classify number and string delimiters
-  for (const sep of separators) {
-    if (typeof sep === 'number') {
-      indices.push(sep);
+  for (const separator of separators) {
+    if (typeof separator === 'number') {
+      numSeparators.push(separator);
     } else {
-      strSeparators.push(sep);
+      strSeparators.push(separator);
     }
   }
+
+  // Divide by string delimiters and memorize the starting position
+  let parts: string[] = [];
+  let startIndices: number[] = [];
+  let currentIndex = 0;
+
+  input
+    .split(new RegExp(`[${strSeparators.join('')}]`, 'g'))
+    .forEach((part) => {
+      console.log('part', part);
+      if (part) {
+        parts.push(part);
+        startIndices.push(currentIndex);
+      }
+      currentIndex += part.length + 1;
+    });
 
   // Divide by number delimiters
-  indices = [...new Set(indices)].sort((a, b) => a - b);
-  let prevIndex = 0;
-  for (const index of indices) {
-    if (index > prevIndex && index < input.length) {
-      result.push(input.slice(prevIndex, index));
+  numSeparators = [...new Set(numSeparators)].sort((a, b) => a - b);
+  let finalParts: string[] = [];
+
+  for (let i = 0; i < parts.length; i++) {
+    let part = parts[i];
+    let partStart = startIndices[i];
+    let prevIndex = 0;
+    let localSeparators = numSeparators
+      .filter((num) => num > partStart && num < partStart + part.length)
+      .map((num) => num - partStart);
+
+    for (const index of localSeparators) {
+      finalParts.push(part.slice(prevIndex, index));
       prevIndex = index;
     }
-  }
-  result.push(input.slice(prevIndex));
-
-  // Re-divide by string delimiters
-  if (strSeparators.length > 0) {
-    return result.flatMap((part) =>
-      part
-        .split(new RegExp(`[${strSeparators.join('')}]`, 'g'))
-        .filter((s) => s.length > 0)
-    );
+    finalParts.push(part.slice(prevIndex));
   }
 
-  return result;
+  return finalParts;
 }

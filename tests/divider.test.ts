@@ -21,4 +21,21 @@ describe('divider', () => {
     expect(divider('hello', 'l')).toEqual(['he', 'o']);
     expect(divider('hello', 'a')).toEqual(['hello']);
   });
+
+  test('divide with multiple character separators', () => {
+    expect(divider('hello', 'l', 'o')).toEqual(['he']);
+    expect(divider('hello world', ' ', 'o')).toEqual(['hell', 'w', 'rld']);
+  });
+
+  test('divide with mixed numbers and characters', () => {
+    expect(divider('hello', 2, 'l')).toEqual(['he', 'o']);
+    expect(divider('hello world', ' ', 3)).toEqual(['hel', 'lo', 'world']);
+  });
+
+  test('edge cases', () => {
+    expect(divider('', 'a')).toEqual([]);
+    expect(divider('hello', 0)).toEqual(['hello']);
+    expect(divider('hello', 5)).toEqual(['hello']);
+    expect(divider('hello', 10)).toEqual(['hello']);
+  });
 });
