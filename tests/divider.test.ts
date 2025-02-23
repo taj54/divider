@@ -37,6 +37,7 @@ describe('divider with string', () => {
     expect(divider('hello', 0)).toEqual(['hello']);
     expect(divider('hello', 5)).toEqual(['hello']);
     expect(divider('hello', 10)).toEqual(['hello']);
+    expect(divider('hello', '😃')).toEqual(['hello']);
   });
 });
 
@@ -111,10 +112,25 @@ describe('divider with string[]', () => {
     ]);
   });
 
+  test('flat option (default is false)', () => {
+    expect(divider(['hello', 'world'], 2, { flatten: true })).toEqual([
+      'he',
+      'llo',
+      'wo',
+      'rld',
+    ]);
+    expect(divider(['hello', 'world'], 2, { flatten: false })).toEqual([
+      ['he', 'llo'],
+      ['wo', 'rld'],
+    ]);
+  });
+
   test('edge cases', () => {
     expect(divider([''], 'a')).toEqual([[]]);
+    expect(divider([], 'a')).toEqual([]);
     expect(divider(['hello'], 0)).toEqual([['hello']]);
     expect(divider(['hello'], 5)).toEqual([['hello']]);
     expect(divider(['hello'], 10)).toEqual([['hello']]);
+    expect(divider(['hello'], '😃')).toEqual([['hello']]);
   });
 });
