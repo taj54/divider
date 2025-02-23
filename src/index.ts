@@ -1,24 +1,110 @@
+// export function divider(
+//   input: string | string[],
+//   ...args: (number | string)[]
+// ): string[] | string[][] {
+//   //Extract the options from the input
+//   const lastArg = args[args.length - 1];
+//   const separators = args as (number | string)[];
+
+//   if (Array.isArray(input)) {
+//     const result = input.map((item) =>
+//       divider(item, ...separators)
+//     ) as string[][];
+//     return result;
+//   }
+
+//   // Deal with edge cases
+//   if (typeof input !== 'string' || separators.length === 0) {
+//     return [input];
+//   }
+
+//   // Classify number and string delimiters
+//   let numSeparators: number[] = [];
+//   let strSeparators: string[] = [];
+
+//   for (const separator of separators) {
+//     if (typeof separator === 'number') {
+//       numSeparators.push(separator);
+//     } else if (typeof separator === 'string') {
+//       strSeparators.push(separator);
+//     }
+//   }
+
+//   // Divide by string delimiters and memorize the starting position
+//   const parts: string[] = [];
+//   const startIndices: number[] = [];
+//   let currentIndex = 0;
+
+//   input
+//     .split(new RegExp(`[${strSeparators.join('')}]`, 'g'))
+//     .forEach((part) => {
+//       if (part) {
+//         parts.push(part);
+//         startIndices.push(currentIndex);
+//       }
+//       currentIndex += part.length + 1;
+//     });
+
+//   // Divide by number delimiters
+//   const sortedNumSeparators = [...new Set(numSeparators)].sort((a, b) => a - b);
+
+//   let finalParts: string[] = [];
+
+//   parts.forEach((part, i) => {
+//     const partStart = startIndices[i];
+//     let prevIndex = 0;
+//     const localSeparators = sortedNumSeparators
+//       .filter((num) => num > partStart && num < partStart + part.length)
+//       .map((num) => num - partStart);
+
+//     for (const index of localSeparators) {
+//       finalParts.push(part.slice(prevIndex, index));
+//       prevIndex = index;
+//     }
+//     finalParts.push(part.slice(prevIndex));
+//   });
+
+//   return finalParts;
+// }
+
 export function divider(
+  input: string | string[],
+  ...args: (number | string | { flatten?: boolean })[]
+): string[] | string[][] {
+  // extract the options from the input
+  const lastArg = args[args.length - 1];
+  const options =
+    typeof lastArg === 'object' ? (args.pop() as { flatten?: boolean }) : {};
+  const separators = args as (number | string)[];
+
+  if (typeof input === 'string') {
+    return divideString(input, separators);
+  }
+
+  const result = input.map((item) => divideString(item, separators));
+  return options.flatten ? result.flat() : result;
+}
+
+function divideString(
   input: string,
-  ...separators: (number | string)[]
+  separators: (number | string)[]
 ): string[] {
-  if (typeof input !== 'string' || separators.length === 0) {
+  if (separators.length === 0) {
     return [input];
   }
 
   let numSeparators: number[] = [];
   let strSeparators: string[] = [];
 
-  // Classify number and string delimiters
   for (const separator of separators) {
     if (typeof separator === 'number') {
       numSeparators.push(separator);
-    } else {
+    } else if (typeof separator === 'string') {
       strSeparators.push(separator);
     }
   }
 
-  // Divide by string delimiters and memorize the starting position
+  // Divide by string delimiters
   let parts: string[] = [];
   let startIndices: number[] = [];
   let currentIndex = 0;
@@ -26,7 +112,6 @@ export function divider(
   input
     .split(new RegExp(`[${strSeparators.join('')}]`, 'g'))
     .forEach((part) => {
-      console.log('part', part);
       if (part) {
         parts.push(part);
         startIndices.push(currentIndex);
@@ -35,14 +120,14 @@ export function divider(
     });
 
   // Divide by number delimiters
-  numSeparators = [...new Set(numSeparators)].sort((a, b) => a - b);
+  const sortedNumSeparators = [...new Set(numSeparators)].sort((a, b) => a - b);
   let finalParts: string[] = [];
 
   for (let i = 0; i < parts.length; i++) {
-    let part = parts[i];
-    let partStart = startIndices[i];
+    const part = parts[i];
+    const partStart = startIndices[i];
     let prevIndex = 0;
-    let localSeparators = numSeparators
+    const localSeparators = sortedNumSeparators
       .filter((num) => num > partStart && num < partStart + part.length)
       .map((num) => num - partStart);
 
