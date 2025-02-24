@@ -1,12 +1,21 @@
 {
   "name": "divider",
+  "type": "module",
   "version": "1.0.0",
   "description": "To divide string or string[] with a given separator",
-  "main": "index.js",
+  "main": "dist/cjs/index.cjs",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs",
+    "types": "./dist/index.d.ts"
+  },
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
-    "build": "tsc"
+    "build": "tsc --module ESNext --outDir dist/esm && tsc --module CommonJS --outDir dist/cjs --outExtension .cjs",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "divider",
@@ -21,7 +30,6 @@
     "package.json",
     "LICENSE"
   ],
-  "types": "index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nyaomaru/divider.git"

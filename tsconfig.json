@@ -2,8 +2,10 @@
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": "./src",
-    "module": "CommonJS",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "target": "ES6",
+    "declarationDir": "dist",
     "strict": true,
     "declaration": true
   },
