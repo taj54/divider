@@ -1,16 +1,34 @@
 {
   "name": "divider",
   "version": "1.0.0",
-  "description": "",
+  "description": "To divide string or string[] with a given separator",
   "main": "index.js",
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
     "build": "tsc"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "divider",
+    "divide",
+    "split",
+    "string",
+    "array"
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "package.json",
+    "LICENSE"
+  ],
+  "types": "index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nyaomaru/divider.git"
+  },
+  "homepage": "https://github.com/nyaomaru/divider.git",
+  "author": "nyaomaru",
+  "license": "MIT",
   "devDependencies": {
     "@eslint/js": "^9.21.0",
     "@types/jest": "^29.5.14",
