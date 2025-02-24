@@ -26,7 +26,7 @@ const divideWithMultipleString = divider('hello', 'l');
 // divideWithMultipleString = ['he', 'o']
 ```
 
-## 🚀 How to develop
+## ✨ How to develop
 
 Welcome your commit! If you want to update function or fix problem, feel free to create PR!
 
@@ -41,3 +41,9 @@ pnpm install
 ```sh
 pnpm test
 ```
+
+### Guide Line
+
+If you add some logics, you should add test code in `tests` directory.
+
+There is no strict rules, so feel free to commit!
