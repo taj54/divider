@@ -3,18 +3,18 @@
   "type": "module",
   "version": "1.0.0",
   "description": "To divide string or string[] with a given separator",
-  "main": "dist/cjs/index.cjs",
+  "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
   "exports": {
-    "import": "./dist/index.js",
-    "require": "./dist/index.cjs",
+    "import": "./dist/esm/index.js",
+    "require": "./dist/cjs/index.js",
     "types": "./dist/index.d.ts"
   },
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
-    "build": "tsc --module ESNext --outDir dist/esm && tsc --module CommonJS --outDir dist/cjs --outExtension .cjs",
+    "build": "tsc --module ESNext --outDir dist/esm && tsc --module CommonJS --outDir dist/cjs",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
