@@ -1,34 +1,49 @@
 # Divider
 
-Divide string or string[] with multiple number or string.
+A simple utility to divide a `string` or `string[]` based on given indexes or delimiters.
 
-## 🚀 How to use
+## 🚀 Installation
 
 ```sh
-pnpm install @divider
+pnpm install divider
 ```
 
-```ts
-import divider from '@divider';
+## 📖 Usage
 
+```ts
+import divider from 'divider';
+
+// Divide a string by index positions
 const helloArray = divider('hello', 1, 3);
-// helloArray = ['h', 'el', 'lo']
+// ['h', 'el', 'lo']
 
 const [hello1, hello2, ...restHello] = divider('hello', 1, 3, 4);
 // hello1 = 'h'
 // hello2 = 'el'
 // restHello = ['l', 'o']
 
+// Divide a string using a character separator
 const divideWithString = divider('hello', 'e');
-// divideWithString = ['h', 'llo']
+// ['h', 'llo']
 
 const divideWithMultipleString = divider('hello', 'l');
-// divideWithMultipleString = ['he', 'o']
+// ['he', 'o']
+
+// Divide an array of strings
+const words = ['hello', 'world'];
+const dividedWords = divider(words, 2);
+// [['he', 'llo'], ['wo', 'rld']]
 ```
 
-## ✨ How to develop
+## 💡 Features
 
-Welcome your commit! If you want to update function or fix problem, feel free to create PR!
+- Supports both `index-based` and `string-based` division
+- Works with both `strings` and `arrays of strings`
+- Optional `flattening` for array results
+
+## 🛠 Contributing
+
+Welcome your contributions! If you want to add features or fix issues, feel free to submit a PR!
 
 ### Setup
 
@@ -42,8 +57,8 @@ pnpm install
 pnpm test
 ```
 
-### Guide Line
+### Contribution Guidelines
 
-If you add some logics, you should add test code in `tests` directory.
-
-There is no strict rules, so feel free to commit!
+- If you add new functions, please add corresponding tests in the `tests` directory.
+- No strict rules—just keep it clean and readable!
+- Thank you for your contribution. 😺
