@@ -1,4 +1,4 @@
-export function divider(
+export default function divider(
   input: string | string[],
   ...args: (number | string | { flatten?: boolean })[]
 ): string[] | string[][] {

@@ -11,7 +11,7 @@ pnpm install @nyaomaru/divider
 ## 📖 Usage
 
 ```ts
-import divider from 'divider';
+import divider from '@nyaomaru/divider';
 
 // Divide a string by index positions
 const helloArray = divider('hello', 1, 3);
