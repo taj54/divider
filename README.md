@@ -5,7 +5,7 @@ A simple utility to divide a `string` or `string[]` based on given indexes or de
 ## 🚀 Installation
 
 ```sh
-pnpm install divider
+pnpm install @nyaomaru/divider
 ```
 
 ## 📖 Usage
