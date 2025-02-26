@@ -5,11 +5,18 @@
 </p>
 
 <p align="center">
-    <a href="https://twitter.com/colinhacks" rel="nofollow"><img src="https://img.shields.io/badge/created%20by-@colinhacks-4BBAAB.svg" alt="Created by Colin McDonnell"></a>
-    <a href="https://opensource.org/licenses/MIT" rel="nofollow"><img src="https://img.shields.io/github/license/colinhacks/zod" alt="License"></a>
-    <a href="https://www.npmjs.com/package/zod" rel="nofollow"><img src="https://img.shields.io/npm/dw/zod.svg" alt="npm"></a>
-    <a href="https://github.com/colinhacks/zod" rel="nofollow"><img src="https://img.shields.io/github/stars/colinhacks/zod" alt="stars"></a>
-    <a href="https://www.npmjs.com/package/vue"><img src="https://img.shields.io/npm/v/vue.svg?sanitize=true" alt="Version"></a>
+    <a href="https://www.npmjs.com/package/@nyaomaru/divider">
+        <img src="https://img.shields.io/npm/v/@nyaomaru/divider.svg?sanitize=true" alt="npm version">
+    </a>
+    <a href="https://github.com/nyaomaru/divider/blob/main/LICENSE">
+        <img src="https://img.shields.io/npm/l/@nyaomaru/divider.svg?sanitize=true" alt="License">
+    </a>
+    <a href="https://www.npmjs.com/package/@nyaomaru/divider">
+        <img src="https://img.shields.io/npm/dt/@nyaomaru/divider.svg" alt="npm downloads">
+    </a>
+    <a href="https://github.com/nyaomaru/divider/actions">
+        <img src="https://github.com/nyaomaru/divider/actions/workflows/release.yml/badge.svg" alt="Build Status">
+    </a>
 </p>
 
 A simple utility to divide a `string` or `string[]` based on given indexes or delimiters.
