@@ -11,7 +11,7 @@ pnpm install @nyaomaru/divider
 ## 📖 Usage
 
 ```ts
-import divider from '@nyaomaru/divider';
+import { divider } from '@nyaomaru/divider';
 
 // Divide a string by index positions
 const helloArray = divider('hello', 1, 3);
@@ -33,6 +33,8 @@ const divideWithMultipleString = divider('hello', 'l');
 const words = ['hello', 'world'];
 const dividedWords = divider(words, 2);
 // [['he', 'llo'], ['wo', 'rld']]
+const dividedWordsWithFlattenOption = divider(words, 2, { flatten: true });
+// ['he', 'llo', 'wo', 'rld']
 ```
 
 ## 💡 Features
