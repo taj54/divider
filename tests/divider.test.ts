@@ -1,4 +1,4 @@
-import divider from '../src/index';
+import { divider } from '../src/index';
 
 describe('divider with string', () => {
   test('divide with single number', () => {
