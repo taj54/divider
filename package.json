@@ -28,7 +28,8 @@
     "dist",
     "README.md",
     "package.json",
-    "LICENSE"
+    "LICENSE",
+    "logo.svg"
   ],
   "repository": {
     "type": "git",
