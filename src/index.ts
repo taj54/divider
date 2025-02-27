@@ -24,16 +24,18 @@ function divideString(
     return [input];
   }
 
-  let numSeparators: number[] = [];
-  let strSeparators: string[] = [];
-
-  for (const separator of separators) {
-    if (typeof separator === 'number') {
-      numSeparators.push(separator);
-    } else if (typeof separator === 'string') {
-      strSeparators.push(separator);
-    }
-  }
+  const { numSeparators, strSeparators } = separators.reduce<{
+    numSeparators: number[];
+    strSeparators: string[];
+  }>(
+    (acc, separator) => {
+      typeof separator === 'number'
+        ? acc.numSeparators.push(separator)
+        : acc.strSeparators.push(separator);
+      return acc;
+    },
+    { numSeparators: [], strSeparators: [] }
+  );
 
   // Divide by string delimiters
   let parts: string[] = [];
