@@ -29,6 +29,8 @@ pnpm install @nyaomaru/divider
 
 ## 📖 Usage
 
+### Basic Examples
+
 ```ts
 import { divider } from '@nyaomaru/divider';
 
@@ -56,11 +58,43 @@ const dividedWordsWithFlattenOption = divider(words, 2, { flatten: true });
 // ['he', 'llo', 'wo', 'rld']
 ```
 
+### Advanced Examples
+
+```ts
+// Mixed usage of indexes and characters
+const complexDivide = divider('hello world', 3, 'o');
+// ['hel', 'l', ' w', 'rld']
+
+// Nested array handling
+const nestedArray = divider(['hello', 'new world'], ' ', 2);
+// [['he', 'llo'], ['ne', 'w wor', 'ld']]
+
+// Flatten option to get a single array
+const flatArray = divider(['hello', 'new world'], ' ', 2, { flatten: true });
+// ['he', 'llo', 'ne', 'w', 'wor', 'ld']
+```
+
+## 🎯 Options
+
+### `flatten` (default: `false`)
+
+If `true`, the resulting nested arrays are flattened into a single array.
+
+```ts
+const words = ['hello', 'world'];
+const result1 = divider(words, 2);
+// [['he', 'llo'], ['wo', 'rld']]
+
+const result2 = divider(words, 2, { flatten: true });
+// ['he', 'llo', 'wo', 'rld']
+```
+
 ## 💡 Features
 
 - Supports both `index-based` and `string-based` division
 - Works with both `strings` and `arrays of strings`
-- Optional `flattening` for array results
+- Supports `multiple separators` (mixing indexes and characters).
+- Provides an `optional flattening` feature for array results.
 
 ## 🛠 Contributing
 
