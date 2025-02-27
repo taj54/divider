@@ -37,39 +37,34 @@ function divideString(
     { numSeparators: [], strSeparators: [] }
   );
 
-  // Divide by string delimiters
-  let parts: string[] = [];
-  let startIndices: number[] = [];
-  let currentIndex = 0;
-
-  input
-    .split(new RegExp(`[${strSeparators.join('')}]`, 'g'))
-    .forEach((part) => {
-      if (part) {
-        parts.push(part);
-        startIndices.push(currentIndex);
-      }
-      currentIndex += part.length + 1;
-    });
-
   // Divide by number delimiters
-  const sortedNumSeparators = [...new Set(numSeparators)].sort((a, b) => a - b);
-  let finalParts: string[] = [];
+  let parts: string[] = sliceByIndexes(input, numSeparators);
 
-  for (let i = 0; i < parts.length; i++) {
-    const part = parts[i];
-    const partStart = startIndices[i];
-    let prevIndex = 0;
-    const localSeparators = sortedNumSeparators
-      .filter((num) => num > partStart && num < partStart + part.length)
-      .map((num) => num - partStart);
-
-    for (const index of localSeparators) {
-      finalParts.push(part.slice(prevIndex, index));
-      prevIndex = index;
-    }
-    finalParts.push(part.slice(prevIndex));
+  // Divide by string delimiters
+  if (strSeparators.length) {
+    const regex = new RegExp(`[${strSeparators.join('')}]`, 'g');
+    parts = parts
+      .flatMap((part) => part.split(regex))
+      .filter((part) => part !== '');
   }
 
-  return finalParts;
+  return parts;
+}
+
+function sliceByIndexes(input: string, indexes: number[]): string[] {
+  if (!indexes.length) return [input];
+
+  indexes.sort((a, b) => a - b);
+  let parts: string[] = [];
+  let start = 0;
+
+  for (const index of indexes) {
+    if (index > start && index < input.length) {
+      parts.push(input.slice(start, index));
+      start = index;
+    }
+  }
+
+  parts.push(input.slice(start));
+  return parts.filter((part) => part !== '');
 }
