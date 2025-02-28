@@ -32,7 +32,13 @@ describe('divider with string', () => {
     expect(divider('hello world', ' ', 3)).toEqual(['hel', 'lo', 'world']);
   });
 
+  test('flat option (default is false)', () => {
+    expect(divider('hello', 2, { flatten: true })).toEqual(['he', 'llo']);
+    expect(divider('hello', 2, { flatten: false })).toEqual(['he', 'llo']);
+  });
+
   test('edge cases', () => {
+    expect(divider('hello')).toEqual(['hello']);
     expect(divider('', 'a')).toEqual([]);
     expect(divider('hello', 0)).toEqual(['hello']);
     expect(divider('hello', 5)).toEqual(['hello']);
@@ -126,6 +132,7 @@ describe('divider with string[]', () => {
   });
 
   test('edge cases', () => {
+    expect(divider(['hello', 'world'])).toEqual([['hello'], ['world']]);
     expect(divider([''], 'a')).toEqual([[]]);
     expect(divider([], 'a')).toEqual([]);
     expect(divider(['hello'], 0)).toEqual([['hello']]);
