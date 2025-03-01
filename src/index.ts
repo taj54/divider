@@ -1,7 +1,12 @@
-export function divider(
+type DividerResult<
+  T extends string | string[],
+  F extends boolean | undefined,
+> = T extends string ? string[] : F extends true ? string[] : string[][];
+
+export function divider<T extends string | string[]>(
   input: string | string[],
   ...args: (number | string | { flatten?: boolean })[]
-): string[] | string[][] {
+): DividerResult<T, boolean> {
   // extract the options from the input
   const lastArg = args[args.length - 1];
   const options =
@@ -13,7 +18,10 @@ export function divider(
   }
 
   const result = input.map((item) => divideString(item, separators));
-  return options.flatten ? result.flat() : result;
+  return (options.flatten ? result.flat() : result) as DividerResult<
+    T,
+    boolean
+  >;
 }
 
 function divideString(
