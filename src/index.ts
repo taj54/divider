@@ -52,7 +52,7 @@ function divideString(
   // If there are no number delimiters, split by string delimiters only
   if (numSeparators.length === 0 && strSeparators.length > 0) {
     return input
-      .split(new RegExp(`[${strSeparators.join('')}]`, 'g'))
+      .split(new RegExp(`[${strSeparators.map(escapeRegExp).join('')}]`, 'g'))
       .filter(Boolean);
   }
 
@@ -61,10 +61,11 @@ function divideString(
 
   // Divide by string delimiters
   if (strSeparators.length) {
-    const regex = new RegExp(`[${strSeparators.join('')}]`, 'g');
-    parts = parts
-      .flatMap((part) => part.split(regex))
-      .filter((part) => part !== '');
+    const regex = new RegExp(
+      `[${strSeparators.map(escapeRegExp).join('')}]`,
+      'g'
+    );
+    parts = parts.flatMap((part) => part.split(regex)).filter(Boolean);
   }
 
   return parts;
@@ -90,4 +91,8 @@ function sliceByIndexes(input: string, indexes: number[]): string[] {
 
 function isOptions(arg: unknown): arg is { flatten?: boolean } {
   return typeof arg === 'object' && arg !== null && 'flatten' in arg;
+}
+
+function escapeRegExp(str: string): string {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
