@@ -9,9 +9,13 @@ export function divider<T extends string | string[]>(
 ): DividerResult<T, boolean> {
   // extract the options from the input
   const lastArg = args[args.length - 1];
-  const options =
-    typeof lastArg === 'object' ? (args.pop() as { flatten?: boolean }) : {};
-  const separators = args as (number | string)[];
+  const options = isOptions(lastArg) ? lastArg : {};
+
+  // filter out only numbers and strings
+  const separators = args.filter(
+    (arg): arg is number | string =>
+      typeof arg === 'number' || typeof arg === 'string'
+  );
 
   if (typeof input === 'string') {
     return divideString(input, separators);
@@ -75,4 +79,8 @@ function sliceByIndexes(input: string, indexes: number[]): string[] {
 
   parts.push(input.slice(start));
   return parts.filter((part) => part !== '');
+}
+
+function isOptions(arg: unknown): arg is { flatten?: boolean } {
+  return typeof arg === 'object' && arg !== null && 'flatten' in arg;
 }
