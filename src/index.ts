@@ -74,19 +74,20 @@ function divideString(
 function sliceByIndexes(input: string, indexes: number[]): string[] {
   if (!indexes.length) return [input];
 
-  indexes.sort((a, b) => a - b);
-  let parts: string[] = [];
+  const sortedIndexes = indexes.slice().sort((a, b) => a - b);
+  const parts = new Array(sortedIndexes.length + 1).fill(null);
   let start = 0;
 
-  for (const index of indexes) {
+  for (let i = 0; i < sortedIndexes.length; i++) {
+    const index = sortedIndexes[i];
     if (index > start && index < input.length) {
-      parts.push(input.slice(start, index));
+      parts[i] = input.slice(start, index);
       start = index;
     }
   }
 
-  parts.push(input.slice(start));
-  return parts.filter((part) => part !== '');
+  parts[sortedIndexes.length] = input.slice(start);
+  return parts.filter(Boolean);
 }
 
 function isOptions(arg: unknown): arg is { flatten?: boolean } {
