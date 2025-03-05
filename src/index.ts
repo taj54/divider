@@ -7,21 +7,30 @@ export function divider<T extends string | string[]>(
   input: string | string[],
   ...args: (number | string | { flatten?: boolean })[]
 ): DividerResult<T, boolean> {
-  // extract the options from the input
+  // Extract the options from the input
   const lastArg = args[args.length - 1];
   const options = isOptions(lastArg) ? lastArg : {};
 
-  // filter out only numbers and strings
-  const separators = args.filter(
-    (arg): arg is number | string =>
-      typeof arg === 'number' || typeof arg === 'string'
-  );
+  // Filter out only numbers and strings
+  const numSeparators: number[] = [];
+  const strSeparators: string[] = [];
 
-  if (typeof input === 'string') {
-    return divideString(input, separators);
+  for (const arg of args) {
+    if (typeof arg === 'number') {
+      numSeparators.push(arg);
+    } else if (typeof arg === 'string') {
+      strSeparators.push(arg);
+    }
   }
 
-  const result = input.map((item) => divideString(item, separators));
+  if (typeof input === 'string') {
+    return divideString(input, numSeparators, strSeparators);
+  }
+
+  const result = input.map((item) =>
+    divideString(item, numSeparators, strSeparators)
+  );
+
   return (options.flatten ? result.flat() : result) as DividerResult<
     T,
     boolean
@@ -30,42 +39,24 @@ export function divider<T extends string | string[]>(
 
 function divideString(
   input: string,
-  separators: (number | string)[]
+  numSeparators: number[],
+  strSeparators: string[]
 ): string[] {
-  if (separators.length === 0) {
+  if (numSeparators.length === 0 && strSeparators.length === 0) {
     return [input];
   }
 
-  const { numSeparators, strSeparators } = separators.reduce<{
-    numSeparators: number[];
-    strSeparators: string[];
-  }>(
-    (acc, separator) => {
-      typeof separator === 'number'
-        ? acc.numSeparators.push(separator)
-        : acc.strSeparators.push(separator);
-      return acc;
-    },
-    { numSeparators: [], strSeparators: [] }
-  );
-
-  // If there are no number delimiters, split by string delimiters only
-  if (numSeparators.length === 0 && strSeparators.length > 0) {
-    return input
-      .split(new RegExp(`[${strSeparators.map(escapeRegExp).join('')}]`, 'g'))
-      .filter(Boolean);
-  }
+  // Precompile regex for string separators
+  const regex = strSeparators.length
+    ? new RegExp(`[${strSeparators.map(escapeRegExp).join('')}]`, 'g')
+    : null;
 
   // Divide by number delimiters
   let parts: string[] = sliceByIndexes(input, numSeparators);
 
   // Divide by string delimiters
-  if (strSeparators.length) {
-    const regex = new RegExp(
-      `[${strSeparators.map(escapeRegExp).join('')}]`,
-      'g'
-    );
-    parts = parts.flatMap((part) => part.split(regex)).filter(Boolean);
+  if (regex) {
+    parts = parts.flatMap((part) => part.split(regex!)).filter(Boolean);
   }
 
   return parts;
