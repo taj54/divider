@@ -51,13 +51,6 @@ function divideString(
     ? new RegExp(`[${strSeparators.map(escapeRegExp).join('')}]`, 'g')
     : null;
 
-  // If there are no number delimiters, split by string delimiters only
-  if (numSeparators.length === 0 && strSeparators.length > 0) {
-    return input
-      .split(new RegExp(`[${strSeparators.map(escapeRegExp).join('')}]`, 'g'))
-      .filter(Boolean);
-  }
-
   // Divide by number delimiters
   let parts: string[] = sliceByIndexes(input, numSeparators);
 
