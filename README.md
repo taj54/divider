@@ -23,13 +23,27 @@ A simple utility to divide a `string` or `string[]` based on given indexes or de
 
 ## 🚀 Installation
 
+You can install `@nyaomaru/divider` using your favorite package manager:
+
 ```sh
+# Using pnpm (recommended)
 pnpm install @nyaomaru/divider
+
+# Using npm
+npm install @nyaomaru/divider
+
+# Using bun
+bun add @nyaomaru/divider
+
+# Using yarn
+yarn add @nyaomaru/divider
 ```
 
 ## 📖 Usage
 
-### Basic Examples
+👉 [Check out the full documentation here!](https://divider-docs.vercel.app/)
+
+### 📌 Basic Usage
 
 ```ts
 import { divider } from '@nyaomaru/divider';
@@ -58,7 +72,7 @@ const dividedWordsWithFlattenOption = divider(words, 2, { flatten: true });
 // ['he', 'llo', 'wo', 'rld']
 ```
 
-### Advanced Examples
+### 📌 Advanced Usage
 
 ```ts
 // Mixed usage of indexes and characters
