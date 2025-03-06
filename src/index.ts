@@ -1,7 +1,6 @@
-type DividerResult<
-  T extends string | string[],
-  F extends boolean | undefined,
-> = T extends string ? string[] : F extends true ? string[] : string[][];
+import type { DividerResult } from '@/utils/types';
+import { sliceByIndexes } from '@/utils/slice';
+import { getRegex } from '@/utils/regex';
 
 export function divider<T extends string | string[]>(
   input: string | string[],
@@ -31,10 +30,7 @@ export function divider<T extends string | string[]>(
     divideString(item, numSeparators, strSeparators)
   );
 
-  return (options.flatten ? result.flat() : result) as DividerResult<
-    T,
-    boolean
-  >;
+  return (options.flatten ? result.flat() : result) as DividerResult<T>;
 }
 
 function divideString(
@@ -47,44 +43,19 @@ function divideString(
   }
 
   // Precompile regex for string separators
-  const regex = strSeparators.length
-    ? new RegExp(`[${strSeparators.map(escapeRegExp).join('')}]`, 'g')
-    : null;
+  const regex = getRegex(strSeparators);
 
   // Divide by number delimiters
   let parts: string[] = sliceByIndexes(input, numSeparators);
 
   // Divide by string delimiters
   if (regex) {
-    parts = parts.flatMap((part) => part.split(regex!)).filter(Boolean);
+    parts = parts.flatMap((part) => part.split(regex)).filter(Boolean);
   }
 
   return parts;
 }
 
-function sliceByIndexes(input: string, indexes: number[]): string[] {
-  if (!indexes.length) return [input];
-
-  const sortedIndexes = indexes.slice().sort((a, b) => a - b);
-  const parts = new Array(sortedIndexes.length + 1).fill(null);
-  let start = 0;
-
-  for (let i = 0; i < sortedIndexes.length; i++) {
-    const index = sortedIndexes[i];
-    if (index > start && index < input.length) {
-      parts[i] = input.slice(start, index);
-      start = index;
-    }
-  }
-
-  parts[sortedIndexes.length] = input.slice(start);
-  return parts.filter(Boolean);
-}
-
 function isOptions(arg: unknown): arg is { flatten?: boolean } {
   return typeof arg === 'object' && arg !== null && 'flatten' in arg;
-}
-
-function escapeRegExp(str: string): string {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
