@@ -46,7 +46,7 @@ jobs:
 
       - name: Create new branch
         run: |
-          git checkout -b release/v${{ env.new_version }}
+          git checkout -b release/${{ env.new_version }}
 
       - name: Commit & Push changes
         run: |
@@ -63,13 +63,6 @@ jobs:
             --head release/v${{ env.new_version }} \
             --title "Release: v${{ env.new_version }}" \
             --body "Auto-generated release PR for version v${{ env.new_version }}"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Merge PR (if not major)
-        if: inputs.release_type != 'major'
-        run: |
-          gh pr merge release/v${{ env.new_version }} --auto --squash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
