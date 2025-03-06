@@ -15,7 +15,7 @@
     "test": "jest",
     "lint": "eslint .",
     "build": "tsc --module ESNext --outDir dist/esm && tsc --module CommonJS --outDir dist/cjs",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "pnpm run build"
   },
   "keywords": [
     "divider",
@@ -34,7 +34,7 @@
     "type": "git",
     "url": "git+https://github.com/nyaomaru/divider.git"
   },
-  "homepage": "https://github.com/nyaomaru/divider.git",
+  "homepage": "https://divider-docs.vercel.app/",
   "author": "nyaomaru",
   "license": "MIT",
   "devDependencies": {
