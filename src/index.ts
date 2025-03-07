@@ -5,7 +5,7 @@ import { getRegex } from '@/utils/regex';
 export function divider<T extends string | string[]>(
   input: string | string[],
   ...args: (number | string | { flatten?: boolean })[]
-): DividerResult<T, boolean> {
+): DividerResult<T> {
   // Extract the options from the input
   const lastArg = args[args.length - 1];
   const options = isOptions(lastArg) ? lastArg : {};
@@ -49,11 +49,9 @@ function divideString(
   let parts: string[] = sliceByIndexes(input, numSeparators);
 
   // Divide by string delimiters
-  if (regex) {
-    parts = parts.flatMap((part) => part.split(regex)).filter(Boolean);
-  }
-
-  return parts;
+  return regex
+    ? parts.flatMap((part) => part.split(regex)).filter(Boolean)
+    : parts;
 }
 
 function isOptions(arg: unknown): arg is { flatten?: boolean } {
