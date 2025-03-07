@@ -49,11 +49,9 @@ function divideString(
   let parts: string[] = sliceByIndexes(input, numSeparators);
 
   // Divide by string delimiters
-  if (regex) {
-    parts = parts.flatMap((part) => part.split(regex)).filter(Boolean);
-  }
-
-  return parts;
+  return regex
+    ? parts.flatMap((part) => part.split(regex)).filter(Boolean)
+    : parts;
 }
 
 function isOptions(arg: unknown): arg is { flatten?: boolean } {
