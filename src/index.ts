@@ -46,6 +46,7 @@ function divideString(
   const regex = getRegex(strSeparators);
 
   // Divide by number delimiters
+  numSeparators.sort((a, b) => a - b);
   let parts: string[] = sliceByIndexes(input, numSeparators);
 
   // Divide by string delimiters
