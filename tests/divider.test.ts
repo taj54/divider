@@ -37,6 +37,15 @@ describe('divider with string', () => {
     expect(divider('hello', 2, { flatten: false })).toEqual(['he', 'llo']);
   });
 
+  test('empty separators', () => {
+    expect(divider('hello', ...([] as const))).toEqual(['hello']);
+  });
+
+  test('handling undefined or null input', () => {
+    expect(divider(null as any, 2)).toEqual([]);
+    expect(divider(undefined as any, 2)).toEqual([]);
+  });
+
   test('edge cases', () => {
     expect(divider('hello')).toEqual(['hello']);
     expect(divider('', 'a')).toEqual([]);
@@ -125,14 +134,33 @@ describe('divider with string[]', () => {
       'wo',
       'rld',
     ]);
+    expect(divider(['hello', 'world'], 'l', { flatten: true })).toEqual([
+      'he',
+      'o',
+      'wor',
+      'd',
+    ]);
+    expect(
+      divider(['hello', 'new world'], ' ', 'o', { flatten: true })
+    ).toEqual(['hell', 'new', 'w', 'rld']);
+    expect(
+      divider(['hello world', 'new world'], 2, 'o', { flatten: true })
+    ).toEqual(['he', 'll', ' w', 'rld', 'ne', 'w w', 'rld']);
     expect(divider(['hello', 'world'], 2, { flatten: false })).toEqual([
       ['he', 'llo'],
       ['wo', 'rld'],
     ]);
   });
 
+  test('empty separators', () => {
+    expect(divider(['hello', 'world'], ...([] as const))).toEqual([
+      'hello',
+      'world',
+    ]);
+  });
+
   test('edge cases', () => {
-    expect(divider(['hello', 'world'])).toEqual([['hello'], ['world']]);
+    expect(divider(['hello', 'world'])).toEqual(['hello', 'world']);
     expect(divider([''], 'a')).toEqual([[]]);
     expect(divider([], 'a')).toEqual([]);
     expect(divider(['hello'], 0)).toEqual([['hello']]);
