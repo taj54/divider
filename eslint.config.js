@@ -1,8 +1,9 @@
+import { defineConfig, globalIgnores } from 'eslint/config';
 import pluginJs from '@eslint/js';
 
-export default [
+export default defineConfig([
   pluginJs.configs.recommended,
-
+  globalIgnores(['dist/*']),
   {
     rules: {
       'no-unused-vars': 'warn',
@@ -10,4 +11,4 @@ export default [
       complexity: ['error', { max: 7 }],
     },
   },
-];
+]);
