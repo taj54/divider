@@ -5,17 +5,16 @@
   "description": "To divide string or string[] with a given separator",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "exports": {
     "import": "./dist/esm/index.js",
-    "require": "./dist/cjs/index.js",
-    "types": "./dist/index.d.ts"
+    "require": "./dist/cjs/index.js"
   },
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
-    "build": "tsc --module ESNext --outDir dist/esm && tsc --module CommonJS --outDir dist/cjs",
-    "prepublishOnly": "pnpm run build"
+    "build": "tsc --project tsconfig.json && tsc --project tsconfig.cjs.json",
+    "prepack": "pnpm run build"
   },
   "keywords": [
     "divider",
@@ -27,7 +26,6 @@
   "files": [
     "dist",
     "README.md",
-    "package.json",
     "LICENSE"
   ],
   "repository": {
@@ -49,5 +47,9 @@
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
-  }
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "sideEffects": false
 }
