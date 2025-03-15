@@ -16,19 +16,23 @@ export function divider<T extends string | string[]>(
 
   // Extract the options from the input
   const lastArg = args[args.length - 1];
-  const options = isOptions(lastArg) ? lastArg : {};
+  const options = isOptions(lastArg) ? (args.pop(), lastArg) : {};
 
   // Filter out only numbers and strings
-  const numSeparators: number[] = [];
-  const strSeparators: string[] = [];
-
-  for (const arg of args) {
-    if (typeof arg === 'number') {
-      numSeparators.push(arg);
-    } else if (typeof arg === 'string') {
-      strSeparators.push(arg);
-    }
-  }
+  const { numSeparators, strSeparators } = args.reduce<{
+    numSeparators: number[];
+    strSeparators: string[];
+  }>(
+    (acc, arg) => {
+      if (typeof arg === 'number') {
+        acc.numSeparators.push(arg);
+      } else if (typeof arg === 'string') {
+        acc.strSeparators.push(arg);
+      }
+      return acc;
+    },
+    { numSeparators: [], strSeparators: [] }
+  );
 
   if (typeof input === 'string') {
     return divideString(input, numSeparators, strSeparators);
