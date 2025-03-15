@@ -16,7 +16,7 @@ export function divider<T extends string | string[]>(
 
   // Extract the options from the input
   const lastArg = args[args.length - 1];
-  const options = isOptions(lastArg) ? lastArg : {};
+  const options = isOptions(lastArg) ? (args.pop(), lastArg) : {};
 
   // Filter out only numbers and strings
   const numSeparators: number[] = [];
