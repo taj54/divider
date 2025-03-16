@@ -6,7 +6,10 @@ export function divider<T extends string | string[]>(
   input: string | string[],
   ...args: (number | string | { flatten?: boolean })[]
 ): DividerResult<T> {
-  if (input === null || input === undefined) {
+  if (typeof input !== 'string' && !Array.isArray(input)) {
+    console.warn(
+      "divider: 'input' must be a string or an array of strings. So returning an empty array."
+    );
     return [];
   }
 
