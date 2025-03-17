@@ -5,7 +5,7 @@ import { isOptions } from '@/core/validator';
 export function divider<T extends string | string[]>(
   input: string | string[],
   ...args: (number | string | { flatten?: boolean })[]
-): DividerResult<T> {
+): DividerResult<T, boolean> {
   if (typeof input !== 'string' && !Array.isArray(input)) {
     console.warn(
       "divider: 'input' must be a string or an array of strings. So returning an empty array."
@@ -45,5 +45,7 @@ export function divider<T extends string | string[]>(
     divideString(item, numSeparators, strSeparators)
   );
 
-  return (options.flatten ? result.flat() : result) as DividerResult<T>;
+  return options.flatten
+    ? result.flat()
+    : (result as DividerResult<T, boolean>);
 }
