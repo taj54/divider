@@ -52,5 +52,8 @@
   "engines": {
     "node": ">=18"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "bugs": {
+    "url": "https://github.com/nyaomaru/divider/issues"
+  }
 }
