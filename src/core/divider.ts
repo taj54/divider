@@ -1,11 +1,11 @@
-import type { DividerResult } from '@/core/types';
+import type { DividerResult, DividerArgs } from '@/core/types';
 import { divideString } from '@/core/parser';
 import { isOptions } from '@/core/validator';
 
-export function divider<T extends string | string[]>(
-  input: string | string[],
-  ...args: (number | string | { flatten?: boolean })[]
-): DividerResult<T, boolean> {
+export function divider<T extends string | string[], F extends boolean>(
+  input: T,
+  ...args: DividerArgs<F>
+): DividerResult<T, F> {
   if (typeof input !== 'string' && !Array.isArray(input)) {
     console.warn(
       "divider: 'input' must be a string or an array of strings. So returning an empty array."
@@ -14,7 +14,7 @@ export function divider<T extends string | string[]>(
   }
 
   if (args.length === 0) {
-    return typeof input === 'string' ? [input] : input;
+    return (typeof input === 'string' ? [input] : input) as DividerResult<T, F>;
   }
 
   // Extract the options from the input
@@ -38,14 +38,15 @@ export function divider<T extends string | string[]>(
   );
 
   if (typeof input === 'string') {
-    return divideString(input, numSeparators, strSeparators);
+    return divideString(input, numSeparators, strSeparators) as DividerResult<
+      T,
+      F
+    >;
   }
 
   const result = input.map((item) =>
     divideString(item, numSeparators, strSeparators)
   );
 
-  return options.flatten
-    ? result.flat()
-    : (result as DividerResult<T, boolean>);
+  return (options.flatten ? result.flat() : result) as DividerResult<T, F>;
 }
