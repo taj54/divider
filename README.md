@@ -43,6 +43,8 @@ yarn add @nyaomaru/divider
 
 👉 [Check out the full documentation here!](https://divider-docs.vercel.app/)
 
+`divider` allows you to split a string or an array of strings using index positions or delimiters.
+
 ### 📌 Basic Usage
 
 ```ts
@@ -90,9 +92,11 @@ const flatArray = divider(['hello', 'new world'], ' ', 2, { flatten: true });
 
 ## 🎯 Options
 
-### `flatten` (default: `false`)
+| Option    | Type      | Default | Description                                                               |
+| --------- | --------- | ------- | ------------------------------------------------------------------------- |
+| `flatten` | `boolean` | `false` | If `true`, the resulting nested arrays are flattened into a single array. |
 
-If `true`, the resulting nested arrays are flattened into a single array.
+### `flatten` (default: `false`)
 
 ```ts
 const words = ['hello', 'world'];
