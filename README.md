@@ -90,6 +90,20 @@ const flatArray = divider(['hello', 'new world'], ' ', 2, { flatten: true });
 // ['he', 'llo', 'ne', 'w', 'wor', 'ld']
 ```
 
+### 📌 `dividerFirst()` Usage
+
+`dividerFirst()` returns only the first divided element from the result.
+
+```ts
+import { dividerFirst } from '@nyaomaru/divider';
+
+const firstElement = dividerFirst('hello world', ' ');
+// 'hello'
+
+const firstArrayElement = dividerFirst(['hello', 'world'], 2);
+// 'he'
+```
+
 ## 🎯 Options
 
 | Option    | Type      | Default | Description                                                               |
@@ -113,6 +127,7 @@ const result2 = divider(words, 2, { flatten: true });
 - Works with both `strings` and `arrays of strings`
 - Supports `multiple separators` (mixing indexes and characters).
 - Provides an `optional flattening` feature for array results.
+- **Get only the first divided element using `dividerFirst()`**
 
 ## 🛠 Contributing
 
