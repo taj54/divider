@@ -43,7 +43,7 @@ yarn add @nyaomaru/divider
 
 👉 [Check out the full documentation here!](https://divider-docs.vercel.app/)
 
-`divider` allows you to split a string or an array of strings using index positions or delimiters.
+`divider` allows you to divide a string or an array of strings using index positions or delimiters.
 
 ### 📌 Basic Usage
 
@@ -104,6 +104,20 @@ const firstArrayElement = dividerFirst(['hello', 'world'], 2);
 // 'he'
 ```
 
+### 📌 `dividerLast()` Usage
+
+`dividerLast()` returns only the last divided element from the result.
+
+```ts
+import { dividerLast } from '@nyaomaru/divider';
+
+const firstElement = dividerLast('hello world', ' ');
+// 'world'
+
+const firstArrayElement = dividerLast(['hello', 'world'], 2);
+// 'rld'
+```
+
 ## 🎯 Options
 
 | Option    | Type      | Default | Description                                                               |
@@ -128,6 +142,7 @@ const result2 = divider(words, 2, { flatten: true });
 - Supports `multiple separators` (mixing indexes and characters).
 - Provides an `optional flattening` feature for array results.
 - **Get only the first divided element using `dividerFirst()`**
+- **Get only the last divided element using `dividerLast()`**
 
 ## 🛠 Contributing
 
