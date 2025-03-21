@@ -1,10 +1,10 @@
 import { divider } from '@/core/divider';
 import type { DividerArgs } from '@/core/types';
 
-export function dividerLast<T extends string | string[], F extends boolean>(
-  input: T,
-  ...args: DividerArgs<F>
-): string {
+export function dividerLast<
+  T extends string | string[],
+  F extends boolean = false,
+>(input: T, ...args: DividerArgs<F>): string {
   const result = divider(input, ...args);
 
   if (result.length === 0) return '';
