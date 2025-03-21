@@ -6,8 +6,7 @@
   "commitMessagePrefix": "chore(deps): ",
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch"],
-      "automerge": true
+      "matchUpdateTypes": ["minor", "patch"]
     }
   ]
 }
