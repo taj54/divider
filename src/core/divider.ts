@@ -1,6 +1,6 @@
 import type { DividerResult, DividerArgs } from '@/core/types';
 import { divideString } from '@/core/parser';
-import { isOptions } from '@/core/validator';
+import { isOptions, isEmptyArray } from '@/core/validator';
 
 export function divider<T extends string | string[], F extends boolean>(
   input: T,
@@ -13,7 +13,7 @@ export function divider<T extends string | string[], F extends boolean>(
     return [];
   }
 
-  if (args.length === 0) {
+  if (isEmptyArray(args)) {
     return (typeof input === 'string' ? [input] : input) as DividerResult<T, F>;
   }
 
