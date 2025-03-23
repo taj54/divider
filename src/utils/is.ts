@@ -3,5 +3,5 @@ export function isOptions(arg: unknown): arg is { flatten?: boolean } {
 }
 
 export function isEmptyArray<T>(input: T[]): boolean {
-  return input.length === 0;
+  return Array.isArray(input) && input.length === 0;
 }

@@ -1,4 +1,4 @@
-import { isOptions } from '../../src//core/validator';
+import { isOptions, isEmptyArray } from '../../src/utils/is';
 
 describe('isOptions', () => {
   test('true for valid options object', () => {
@@ -21,5 +21,24 @@ describe('isOptions', () => {
     expect(isOptions('string')).toBe(false);
     expect(isOptions([])).toBe(false);
     expect(isOptions(() => {})).toBe(false);
+  });
+});
+
+describe('isEmptyArray', () => {
+  test('true for an empty array', () => {
+    expect(isEmptyArray([])).toBe(true);
+  });
+
+  test('false for a non-empty array', () => {
+    expect(isEmptyArray([1])).toBe(false);
+    expect(isEmptyArray(['a', 'b'])).toBe(false);
+  });
+
+  test('false for non-array inputs', () => {
+    expect(isEmptyArray(undefined as any)).toBe(false);
+    expect(isEmptyArray(null as any)).toBe(false);
+    expect(isEmptyArray('' as any)).toBe(false);
+    expect(isEmptyArray(0 as any)).toBe(false);
+    expect(isEmptyArray({} as any)).toBe(false);
   });
 });
