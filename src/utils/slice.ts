@@ -1,5 +1,7 @@
+import { isEmptyArray } from '@/utils/is';
+
 export function sliceByIndexes(input: string, indexes: number[]): string[] {
-  if (indexes.length === 0) return [input];
+  if (isEmptyArray(indexes)) return [input];
 
   const parts: string[] = [];
   let start = 0;

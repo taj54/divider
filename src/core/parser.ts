@@ -1,12 +1,13 @@
-import { sliceByIndexes } from '@/utils/slice';
+import { isEmptyArray } from '@/utils/is';
 import { getRegex } from '@/utils/regex';
+import { sliceByIndexes } from '@/utils/slice';
 
 export function divideString(
   input: string,
   numSeparators: number[],
   strSeparators: string[]
 ): string[] {
-  if (numSeparators.length === 0 && strSeparators.length === 0) {
+  if (isEmptyArray(numSeparators) && isEmptyArray(strSeparators)) {
     return [input];
   }
 

@@ -1,7 +1,9 @@
+import { isEmptyArray } from '@/utils/is';
+
 const regexCache = new Map<string, RegExp>();
 
 export function getRegex(separators: string[]): RegExp | null {
-  if (separators.length === 0) return null;
+  if (isEmptyArray(separators)) return null;
 
   const key = JSON.stringify(separators);
 
