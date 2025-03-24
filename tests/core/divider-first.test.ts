@@ -22,16 +22,6 @@ const runDividerFirstTests = (label: string, input: string | string[]) => {
       expect(dividerFirst(input, 'e', 'l')).toEqual('h');
     });
 
-    describe('flat option', () => {
-      test('default (false)', () => {
-        expect(dividerFirst(input, 2, { flatten: false })).toEqual('he');
-      });
-
-      test('explicit true', () => {
-        expect(dividerFirst(input, 2, { flatten: true })).toEqual('he');
-      });
-    });
-
     test('empty separators', () => {
       expect(dividerFirst(input, ...([] as const))).toEqual('hello');
     });

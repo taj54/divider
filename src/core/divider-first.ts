@@ -1,15 +1,11 @@
 import { divider } from '@/core/divider';
-import type { DividerArgs } from '@/core/types';
+import type { DividerSeparators } from '@/core/types';
 
-export function dividerFirst<
-  T extends string | string[],
-  F extends boolean = false,
->(input: T, ...args: DividerArgs<F>): string {
-  const result = divider(input, ...args);
-
-  if (Array.isArray(result[0])) {
-    return result[0][0] ?? '';
-  }
+export function dividerFirst<T extends string | string[]>(
+  input: T,
+  ...args: DividerSeparators
+): string {
+  const result = divider(input, ...args, { flatten: true });
 
   return result[0] ?? '';
 }
