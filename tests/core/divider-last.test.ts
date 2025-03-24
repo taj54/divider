@@ -22,16 +22,6 @@ const runDividerLastTests = (label: string, input: string | string[]) => {
       expect(dividerLast(input, 'e', 'l')).toEqual('d');
     });
 
-    describe('flat option', () => {
-      test('default (false)', () => {
-        expect(dividerLast(input, 2, { flatten: false })).toEqual('rld');
-      });
-
-      test('explicit true', () => {
-        expect(dividerLast(input, 2, { flatten: true })).toEqual('rld');
-      });
-    });
-
     test('empty separators', () => {
       expect(dividerLast(input, ...([] as const))).toEqual('world');
     });

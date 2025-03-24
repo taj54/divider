@@ -5,6 +5,8 @@ export type DividerResult<
 
 export type DividerOptions<F extends boolean> = { flatten?: F };
 
+export type DividerSeparators = (number | string)[];
+
 export type DividerArgs<F extends boolean> =
-  | (number | string)[]
-  | [...(number | string)[], DividerOptions<F>];
+  | DividerSeparators
+  | [...DividerSeparators, DividerOptions<F>];
