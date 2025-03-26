@@ -1,12 +1,12 @@
 import type { DividerResult, DividerArgs } from '@/core/types';
 import { divideString } from '@/core/parser';
-import { isOptions, isEmptyArray } from '@/utils/is';
+import { isString, isNumber, isOptions, isEmptyArray } from '@/utils/is';
 
 export function divider<T extends string | string[], F extends boolean>(
   input: T,
   ...args: DividerArgs<F>
 ): DividerResult<T, F> {
-  if (typeof input !== 'string' && !Array.isArray(input)) {
+  if (!isString(input) && !Array.isArray(input)) {
     console.warn(
       "divider: 'input' must be a string or an array of strings. So returning an empty array."
     );
@@ -14,7 +14,7 @@ export function divider<T extends string | string[], F extends boolean>(
   }
 
   if (isEmptyArray(args)) {
-    return (typeof input === 'string' ? [input] : input) as DividerResult<T, F>;
+    return (isString(input) ? [input] : input) as DividerResult<T, F>;
   }
 
   // Extract the options from the input
@@ -27,9 +27,9 @@ export function divider<T extends string | string[], F extends boolean>(
     strSeparators: string[];
   }>(
     (acc, arg) => {
-      if (typeof arg === 'number') {
+      if (isNumber(arg)) {
         acc.numSeparators.push(arg);
-      } else if (typeof arg === 'string') {
+      } else if (isString(arg)) {
         acc.strSeparators.push(arg);
       }
       return acc;
@@ -37,7 +37,7 @@ export function divider<T extends string | string[], F extends boolean>(
     { numSeparators: [], strSeparators: [] }
   );
 
-  if (typeof input === 'string') {
+  if (isString(input)) {
     return divideString(input, numSeparators, strSeparators) as DividerResult<
       T,
       F
