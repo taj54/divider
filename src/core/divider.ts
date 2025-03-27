@@ -18,8 +18,9 @@ export function divider<T extends string | string[], F extends boolean>(
   }
 
   // Extract the options from the input
-  const lastArg = args[args.length - 1];
-  const options = isOptions(lastArg) ? (args.pop(), lastArg) : {};
+  const clonedArgs = [...args];
+  const lastArg = clonedArgs.at(-1);
+  const options = isOptions(lastArg) ? (clonedArgs.slice(0, -1), lastArg) : {};
 
   // Filter out only numbers and strings
   const { numSeparators, strSeparators } = args.reduce<{
