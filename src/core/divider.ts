@@ -20,10 +20,10 @@ export function divider<T extends string | string[], F extends boolean>(
   // Extract the options from the input
   const clonedArgs = [...args];
   const lastArg = clonedArgs.at(-1);
-  const options = isOptions(lastArg) ? (clonedArgs.slice(0, -1), lastArg) : {};
+  const options = isOptions(lastArg) ? (clonedArgs.pop(), lastArg) : {};
 
   // Filter out only numbers and strings
-  const { numSeparators, strSeparators } = args.reduce<{
+  const { numSeparators, strSeparators } = clonedArgs.reduce<{
     numSeparators: number[];
     strSeparators: string[];
   }>(
