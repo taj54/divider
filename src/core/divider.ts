@@ -23,15 +23,15 @@ export function divider<T extends string | string[], F extends boolean>(
   const options = isOptions(lastArg) ? (clonedArgs.slice(0, -1), lastArg) : {};
 
   // Filter out only numbers and strings
-  const { numSeparators, strSeparators } = clonedArgs.reduce<{
+  const { numSeparators, strSeparators } = args.reduce<{
     numSeparators: number[];
     strSeparators: string[];
   }>(
     (acc, arg) => {
       if (isNumber(arg)) {
-        return { ...acc, numSeparators: [...acc.numSeparators, arg] };
+        acc.numSeparators.push(arg);
       } else if (isString(arg)) {
-        return { ...acc, strSeparators: [...acc.strSeparators, arg] };
+        acc.strSeparators.push(arg);
       }
       return acc;
     },
