@@ -7,7 +7,7 @@ export function sliceByIndexes(input: string, indexes: number[]): string[] {
   let start = 0;
 
   for (const index of indexes) {
-    if (index <= start || index >= input.length) continue;
+    if (index <= start || input.length <= index) continue;
     parts.push(input.slice(start, index));
     start = index;
   }
