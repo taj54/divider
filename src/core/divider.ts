@@ -1,6 +1,7 @@
 import type { DividerResult, DividerArgs } from '@/core/types';
 import { divideString } from '@/core/parser';
 import { isString, isNumber, isOptions, isEmptyArray } from '@/utils/is';
+import { ensureArray } from '@/utils/array';
 
 export function divider<T extends string | string[], F extends boolean>(
   input: T,
@@ -14,7 +15,7 @@ export function divider<T extends string | string[], F extends boolean>(
   }
 
   if (isEmptyArray(args)) {
-    return (isString(input) ? [input] : input) as DividerResult<T, F>;
+    return ensureArray<T>(input) as DividerResult<T, F>;
   }
 
   // Extract the options from the input

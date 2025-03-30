@@ -1,4 +1,4 @@
-import { sliceByIndexes } from '../../src//utils/slice';
+import { sliceByIndexes } from '../../src/utils/slice';
 
 describe('sliceByIndexes', () => {
   test('slice string at given indexes', () => {
