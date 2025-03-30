@@ -1,4 +1,4 @@
-import { getRegex } from '../../src//utils/regex';
+import { getRegex } from '../../src/utils/regex';
 
 describe('getRegex', () => {
   test('returns null for empty separators', () => {
