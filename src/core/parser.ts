@@ -1,6 +1,7 @@
 import { isEmptyArray } from '@/utils/is';
 import { getRegex } from '@/utils/regex';
 import { sliceByIndexes } from '@/utils/slice';
+import { sortAscending } from '@/utils/sort';
 
 export function divideString(
   input: string,
@@ -15,8 +16,8 @@ export function divideString(
   const regex = getRegex(strSeparators);
 
   // Divide by number delimiters
-  numSeparators.sort((a, b) => a - b);
-  const parts: string[] = sliceByIndexes(input, numSeparators);
+  const sortedNumSeparators = sortAscending(numSeparators);
+  const parts: string[] = sliceByIndexes(input, sortedNumSeparators);
 
   // Divide by string delimiters
   return regex
