@@ -118,6 +118,20 @@ const firstArrayElement = dividerLast(['hello', 'world'], 2);
 // 'rld'
 ```
 
+### 📌 `dividerLoop()` Usage
+
+```ts
+import { dividerLoop } from '@nyaomaru/divider';
+
+// Divide string into chunks of given size
+const result = dividerLoop('abcdefghij', 3);
+// ['abc', 'def', 'ghi', 'j']
+
+// Supports flatten option for string[]
+const result2 = dividerLoop(['hello', 'world'], 2, { flatten: true });
+// ['he', 'll', 'ow', 'or', 'ld']
+```
+
 ## 🎯 Options
 
 | Option    | Type      | Default | Description                                                               |
@@ -137,12 +151,21 @@ const result2 = divider(words, 2, { flatten: true });
 
 ## 💡 Features
 
+### 🧩 Flexible Division
+
 - Supports both `index-based` and `string-based` division
-- Works with both `strings` and `arrays of strings`
-- Supports `multiple separators` (mixing indexes and characters).
-- Provides an `optional flattening` feature for array results.
-- **Get only the first divided element using `dividerFirst()`**
-- **Get only the last divided element using `dividerLast()`**
+- Supports `multiple separators` (mixing indexes and characters)
+- Works with both `string` and `string[]` input
+- Optional `flatten` behavior to control nested results
+
+### 🎯 Targeted Extraction
+
+- `dividerFirst()`: Get only the first divided element
+- `dividerLast()`: Get only the last divided element
+
+### 🔁 Repeated Division
+
+- `dividerLoop()`: Automatically divide into fixed-size chunks
 
 ## 🛠 Contributing
 
