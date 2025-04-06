@@ -1,4 +1,4 @@
-import { isString, isNumber } from '@/utils/is';
+import { isString, isPositiveInteger } from '@/utils/is';
 import { generateIndexes } from '@/utils/chunk';
 import type { DividerOptions, DividerResult } from '@/core/types';
 import { divider } from '@/core/divider';
@@ -8,16 +8,14 @@ export function dividerLoop<T extends string | string[], F extends boolean>(
   size: number,
   options?: DividerOptions<F>
 ): DividerResult<T, F> {
-  if (!isNumber(size) || size <= 0) {
+  if (!isPositiveInteger(size)) {
     console.warn('dividerLoop: chunk size must be a positive number');
     return [];
   }
 
-  const flatten = options?.flatten ?? false;
-
   if (isString(input)) {
     const indexes = generateIndexes(input, size);
-    return divider(input, ...indexes, { flatten }) as DividerResult<T, F>;
+    return divider(input, ...indexes) as DividerResult<T, F>;
   }
 
   const result = input.map((item) => {
@@ -25,5 +23,6 @@ export function dividerLoop<T extends string | string[], F extends boolean>(
     return divider(item, ...indexes);
   });
 
+  const flatten = options?.flatten ?? false;
   return (flatten ? result.flat() : result) as DividerResult<T, F>;
 }

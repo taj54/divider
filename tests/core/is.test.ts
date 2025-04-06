@@ -1,4 +1,4 @@
-import { isOptions, isEmptyArray } from '../../src/utils/is';
+import { isOptions, isEmptyArray, isPositiveInteger } from '../../src/utils/is';
 
 describe('isOptions', () => {
   test('true for valid options object', () => {
@@ -40,5 +40,35 @@ describe('isEmptyArray', () => {
     expect(isEmptyArray('' as any)).toBe(false);
     expect(isEmptyArray(0 as any)).toBe(false);
     expect(isEmptyArray({} as any)).toBe(false);
+  });
+});
+
+describe('isPositiveInteger', () => {
+  test('returns true for positive integers', () => {
+    expect(isPositiveInteger(1)).toBe(true);
+    expect(isPositiveInteger(100)).toBe(true);
+  });
+
+  test('returns false for zero', () => {
+    expect(isPositiveInteger(0)).toBe(false);
+  });
+
+  test('returns false for negative integers', () => {
+    expect(isPositiveInteger(-1)).toBe(false);
+    expect(isPositiveInteger(-100)).toBe(false);
+  });
+
+  test('returns false for floating point numbers', () => {
+    expect(isPositiveInteger(1.1)).toBe(false);
+    expect(isPositiveInteger(-3.14)).toBe(false);
+  });
+
+  test('returns false for non-number values', () => {
+    expect(isPositiveInteger('5')).toBe(false);
+    expect(isPositiveInteger(null)).toBe(false);
+    expect(isPositiveInteger(undefined)).toBe(false);
+    expect(isPositiveInteger(NaN)).toBe(false);
+    expect(isPositiveInteger({})).toBe(false);
+    expect(isPositiveInteger([])).toBe(false);
   });
 });

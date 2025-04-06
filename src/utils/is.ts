@@ -11,3 +11,7 @@ export function isOptions(arg: unknown): arg is { flatten?: boolean } {
 export function isEmptyArray<T>(input: T[]): boolean {
   return Array.isArray(input) && input.length === 0;
 }
+
+export function isPositiveInteger(value: unknown): boolean {
+  return Number.isInteger(value) && (value as number) > 0;
+}
