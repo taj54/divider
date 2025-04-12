@@ -1,0 +1,32 @@
+name: Integration Test with Built Package
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  integration-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build the library
+        run: pnpm build
+
+      - name: Run integration test
+        run: pnpm exec tsx tests/integration/usage.test.ts
