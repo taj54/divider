@@ -132,6 +132,24 @@ const result2 = dividerLoop(['hello', 'world'], 2, { flatten: true });
 // ['he', 'll', 'ow', 'or', 'ld']
 ```
 
+### 📌 `dividerNumberString()` Usage
+
+```ts
+import { dividerNumberString } from '@nyaomaru/divider';
+
+// Split numbers and letters from a string
+const result = dividerNumberString('abc123def456');
+// ['abc', '123', 'def', '456']
+
+// Split each string in a string[]
+const result2 = dividerNumberString(['abc123', '45z']);
+// [['abc', '123'], ['45', 'z']]
+
+// Flatten option
+const result3 = dividerNumberString(['abc123', '45z'], { flatten: true });
+// ['abc', '123', '45', 'z']
+```
+
 ## 🎯 Options
 
 | Option    | Type      | Default | Description                                                               |
@@ -157,6 +175,7 @@ const result2 = divider(words, 2, { flatten: true });
 - Supports `multiple separators` (mixing indexes and characters)
 - Works with both `string` and `string[]` input
 - Optional `flatten` behavior to control nested results
+- Includes `dividerNumberString()` to separate digits and letters
 
 ### 🎯 Targeted Extraction
 
