@@ -4,14 +4,15 @@
     "rootDir": "./src",
     "module": "ESNext",
     "moduleResolution": "Node",
-    "target": "ES6",
+    "target": "ES2020",
     "declarationDir": "dist/types",
     "strict": true,
     "declaration": true,
     "paths": {
       "@/*": ["./src/*"]
     },
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "baseUrl": "."
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist", "tests"]
