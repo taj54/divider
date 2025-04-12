@@ -1,11 +1,11 @@
 import { dividerNumberString } from '../../src/core/divider-number-string';
 
 describe('dividerNumberString with string', () => {
-  test('splits numbers and letters', () => {
+  test('divide number and string', () => {
     expect(dividerNumberString('abc123def')).toEqual(['abc', '123', 'def']);
   });
 
-  test('handles strings with only numbers or letters', () => {
+  test('handles strings with only number or string', () => {
     expect(dividerNumberString('123')).toEqual(['123']);
     expect(dividerNumberString('abc')).toEqual(['abc']);
   });
