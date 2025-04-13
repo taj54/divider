@@ -1,4 +1,9 @@
-import { isOptions, isEmptyArray, isPositiveInteger } from '../../src/utils/is';
+import {
+  isOptions,
+  isEmptyArray,
+  isPositiveInteger,
+  isValidInput,
+} from '../../src/utils/is';
 
 describe('isOptions', () => {
   test('true for valid options object', () => {
@@ -70,5 +75,39 @@ describe('isPositiveInteger', () => {
     expect(isPositiveInteger(NaN)).toBe(false);
     expect(isPositiveInteger({})).toBe(false);
     expect(isPositiveInteger([])).toBe(false);
+  });
+});
+
+describe('isValidInput', () => {
+  test('returns true for string', () => {
+    expect(isValidInput('hello')).toBe(true);
+  });
+
+  test('returns true for string[]', () => {
+    expect(isValidInput(['hello', 'world'])).toBe(true);
+  });
+
+  test('returns false for number', () => {
+    expect(isValidInput(123)).toBe(false);
+  });
+
+  test('returns false for boolean', () => {
+    expect(isValidInput(true)).toBe(false);
+  });
+
+  test('returns false for null', () => {
+    expect(isValidInput(null)).toBe(false);
+  });
+
+  test('returns false for undefined', () => {
+    expect(isValidInput(undefined)).toBe(false);
+  });
+
+  test('returns false for object', () => {
+    expect(isValidInput({ key: 'value' })).toBe(false);
+  });
+
+  test('returns false for array of non-strings', () => {
+    expect(isValidInput([1, 2, 3])).toBe(false);
   });
 });

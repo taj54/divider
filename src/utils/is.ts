@@ -15,3 +15,7 @@ export function isEmptyArray<T>(input: T[]): boolean {
 export function isPositiveInteger(value: unknown): boolean {
   return Number.isInteger(value) && (value as number) > 0;
 }
+
+export function isValidInput(input: unknown): input is string | string[] {
+  return isString(input) || (Array.isArray(input) && input.every(isString));
+}
