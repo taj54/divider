@@ -1,13 +1,15 @@
 import type { DividerResult, DividerArgs } from '@/core/types';
 import { divideString } from '@/core/parser';
-import { isString, isNumber, isOptions, isEmptyArray } from '@/utils/is';
+import { isString, isEmptyArray, isValidInput } from '@/utils/is';
 import { ensureArray } from '@/utils/array';
+import { extractOptions } from '@/utils/options';
+import { classifySeparators } from '@/utils/separator';
 
 export function divider<T extends string | string[], F extends boolean>(
   input: T,
   ...args: DividerArgs<F>
 ): DividerResult<T, F> {
-  if (!isString(input) && !Array.isArray(input)) {
+  if (!isValidInput(input)) {
     console.warn(
       "divider: 'input' must be a string or an array of strings. So returning an empty array."
     );
@@ -18,26 +20,8 @@ export function divider<T extends string | string[], F extends boolean>(
     return ensureArray<T>(input) as DividerResult<T, F>;
   }
 
-  // Extract the options from the input
-  const clonedArgs = [...args];
-  const lastArg = clonedArgs.at(-1);
-  const options = isOptions(lastArg) ? (clonedArgs.pop(), lastArg) : {};
-
-  // Filter out only numbers and strings
-  const { numSeparators, strSeparators } = clonedArgs.reduce<{
-    numSeparators: number[];
-    strSeparators: string[];
-  }>(
-    (acc, arg) => {
-      if (isNumber(arg)) {
-        acc.numSeparators.push(arg);
-      } else if (isString(arg)) {
-        acc.strSeparators.push(arg);
-      }
-      return acc;
-    },
-    { numSeparators: [], strSeparators: [] }
-  );
+  const { cleanedArgs, options } = extractOptions(args);
+  const { numSeparators, strSeparators } = classifySeparators(cleanedArgs);
 
   if (isString(input)) {
     return divideString(input, numSeparators, strSeparators) as DividerResult<
