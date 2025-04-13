@@ -7,7 +7,9 @@ describe('sortAscending', () => {
 
   test('returns already sorted array (new instance)', () => {
     const input = [1, 2, 3, 4];
+
     const result = sortAscending(input);
+
     expect(result).toEqual([1, 2, 3, 4]);
     expect(result).not.toBe(input);
   });
@@ -27,7 +29,9 @@ describe('sortAscending', () => {
   test('does not mutate original array', () => {
     const original = [5, 2, 4];
     const copy = [...original];
+
     sortAscending(original);
+
     expect(original).toEqual(copy);
   });
 });
