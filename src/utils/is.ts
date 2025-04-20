@@ -19,3 +19,17 @@ export function isPositiveInteger(value: unknown): boolean {
 export function isValidInput(input: unknown): input is string | string[] {
   return isString(input) || (Array.isArray(input) && input.every(isString));
 }
+
+export function isStringArray(input: unknown): input is string[] {
+  return Array.isArray(input) && input.every(isString);
+}
+
+export function isNestedStringArray(input: unknown): input is string[][] {
+  return (
+    Array.isArray(input) &&
+    input.length > 0 &&
+    Array.isArray(input[0]) &&
+    input[0].length > 0 &&
+    isStringArray(input[0])
+  );
+}

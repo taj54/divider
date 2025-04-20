@@ -155,6 +155,7 @@ const result3 = dividerNumberString(['abc123', '45z'], { flatten: true });
 | Option    | Type      | Default | Description                                                               |
 | --------- | --------- | ------- | ------------------------------------------------------------------------- |
 | `flatten` | `boolean` | `false` | If `true`, the resulting nested arrays are flattened into a single array. |
+| `trim`    | `boolean` | `false` | If `true`, trims whitespace from each divided segment.                    |
 
 ### `flatten` (default: `false`)
 
@@ -167,6 +168,19 @@ const result2 = divider(words, 2, { flatten: true });
 // ['he', 'llo', 'wo', 'rld']
 ```
 
+### `trim` (default: `false`)
+
+```ts
+const result = divider('  hello world  ', 7, { trim: true });
+// ['hello', 'world']
+
+const result2 = divider(['  a  ', ' b  c '], ' ', {
+  flatten: true,
+  trim: true,
+});
+// ['a', 'b', 'c']
+```
+
 ## 💡 Features
 
 ### 🧩 Flexible Division
@@ -174,7 +188,7 @@ const result2 = divider(words, 2, { flatten: true });
 - Supports both `index-based` and `string-based` division
 - Supports `multiple separators` (mixing indexes and characters)
 - Works with both `string` and `string[]` input
-- Optional `flatten` behavior to control nested results
+- Optional `flatten` and `trim` behaviors to control output format
 - Includes `dividerNumberString()` to separate digits and letters
 
 ### 🎯 Targeted Extraction

@@ -1,5 +1,6 @@
 import { isString, isPositiveInteger } from '@/utils/is';
 import { generateIndexes } from '@/utils/chunk';
+import { applyDividerOptions } from '@/utils/option';
 import type { DividerOptions, DividerResult } from '@/core/types';
 import { divider } from '@/core/divider';
 
@@ -13,16 +14,14 @@ export function dividerLoop<T extends string | string[], F extends boolean>(
     return [];
   }
 
+  const applyChunking = (str: string) =>
+    divider(str, ...generateIndexes(str, size));
+
   if (isString(input)) {
-    const indexes = generateIndexes(input, size);
-    return divider(input, ...indexes) as DividerResult<T, F>;
+    const result = applyChunking(input);
+    return applyDividerOptions<T, F>(result, options ?? {});
   }
 
-  const result = input.map((item) => {
-    const indexes = generateIndexes(item, size);
-    return divider(item, ...indexes);
-  });
-
-  const flatten = options?.flatten ?? false;
-  return (flatten ? result.flat() : result) as DividerResult<T, F>;
+  const result = input.map(applyChunking);
+  return applyDividerOptions<T, F>(result, options ?? {});
 }

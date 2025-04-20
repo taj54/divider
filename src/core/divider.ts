@@ -4,6 +4,7 @@ import { isString, isEmptyArray, isValidInput } from '@/utils/is';
 import { ensureArray } from '@/utils/array';
 import { extractOptions } from '@/utils/options';
 import { classifySeparators } from '@/utils/separator';
+import { applyDividerOptions } from '@/utils/option';
 
 export function divider<T extends string | string[], F extends boolean>(
   input: T,
@@ -23,16 +24,12 @@ export function divider<T extends string | string[], F extends boolean>(
   const { cleanedArgs, options } = extractOptions(args);
   const { numSeparators, strSeparators } = classifySeparators(cleanedArgs);
 
-  if (isString(input)) {
-    return divideString(input, numSeparators, strSeparators) as DividerResult<
-      T,
-      F
-    >;
-  }
+  const applyDivision = (str: string) =>
+    divideString(str, numSeparators, strSeparators);
 
-  const result = input.map((item) =>
-    divideString(item, numSeparators, strSeparators)
-  );
+  const result = isString(input)
+    ? applyDivision(input)
+    : input.map(applyDivision);
 
-  return (options.flatten ? result.flat() : result) as DividerResult<T, F>;
+  return applyDividerOptions<T, F>(result, options);
 }

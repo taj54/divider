@@ -3,7 +3,9 @@ export type DividerResult<
   F extends boolean = false,
 > = T extends string ? string[] : F extends true ? string[] : string[][];
 
-export type DividerOptions<F extends boolean> = { flatten?: F };
+export type DividerOptions<F extends boolean> = Partial<
+  Record<'flatten' | 'trim', F>
+>;
 
 export type DividerSeparators = (number | string)[];
 

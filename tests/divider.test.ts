@@ -169,3 +169,35 @@ describe('divider with string[]', () => {
     expect(divider(['hello'], '😃')).toEqual([['hello']]);
   });
 });
+
+describe('divider with trim option', () => {
+  test('trims whitespace in string mode', () => {
+    expect(divider('  a  b   c  ', ' ', { trim: true })).toEqual([
+      'a',
+      'b',
+      'c',
+    ]);
+  });
+
+  test('trims whitespace in string[] mode', () => {
+    expect(
+      divider(['  abc  ', ' de f '], ' ', { flatten: true, trim: true })
+    ).toEqual(['abc', 'de', 'f']);
+  });
+
+  test('does not trim when trim is false (string[])', () => {
+    expect(
+      divider(['  abc  ', ' de f '], ' ', { flatten: true, trim: false })
+    ).toEqual(['abc', 'de', 'f']);
+  });
+
+  test('works with flatten + trim', () => {
+    expect(
+      divider([' hello ', ' world  '], 2, { flatten: true, trim: true })
+    ).toEqual(['h', 'ello', 'w', 'orld']);
+  });
+
+  test('handles edge case with only spaces', () => {
+    expect(divider('   ', ' ', { trim: true })).toEqual([]);
+  });
+});

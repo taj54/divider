@@ -1,6 +1,7 @@
 import { isString } from '@/utils/is';
 import type { DividerOptions, DividerResult } from '@/core/types';
 import { divideNumberString } from '@/utils/divide';
+import { applyDividerOptions } from '@/utils/option';
 
 export function dividerNumberString<
   T extends string | string[],
@@ -10,5 +11,5 @@ export function dividerNumberString<
     ? divideNumberString(input)
     : input.map(divideNumberString);
 
-  return (options?.flatten ? result.flat() : result) as DividerResult<T, F>;
+  return applyDividerOptions<T, F>(result, options ?? {});
 }
