@@ -41,3 +41,30 @@ describe('dividerNumberString with string[]', () => {
     ]);
   });
 });
+
+describe('dividerNumberString with trim option', () => {
+  test('trims each part in string mode', () => {
+    expect(dividerNumberString(' abc 123 ', { trim: true })).toEqual([
+      'abc',
+      '123',
+    ]);
+  });
+
+  test('trims and flattens with string[] input', () => {
+    expect(
+      dividerNumberString(['  a1 ', ' b2 '], { flatten: true, trim: true })
+    ).toEqual(['a', '1', 'b', '2']);
+  });
+
+  test('preserves empty parts if trim is false', () => {
+    expect(
+      dividerNumberString([' a1 ', ' b2 '], { flatten: true, trim: false })
+    ).toEqual([' a', '1', ' ', ' b', '2', ' ']);
+  });
+
+  test('removes empty strings after trim', () => {
+    expect(dividerNumberString(['   '], { flatten: true, trim: true })).toEqual(
+      []
+    );
+  });
+});
