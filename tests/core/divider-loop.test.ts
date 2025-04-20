@@ -51,3 +51,44 @@ describe('dividerLoop with string[]', () => {
     expect(dividerLoop([], 2, { flatten: true })).toEqual([]);
   });
 });
+
+describe('dividerLoop with trim option', () => {
+  test('trims whitespace in string mode', () => {
+    expect(dividerLoop('  ab  cd ef  ', 2, { trim: true })).toEqual([
+      'ab',
+      'cd',
+      'e',
+      'f',
+    ]);
+  });
+
+  test('does not trim when trim is false (string)', () => {
+    expect(dividerLoop('  ab  cd ef  ', 2, { trim: false })).toEqual([
+      '  ',
+      'ab',
+      '  ',
+      'cd',
+      ' e',
+      'f ',
+      ' ',
+    ]);
+  });
+
+  test('trims whitespace in string[] mode with flatten', () => {
+    expect(
+      dividerLoop([' hello ', ' world '], 2, {
+        flatten: true,
+        trim: true,
+      })
+    ).toEqual(['h', 'el', 'lo', 'w', 'or', 'ld']);
+  });
+
+  test('does not trim when trim is false (string[] flatten)', () => {
+    expect(
+      dividerLoop(['  hello ', ' world  '], 2, {
+        flatten: true,
+        trim: false,
+      })
+    ).toEqual(['  ', 'he', 'll', 'o ', ' w', 'or', 'ld', '  ']);
+  });
+});
