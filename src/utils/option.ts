@@ -26,7 +26,7 @@ export function applyDividerOptions<
 
   // Then, apply flattening if needed
   if (options.flatten) {
-    output = isNestedStringArray(output) ? output.flat() : output;
+    output = output.flat();
   }
 
   return output as DividerResult<T, F>;
