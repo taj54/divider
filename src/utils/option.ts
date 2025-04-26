@@ -14,18 +14,17 @@ export function applyDividerOptions<
   result: string[] | string[][],
   options: DividerOptions<F>
 ): DividerResult<T, F> {
-  let output: string[] | string[][] = result;
+  let output = result;
 
+  // First, apply trimming if needed
   if (options.trim) {
-    const trimPart = (s: string) => s.trim();
-
-    if (isNestedStringArray(result)) {
-      output = result.map((row) => row.map(trimPart).filter(Boolean));
-    } else {
-      output = result.map(trimPart).filter(Boolean);
-    }
+    const trim = (s: string) => s.trim();
+    output = isNestedStringArray(output)
+      ? output.map((row) => row.map(trim).filter(Boolean))
+      : output.map(trim).filter(Boolean);
   }
 
+  // Then, apply flattening if needed
   if (options.flatten) {
     output = output.flat();
   }
