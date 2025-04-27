@@ -1,6 +1,20 @@
 import type { DividerOptions, DividerResult } from '@/core/types';
 import { isString, isNumber, isOptions, isNestedStringArray } from '@/utils/is';
 
+/**
+ * Extracts `options` object and cleans argument list.
+ *
+ * This function processes a list of arguments which may include
+ * an optional `DividerOptions` object at the end.
+ *
+ * - If the last argument is a valid `DividerOptions`, it is extracted and removed.
+ * - The remaining arguments are filtered to keep only `string` or `number` types.
+ *
+ * @param args - An array of strings, numbers, or a `DividerOptions` object.
+ * @returns An object containing:
+ *   - `cleanedArgs`: An array of strings and numbers only.
+ *   - `options`: The extracted `DividerOptions` object (or an empty object if none found).
+ */
 export function extractOptions<F extends boolean>(
   args: (string | number | DividerOptions<F>)[]
 ): {
@@ -25,10 +39,16 @@ export function extractOptions<F extends boolean>(
 }
 
 /**
- * Applies options like `trim` and `flatten` to the divided result.
+ * Applies `DividerOptions` to a divided result.
  *
- * - If `trim` is true, trims all string segments.
- * - If `flatten` is true, flattens the nested array.
+ * This function modifies the result array based on the given options:
+ *
+ * - If `trim` is enabled, all string segments are trimmed of surrounding whitespace.
+ * - If `flatten` is enabled, nested arrays are flattened into a single-level array.
+ *
+ * @param result - The divided result to process (could be flat or nested).
+ * @param options - The `DividerOptions` that determine how to modify the result.
+ * @returns The processed result after applying the options.
  */
 export function applyDividerOptions<
   T extends string | string[],
