@@ -153,7 +153,7 @@ const result3 = dividerNumberString(['abc123', '45z'], { flatten: true });
 ## 🎯 Options
 
 | Option         | Type      | Default | Description                                                               |
-| -------------- | --------- | ------- | ------------------------------------------------------------------------- |
+| -------------- | ----------| ------- | ------------------------------------------------------------------------- |
 | `flatten`      | `boolean` | `false` | If `true`, the resulting nested arrays are flattened into a single array. |
 | `trim`         | `boolean` | `false` | If `true`, trims whitespace from each divided segment.                    |
 | `excludeEmpty` | `boolean` | `false` | If `true`, removes empty strings or strings with only whitespace.         |
