@@ -1,7 +1,7 @@
 import type { DividerResult, DividerArgs } from '@/core/types';
 import { divideString } from '@/core/parser';
 import { isString, isEmptyArray, isValidInput } from '@/utils/is';
-import { ensureArray } from '@/utils/array';
+import { ensureStringArray } from '@/utils/array';
 import { extractOptions } from '@/utils/option';
 import { classifySeparators } from '@/utils/separator';
 import { applyDividerOptions } from '@/utils/option';
@@ -18,7 +18,7 @@ export function divider<T extends string | string[]>(
   }
 
   if (isEmptyArray(args)) {
-    return ensureArray<T>(input);
+    return ensureStringArray<T>(input);
   }
 
   const { cleanedArgs, options } = extractOptions(args);

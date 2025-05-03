@@ -1,6 +1,6 @@
 import type { DividerResult } from '@/core/types';
 
-export function ensureArray<T extends string | string[]>(
+export function ensureStringArray<T extends string | string[]>(
   input: T
 ): DividerResult<T> {
   return (typeof input === 'string' ? [input] : input) as DividerResult<T>;
