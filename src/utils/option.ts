@@ -1,5 +1,11 @@
 import type { DividerOptions, DividerResult } from '@/core/types';
-import { isString, isNumber, isOptions, isNestedStringArray } from '@/utils/is';
+import {
+  isString,
+  isNumber,
+  isOptions,
+  isNestedStringArray,
+  isWhitespaceOnly,
+} from '@/utils/is';
 
 /**
  * Extracts `options` object and cleans argument list.
@@ -16,16 +22,16 @@ import { isString, isNumber, isOptions, isNestedStringArray } from '@/utils/is';
  *   - `options`: The extracted `DividerOptions` object (or an empty object if none found).
  */
 export function extractOptions<F extends boolean>(
-  args: (string | number | DividerOptions<F>)[]
+  args: (string | number | DividerOptions)[]
 ): {
   cleanedArgs: (string | number)[];
-  options: DividerOptions<F>;
+  options: DividerOptions;
 } {
   const clonedArgs = [...args];
   const lastArg = clonedArgs.at(-1);
 
   const options = isOptions(lastArg)
-    ? (clonedArgs.pop(), lastArg as DividerOptions<F>)
+    ? (clonedArgs.pop(), lastArg as DividerOptions)
     : {};
 
   const cleanedArgs = clonedArgs.filter(
@@ -53,10 +59,7 @@ export function extractOptions<F extends boolean>(
 export function applyDividerOptions<
   T extends string | string[],
   F extends boolean,
->(
-  result: string[] | string[][],
-  options: DividerOptions<F>
-): DividerResult<T, F> {
+>(result: string[] | string[][], options: DividerOptions): DividerResult<T, F> {
   let output = result;
 
   // First, apply trimming if needed
@@ -70,6 +73,14 @@ export function applyDividerOptions<
   // Then, apply flattening if needed
   if (options.flatten) {
     output = output.flat();
+  }
+
+  if (options.excludeEmpty) {
+    output = isNestedStringArray(output)
+      ? output.filter(
+          (arr) => Array.isArray(arr) && arr.some((s) => !isWhitespaceOnly(s))
+        )
+      : output.filter((s) => !isWhitespaceOnly(s));
   }
 
   return output as DividerResult<T, F>;

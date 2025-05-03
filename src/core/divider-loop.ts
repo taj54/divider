@@ -7,7 +7,7 @@ import { divider } from '@/core/divider';
 export function dividerLoop<T extends string | string[], F extends boolean>(
   input: T,
   size: number,
-  options?: DividerOptions<F>
+  options?: DividerOptions
 ): DividerResult<T, F> {
   if (!isPositiveInteger(size)) {
     console.warn('dividerLoop: chunk size must be a positive number');

@@ -37,6 +37,10 @@ describe('divider with string', () => {
     expect(divider('hello', 2, { flatten: false })).toEqual(['he', 'llo']);
   });
 
+  it('excludes empty strings if excludeEmpty is true', () => {
+    expect(divider('a, ,b', ',', { excludeEmpty: true })).toEqual(['a', 'b']);
+  });
+
   test('empty separators', () => {
     expect(divider('hello', ...([] as const))).toEqual(['hello']);
   });

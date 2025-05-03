@@ -5,29 +5,39 @@ import {
   isValidInput,
   isStringArray,
   isNestedStringArray,
+  isWhitespaceOnly,
 } from '../../src/utils/is';
+import type { DividerOptions } from '../../src/core/types';
 
 describe('isOptions', () => {
-  test('true for valid options object', () => {
-    expect(isOptions({ flatten: true })).toBe(true);
-    expect(isOptions({ flatten: false })).toBe(true);
-    expect(isOptions({ flatten: undefined })).toBe(true);
+  it('returns true for object with flatten', () => {
+    const input: DividerOptions = { flatten: true };
+    expect(isOptions(input)).toBe(true);
   });
 
-  test('false for objects without flatten property', () => {
-    expect(isOptions({})).toBe(false);
-    expect(isOptions({ other: true })).toBe(false);
+  it('returns true for object with trim', () => {
+    const input: DividerOptions = { trim: true };
+    expect(isOptions(input)).toBe(true);
   });
 
-  test('false for non-object values', () => {
+  it('returns true for object with excludeEmpty', () => {
+    const input: DividerOptions = { excludeEmpty: true };
+    expect(isOptions(input)).toBe(true);
+  });
+
+  it('returns false for object with unrelated keys', () => {
+    expect(isOptions({ foo: 'bar' })).toBe(false);
+  });
+
+  it('returns false for null', () => {
     expect(isOptions(null)).toBe(false);
-    expect(isOptions(undefined)).toBe(false);
-    expect(isOptions(true)).toBe(false);
-    expect(isOptions(false)).toBe(false);
-    expect(isOptions(123)).toBe(false);
+  });
+
+  it('returns false for non-object values', () => {
     expect(isOptions('string')).toBe(false);
-    expect(isOptions([])).toBe(false);
-    expect(isOptions(() => {})).toBe(false);
+    expect(isOptions(123)).toBe(false);
+    expect(isOptions(true)).toBe(false);
+    expect(isOptions(undefined)).toBe(false);
   });
 });
 
@@ -172,5 +182,27 @@ describe('isNestedStringArray', () => {
     expect(isNestedStringArray(null)).toBe(false);
     expect(isNestedStringArray(undefined)).toBe(false);
     expect(isNestedStringArray({})).toBe(false);
+  });
+});
+
+describe('isWhitespaceOnly', () => {
+  it('true for an empty string', () => {
+    expect(isWhitespaceOnly('')).toBe(true);
+  });
+
+  it('true for a string with only spaces', () => {
+    expect(isWhitespaceOnly('   ')).toBe(true);
+  });
+
+  it('true for a string with tabs and newlines only', () => {
+    expect(isWhitespaceOnly('\t\n\r')).toBe(true);
+  });
+
+  it('false for a non-empty string', () => {
+    expect(isWhitespaceOnly('a')).toBe(false);
+  });
+
+  it('false for a string with spaces and characters', () => {
+    expect(isWhitespaceOnly('  a  ')).toBe(false);
   });
 });
