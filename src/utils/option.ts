@@ -77,9 +77,7 @@ export function applyDividerOptions<T extends string | string[]>(
 
   if (options.excludeEmpty) {
     output = isNestedStringArray(output)
-      ? output.filter(
-          (arr) => Array.isArray(arr) && arr.some((s) => !isWhitespaceOnly(s))
-        )
+      ? output.filter((arr) => arr.some((s) => !isWhitespaceOnly(s)))
       : output.filter((s) => !isWhitespaceOnly(s));
   }
 
