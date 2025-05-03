@@ -152,10 +152,11 @@ const result3 = dividerNumberString(['abc123', '45z'], { flatten: true });
 
 ## 🎯 Options
 
-| Option    | Type      | Default | Description                                                               |
-| --------- | --------- | ------- | ------------------------------------------------------------------------- |
-| `flatten` | `boolean` | `false` | If `true`, the resulting nested arrays are flattened into a single array. |
-| `trim`    | `boolean` | `false` | If `true`, trims whitespace from each divided segment.                    |
+| Option         | Type      | Default | Description                                                               |
+| -------------- | --------- | ------- | ------------------------------------------------------------------------- |
+| `flatten`      | `boolean` | `false` | If `true`, the resulting nested arrays are flattened into a single array. |
+| `trim`         | `boolean` | `false` | If `true`, trims whitespace from each divided segment.                    |
+| `excludeEmpty` | `boolean` | `false` | If `true`, removes empty strings or strings with only whitespace.         |
 
 ### `flatten` (default: `false`)
 
@@ -181,24 +182,29 @@ const result2 = divider(['  a  ', ' b  c '], ' ', {
 // ['a', 'b', 'c']
 ```
 
+### `excludeEmpty` (default: `false`)
+
+```ts
+// Remove empty strings or strings with only spaces
+const result = divider('a, ,b', ',', { trim: true, excludeEmpty: true });
+// ['a', 'b']
+
+const result2 = divider(['  a  ', ' ', '  b'], ' ', {
+  flatten: true,
+  trim: true,
+  excludeEmpty: true,
+});
+// ['a', 'b']
+```
+
 ## 💡 Features
 
-### 🧩 Flexible Division
-
-- Supports both `index-based` and `string-based` division
-- Supports `multiple separators` (mixing indexes and characters)
-- Works with both `string` and `string[]` input
-- Optional `flatten` and `trim` behaviors to control output format
-- Includes `dividerNumberString()` to separate digits and letters
-
-### 🎯 Targeted Extraction
-
-- `dividerFirst()`: Get only the first divided element
-- `dividerLast()`: Get only the last divided element
-
-### 🔁 Repeated Division
-
-- `dividerLoop()`: Automatically divide into fixed-size chunks
+- 🧩 Flexible Division: Index-based and string-based separators
+- 🧵 Handles Nested Input: Supports both string and string[]
+- 🎛️ Optional Behaviors: flatten, trim, excludeEmpty
+- 🎯 Targeted Extractors: dividerFirst(), dividerLast()
+- 🔁 Loop Support: dividerLoop() for chunked division
+- 🔢 Digit-Letter Splitter: dividerNumberString()
 
 ## 🛠 Contributing
 
