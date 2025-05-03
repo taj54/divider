@@ -1,11 +1,17 @@
-export const isString = (arg: unknown): arg is string =>
-  typeof arg === 'string';
+import { DividerOptions } from '@/core/types';
+import { dividerOptionKeys } from '@/core/constants';
 
-export const isNumber = (arg: unknown): arg is number =>
-  typeof arg === 'number';
+export function isString(arg: unknown): arg is string {
+  return typeof arg === 'string';
+}
 
-export function isOptions(arg: unknown): arg is { flatten?: boolean } {
-  return typeof arg === 'object' && arg !== null && 'flatten' in arg;
+export function isNumber(arg: unknown): arg is number {
+  return typeof arg === 'number';
+}
+
+export function isOptions(arg: unknown): arg is DividerOptions {
+  if (typeof arg !== 'object' || arg === null) return false;
+  return dividerOptionKeys.some((key) => key in arg);
 }
 
 export function isEmptyArray<T>(input: T[]): boolean {
@@ -32,4 +38,8 @@ export function isNestedStringArray(input: unknown): input is string[][] {
     input[0].length > 0 &&
     isStringArray(input[0])
   );
+}
+
+export function isWhitespaceOnly(s: string) {
+  return s.trim() === '';
 }

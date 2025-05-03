@@ -1,14 +1,15 @@
-export type DividerResult<
-  T extends string | string[],
-  F extends boolean = false,
-> = T extends string ? string[] : F extends true ? string[] : string[][];
+import { dividerOptionKeys } from '@/core/constants';
 
-export type DividerOptions<F extends boolean> = Partial<
-  Record<'flatten' | 'trim', F>
->;
+export type DividerOptionKey = (typeof dividerOptionKeys)[number];
+
+export type DividerResult<T extends string | string[]> = T extends string
+  ? string[]
+  : string[][];
+
+export type DividerOptions = Partial<Record<DividerOptionKey, boolean>>;
 
 export type DividerSeparators = (number | string)[];
 
-export type DividerArgs<F extends boolean> =
+export type DividerArgs =
   | DividerSeparators
-  | [...DividerSeparators, DividerOptions<F>];
+  | [...DividerSeparators, DividerOptions];

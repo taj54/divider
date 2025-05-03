@@ -4,11 +4,11 @@ import { applyDividerOptions } from '@/utils/option';
 import type { DividerOptions, DividerResult } from '@/core/types';
 import { divider } from '@/core/divider';
 
-export function dividerLoop<T extends string | string[], F extends boolean>(
+export function dividerLoop<T extends string | string[]>(
   input: T,
   size: number,
-  options?: DividerOptions<F>
-): DividerResult<T, F> {
+  options?: DividerOptions
+): DividerResult<T> {
   if (!isPositiveInteger(size)) {
     console.warn('dividerLoop: chunk size must be a positive number');
     return [];
@@ -19,9 +19,9 @@ export function dividerLoop<T extends string | string[], F extends boolean>(
 
   if (isString(input)) {
     const result = applyChunking(input);
-    return applyDividerOptions<T, F>(result, options ?? {});
+    return applyDividerOptions<T>(result, options ?? {});
   }
 
   const result = input.map(applyChunking);
-  return applyDividerOptions<T, F>(result, options ?? {});
+  return applyDividerOptions<T>(result, options ?? {});
 }

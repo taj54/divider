@@ -1,15 +1,15 @@
 import type { DividerResult, DividerArgs } from '@/core/types';
 import { divideString } from '@/core/parser';
 import { isString, isEmptyArray, isValidInput } from '@/utils/is';
-import { ensureArray } from '@/utils/array';
+import { ensureStringArray } from '@/utils/array';
 import { extractOptions } from '@/utils/option';
 import { classifySeparators } from '@/utils/separator';
 import { applyDividerOptions } from '@/utils/option';
 
-export function divider<T extends string | string[], F extends boolean>(
+export function divider<T extends string | string[]>(
   input: T,
-  ...args: DividerArgs<F>
-): DividerResult<T, F> {
+  ...args: DividerArgs
+): DividerResult<T> {
   if (!isValidInput(input)) {
     console.warn(
       "divider: 'input' must be a string or an array of strings. So returning an empty array."
@@ -18,7 +18,7 @@ export function divider<T extends string | string[], F extends boolean>(
   }
 
   if (isEmptyArray(args)) {
-    return ensureArray<T>(input) as DividerResult<T, F>;
+    return ensureStringArray<T>(input);
   }
 
   const { cleanedArgs, options } = extractOptions(args);
@@ -31,5 +31,5 @@ export function divider<T extends string | string[], F extends boolean>(
     ? applyDivision(input)
     : input.map(applyDivision);
 
-  return applyDividerOptions<T, F>(result, options);
+  return applyDividerOptions<T>(result, options);
 }
