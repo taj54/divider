@@ -2,10 +2,9 @@ import { dividerOptionKeys } from '@/core/constants';
 
 export type DividerOptionKey = (typeof dividerOptionKeys)[number];
 
-export type DividerResult<
-  T extends string | string[],
-  F extends boolean = false,
-> = T extends string ? string[] : F extends true ? string[] : string[][];
+export type DividerResult<T extends string | string[]> = T extends string
+  ? string[]
+  : string[][];
 
 export type DividerOptions = Partial<Record<DividerOptionKey, boolean>>;
 

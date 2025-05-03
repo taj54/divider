@@ -56,10 +56,10 @@ export function extractOptions<F extends boolean>(
  * @param options - The `DividerOptions` that determine how to modify the result.
  * @returns The processed result after applying the options.
  */
-export function applyDividerOptions<
-  T extends string | string[],
-  F extends boolean,
->(result: string[] | string[][], options: DividerOptions): DividerResult<T, F> {
+export function applyDividerOptions<T extends string | string[]>(
+  result: string[] | string[][],
+  options: DividerOptions
+): DividerResult<T> {
   let output = result;
 
   // First, apply trimming if needed
@@ -83,5 +83,5 @@ export function applyDividerOptions<
       : output.filter((s) => !isWhitespaceOnly(s));
   }
 
-  return output as DividerResult<T, F>;
+  return output as DividerResult<T>;
 }
