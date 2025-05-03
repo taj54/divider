@@ -5,7 +5,7 @@ export function dividerFirst(
   input: string | string[],
   ...args: DividerSeparators
 ): string {
-  const result = divider(input, ...args, { flatten: true }) as string[];
+  const result = divider(input, ...args, { flatten: true });
 
   return result[0] ?? '';
 }
