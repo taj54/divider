@@ -1,5 +1,5 @@
 import { DividerOptions } from '@/types';
-import { dividerOptionKeys } from '@/core/constants';
+import { dividerOptionKeys } from '@/utils/constants';
 
 export function isString(arg: unknown): arg is string {
   return typeof arg === 'string';

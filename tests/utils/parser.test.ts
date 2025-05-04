@@ -1,4 +1,4 @@
-import { divideString } from '../../src/core/parser';
+import { divideString } from '../../src/utils/parser';
 
 describe('divideString', () => {
   test('divide by index positions', () => {
