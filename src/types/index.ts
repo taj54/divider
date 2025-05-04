@@ -1,4 +1,4 @@
-import { dividerOptionKeys } from '@/core/constants';
+import { dividerOptionKeys } from '@/utils/constants';
 
 export type DividerOptionKey = (typeof dividerOptionKeys)[number];
 

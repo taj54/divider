@@ -1,5 +1,5 @@
 import { isString } from '@/utils/is';
-import type { DividerOptions, DividerResult } from '@/core/types';
+import type { DividerOptions, DividerResult } from '@/types';
 import { divideNumberString } from '@/utils/divide';
 import { applyDividerOptions } from '@/utils/option';
 

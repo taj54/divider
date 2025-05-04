@@ -7,7 +7,7 @@ import {
   isNestedStringArray,
   isWhitespaceOnly,
 } from '../../src/utils/is';
-import type { DividerOptions } from '../../src/core/types';
+import type { DividerOptions } from '../../src/types';
 
 describe('isOptions', () => {
   it('returns true for object with flatten', () => {

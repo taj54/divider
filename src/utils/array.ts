@@ -1,4 +1,4 @@
-import type { DividerResult } from '@/core/types';
+import type { DividerResult } from '@/types';
 
 export function ensureStringArray<T extends string | string[]>(
   input: T
