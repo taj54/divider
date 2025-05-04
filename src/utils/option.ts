@@ -1,4 +1,4 @@
-import type { DividerOptions, DividerResult } from '@/core/types';
+import type { DividerOptions, DividerResult } from '@/types';
 import {
   isString,
   isNumber,

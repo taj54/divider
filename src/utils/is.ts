@@ -1,4 +1,4 @@
-import { DividerOptions } from '@/core/types';
+import { DividerOptions } from '@/types';
 import { dividerOptionKeys } from '@/core/constants';
 
 export function isString(arg: unknown): arg is string {

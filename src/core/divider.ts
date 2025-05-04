@@ -1,4 +1,4 @@
-import type { DividerResult, DividerArgs } from '@/core/types';
+import type { DividerResult, DividerArgs } from '@/types';
 import { divideString } from '@/core/parser';
 import { isString, isEmptyArray, isValidInput } from '@/utils/is';
 import { ensureStringArray } from '@/utils/array';

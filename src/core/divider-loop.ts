@@ -1,7 +1,7 @@
 import { isString, isPositiveInteger } from '@/utils/is';
 import { generateIndexes } from '@/utils/chunk';
 import { applyDividerOptions } from '@/utils/option';
-import type { DividerOptions, DividerResult } from '@/core/types';
+import type { DividerOptions, DividerResult } from '@/types';
 import { divider } from '@/core/divider';
 
 export function dividerLoop<T extends string | string[]>(

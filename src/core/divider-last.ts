@@ -1,5 +1,5 @@
 import { divider } from '@/core/divider';
-import type { DividerSeparators } from '@/core/types';
+import type { DividerSeparators } from '@/types';
 
 export function dividerLast(
   input: string | string[],
