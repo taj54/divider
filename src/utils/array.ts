@@ -1,7 +1,8 @@
 import type { DividerResult } from '@/types';
+import { isString } from '@/utils/is';
 
 export function ensureStringArray<T extends string | string[]>(
   input: T
 ): DividerResult<T> {
-  return (typeof input === 'string' ? [input] : input) as DividerResult<T>;
+  return (isString(input) ? [input] : input) as DividerResult<T>;
 }

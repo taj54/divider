@@ -156,6 +156,13 @@ describe('divider with string[]', () => {
     ]);
   });
 
+  it('excludes empty strings if excludeEmpty is true', () => {
+    expect(divider(['a', ', ,', 'b'], ',', { excludeEmpty: true })).toEqual([
+      ['a'],
+      ['b'],
+    ]);
+  });
+
   test('empty separators', () => {
     expect(divider(['hello', 'world'], ...([] as const))).toEqual([
       'hello',
