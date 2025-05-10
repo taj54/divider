@@ -20,7 +20,7 @@ describe('dividerLoop with string', () => {
       ]);
     });
 
-    test('empty result if startOffset too large', () => {
+    test('returns original string if startOffset exceeds string length', () => {
       expect(dividerLoop('abc', 2, { startOffset: 10 })).toEqual(['abc']);
     });
   });
