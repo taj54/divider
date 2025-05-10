@@ -8,6 +8,10 @@ export type DividerResult<T extends string | string[]> = T extends string
 
 export type DividerOptions = Partial<Record<DividerOptionKey, boolean>>;
 
+export type DividerLoopOptions = DividerOptions & {
+  startOffset?: number;
+};
+
 export type DividerSeparators = (number | string)[];
 
 export type DividerArgs =

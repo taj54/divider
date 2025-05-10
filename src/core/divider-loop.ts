@@ -1,13 +1,13 @@
 import { isString, isPositiveInteger } from '@/utils/is';
 import { generateIndexes } from '@/utils/chunk';
 import { applyDividerOptions } from '@/utils/option';
-import type { DividerOptions, DividerResult } from '@/types';
+import type { DividerLoopOptions, DividerResult } from '@/types';
 import { divider } from '@/core/divider';
 
 export function dividerLoop<T extends string | string[]>(
   input: T,
   size: number,
-  options?: DividerOptions
+  options?: DividerLoopOptions
 ): DividerResult<T> {
   if (!isPositiveInteger(size)) {
     console.warn('dividerLoop: chunk size must be a positive number');
@@ -15,7 +15,7 @@ export function dividerLoop<T extends string | string[]>(
   }
 
   const applyChunking = (str: string) =>
-    divider(str, ...generateIndexes(str, size));
+    divider(str, ...generateIndexes(str, size, options?.startOffset ?? 0));
 
   if (isString(input)) {
     const result = applyChunking(input);
