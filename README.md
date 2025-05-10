@@ -130,6 +130,18 @@ const result = dividerLoop('abcdefghij', 3);
 // Supports flatten option for string[]
 const result2 = dividerLoop(['hello', 'world'], 2, { flatten: true });
 // ['he', 'll', 'ow', 'or', 'ld']
+
+// You can also control where to start dividing using `startOffset`
+const result3 = dividerLoop('abcdefghij', 3, { startOffset: 1 });
+// ['a', 'bcd', 'efg', 'hi', 'j']
+
+// Combine with flatten and trim
+const result4 = dividerLoop(['  hello ', 'world  '], 2, {
+  flatten: true,
+  trim: true,
+  startOffset: 1,
+});
+// ['h', 'el', 'lo', 'w', 'or', 'ld']
 ```
 
 ### 📌 `dividerNumberString()` Usage
@@ -150,10 +162,10 @@ const result3 = dividerNumberString(['abc123', '45z'], { flatten: true });
 // ['abc', '123', '45', 'z']
 ```
 
-## 🎯 Options
+## 🎯 General Options
 
 | Option         | Type      | Default | Description                                                               |
-| -------------- | ----------| ------- | ------------------------------------------------------------------------- |
+| -------------- | --------- | ------- | ------------------------------------------------------------------------- |
 | `flatten`      | `boolean` | `false` | If `true`, the resulting nested arrays are flattened into a single array. |
 | `trim`         | `boolean` | `false` | If `true`, trims whitespace from each divided segment.                    |
 | `excludeEmpty` | `boolean` | `false` | If `true`, removes empty strings or strings with only whitespace.         |
@@ -196,6 +208,12 @@ const result2 = divider(['  a  ', ' ', '  b'], ' ', {
 });
 // ['a', 'b']
 ```
+
+## Special Options
+
+| Option        | Type     | Default | Description                                                              |
+| ------------- | -------- | ------- | ------------------------------------------------------------------------ |
+| `startOffset` | `number` | `0`     | Starting index offset when dividing into chunks (only for `dividerLoop`) |
 
 ## 💡 Features
 
