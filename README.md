@@ -133,7 +133,7 @@ const result2 = dividerLoop(['hello', 'world'], 2, { flatten: true });
 
 // You can also control where to start dividing using `startOffset`
 const result3 = dividerLoop('abcdefghij', 3, { startOffset: 1 });
-// ['a', 'bcd', 'efg', 'hi', 'j']
+// ['abcd', 'efg', 'hij']
 
 // Combine with flatten and trim
 const result4 = dividerLoop(['  hello ', 'world  '], 2, {
@@ -141,7 +141,7 @@ const result4 = dividerLoop(['  hello ', 'world  '], 2, {
   trim: true,
   startOffset: 1,
 });
-// ['h', 'el', 'lo', 'w', 'or', 'ld']
+// ['h', 'el', 'lo', 'wor', 'ld']
 ```
 
 ### 📌 `dividerNumberString()` Usage
