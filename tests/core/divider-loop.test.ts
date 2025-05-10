@@ -10,6 +10,21 @@ describe('dividerLoop with string', () => {
     expect(dividerLoop('abcdefghij', 3)).toEqual(['abc', 'def', 'ghi', 'j']);
   });
 
+  describe('with startOffset option', () => {
+    test('applies startOffset correctly', () => {
+      expect(dividerLoop('abcdefgh', 2, { startOffset: 1 })).toEqual([
+        'abc',
+        'de',
+        'fg',
+        'h',
+      ]);
+    });
+
+    test('empty result if startOffset too large', () => {
+      expect(dividerLoop('abc', 2, { startOffset: 10 })).toEqual(['abc']);
+    });
+  });
+
   test('handles empty string', () => {
     expect(dividerLoop('', 3)).toEqual(['']);
   });
@@ -40,6 +55,25 @@ describe('dividerLoop with string[]', () => {
       'kl',
       'mn',
     ]);
+  });
+
+  describe('with startOffset option', () => {
+    test('applies startOffset correctly', () => {
+      expect(dividerLoop(['abcdef', 'ghijkl'], 2, { startOffset: 1 })).toEqual([
+        ['abc', 'de', 'f'],
+        ['ghi', 'jk', 'l'],
+      ]);
+    });
+
+    test('works with startOffset + flatten + trim', () => {
+      expect(
+        dividerLoop(['  hello', 'world  '], 2, {
+          startOffset: 1,
+          flatten: true,
+          trim: true,
+        })
+      ).toEqual(['h', 'el', 'lo', 'wor', 'ld']);
+    });
   });
 
   test('handles invalid size', () => {
