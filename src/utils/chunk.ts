@@ -1,3 +1,5 @@
+import { isPositiveInteger } from '@/utils/is';
+
 /**
  * Generates an array of index positions to divide a string into chunks.
  *
@@ -19,6 +21,11 @@ export function generateIndexes(
   size: number,
   startOffset = 0
 ): number[] {
+  if (!isPositiveInteger(size)) {
+    console.warn('generateIndexes: size must be a positive integer');
+    return [];
+  }
+
   const result: number[] = [];
   for (let i = startOffset + size; i < str.length; i += size) {
     result.push(i);
