@@ -142,6 +142,10 @@ const result4 = dividerLoop(['  hello ', 'world  '], 2, {
   startOffset: 1,
 });
 // ['h', 'el', 'lo', 'wor', 'ld']
+
+// Limit the number of chunks using maxChunks
+const result5 = dividerLoop('abcdefghij', 3, { maxChunks: 2 });
+// ['abc', 'defghij']
 ```
 
 ### 📌 `dividerNumberString()` Usage
@@ -211,9 +215,10 @@ const result2 = divider(['  a  ', ' ', '  b'], ' ', {
 
 ## Special Options
 
-| Option        | Type     | Default | Description                                                              |
-| ------------- | -------- | ------- | ------------------------------------------------------------------------ |
-| `startOffset` | `number` | `0`     | Starting index offset when dividing into chunks (only for `dividerLoop`) |
+| Option        | Type     | Default | Description                                                                                             |
+| ------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------- |
+| `startOffset` | `number` | `0`     | Starting index offset when dividing into chunks (only for `dividerLoop`)                                |
+| `maxChunks`   | `number` | `∞`     | Maximum number of chunks allowed. Extra chunks are joined into the last chunk. (only for `dividerLoop`) |
 
 ## 💡 Features
 

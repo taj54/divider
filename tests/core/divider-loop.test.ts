@@ -25,6 +25,27 @@ describe('dividerLoop with string', () => {
     });
   });
 
+  describe('with maxChunks option', () => {
+    test('limits chunks to 2 for a string input', () => {
+      expect(dividerLoop('abcdefghij', 3, { maxChunks: 2 })).toEqual([
+        'abc',
+        'defghij',
+      ]);
+    });
+
+    test('does not alter result when chunk count is below maxChunks', () => {
+      expect(dividerLoop('abcde', 2, { maxChunks: 5 })).toEqual([
+        'ab',
+        'cd',
+        'e',
+      ]);
+    });
+
+    test('returns a single merged chunk when maxChunks is 1', () => {
+      expect(dividerLoop('abcdef', 2, { maxChunks: 1 })).toEqual(['abcdef']);
+    });
+  });
+
   test('handles empty string', () => {
     expect(dividerLoop('', 3)).toEqual(['']);
   });
@@ -73,6 +94,28 @@ describe('dividerLoop with string[]', () => {
           trim: true,
         })
       ).toEqual(['h', 'el', 'lo', 'wor', 'ld']);
+    });
+  });
+
+  describe('with maxChunks option', () => {
+    test('limits chunks to 2 for an array of strings', () => {
+      expect(
+        dividerLoop(['abcdefghij', 'klmnopqrst'], 3, {
+          maxChunks: 2,
+        })
+      ).toEqual([
+        ['abc', 'defghij'],
+        ['klm', 'nopqrst'],
+      ]);
+    });
+
+    test('flattens the result when flatten: true is used', () => {
+      expect(
+        dividerLoop(['abcdefghij', 'klmnopqrst'], 3, {
+          maxChunks: 2,
+          flatten: true,
+        })
+      ).toEqual(['abc', 'defghij', 'klm', 'nopqrst']);
     });
   });
 
