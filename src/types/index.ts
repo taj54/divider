@@ -10,6 +10,7 @@ export type DividerOptions = Partial<Record<DividerOptionKey, boolean>>;
 
 export type DividerLoopOptions = DividerOptions & {
   startOffset?: number;
+  maxChunks?: number;
 };
 
 export type DividerSeparators = (number | string)[];
