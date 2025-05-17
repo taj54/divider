@@ -1,1 +1,1 @@
-export const dividerOptionKeys = ['flatten', 'trim', 'excludeEmpty'] as const;
+export const dividerOptionKeys = ['flatten', 'trim'] as const;

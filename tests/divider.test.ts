@@ -32,13 +32,40 @@ describe('divider with string', () => {
     expect(divider('hello world', ' ', 3)).toEqual(['hel', 'lo', 'world']);
   });
 
-  test('flat option (default is false)', () => {
-    expect(divider('hello', 2, { flatten: true })).toEqual(['he', 'llo']);
-    expect(divider('hello', 2, { flatten: false })).toEqual(['he', 'llo']);
-  });
+  describe('options test', () => {
+    test('flat option (default is false)', () => {
+      expect(divider('hello', 2, { flatten: true })).toEqual(['he', 'llo']);
+      expect(divider('hello', 2, { flatten: false })).toEqual(['he', 'llo']);
+    });
 
-  it('excludes empty strings if excludeEmpty is true', () => {
-    expect(divider('a, ,b', ',', { excludeEmpty: true })).toEqual(['a', 'b']);
+    test('trims whitespace in string mode', () => {
+      expect(divider('  a  b   c  ', ' ', { trim: true })).toEqual([
+        'a',
+        'b',
+        'c',
+      ]);
+    });
+
+    test('handles edge case with only spaces', () => {
+      expect(divider('   ', ' ', { trim: true })).toEqual([]);
+    });
+
+    test('excludes empty strings', () => {
+      expect(divider('a, ,b', ',', { exclude: 'none' })).toEqual([
+        'a',
+        ' ',
+        'b',
+      ]);
+      expect(divider('a, ,b', ',', { exclude: 'empty' })).toEqual([
+        'a',
+        ' ',
+        'b',
+      ]);
+      expect(divider('a, ,b', ',', { exclude: 'whitespace' })).toEqual([
+        'a',
+        'b',
+      ]);
+    });
   });
 
   test('empty separators', () => {
@@ -131,36 +158,65 @@ describe('divider with string[]', () => {
     ]);
   });
 
-  test('flat option (default is false)', () => {
-    expect(divider(['hello', 'world'], 2, { flatten: true })).toEqual([
-      'he',
-      'llo',
-      'wo',
-      'rld',
-    ]);
-    expect(divider(['hello', 'world'], 'l', { flatten: true })).toEqual([
-      'he',
-      'o',
-      'wor',
-      'd',
-    ]);
-    expect(
-      divider(['hello', 'new world'], ' ', 'o', { flatten: true })
-    ).toEqual(['hell', 'new', 'w', 'rld']);
-    expect(
-      divider(['hello world', 'new world'], 2, 'o', { flatten: true })
-    ).toEqual(['he', 'll', ' w', 'rld', 'ne', 'w w', 'rld']);
-    expect(divider(['hello', 'world'], 2, { flatten: false })).toEqual([
-      ['he', 'llo'],
-      ['wo', 'rld'],
-    ]);
-  });
+  describe('options test', () => {
+    test('flat option (default is false)', () => {
+      expect(divider(['hello', 'world'], 2, { flatten: true })).toEqual([
+        'he',
+        'llo',
+        'wo',
+        'rld',
+      ]);
+      expect(divider(['hello', 'world'], 'l', { flatten: true })).toEqual([
+        'he',
+        'o',
+        'wor',
+        'd',
+      ]);
+      expect(
+        divider(['hello', 'new world'], ' ', 'o', { flatten: true })
+      ).toEqual(['hell', 'new', 'w', 'rld']);
+      expect(
+        divider(['hello world', 'new world'], 2, 'o', { flatten: true })
+      ).toEqual(['he', 'll', ' w', 'rld', 'ne', 'w w', 'rld']);
+      expect(divider(['hello', 'world'], 2, { flatten: false })).toEqual([
+        ['he', 'llo'],
+        ['wo', 'rld'],
+      ]);
+    });
 
-  it('excludes empty strings if excludeEmpty is true', () => {
-    expect(divider(['a', ', ,', 'b'], ',', { excludeEmpty: true })).toEqual([
-      ['a'],
-      ['b'],
-    ]);
+    test('trims whitespace in string[] mode', () => {
+      expect(
+        divider(['  abc  ', ' de f '], ' ', { flatten: true, trim: true })
+      ).toEqual(['abc', 'de', 'f']);
+    });
+
+    test('does not trim when trim is false (string[])', () => {
+      expect(
+        divider(['  abc  ', ' de f '], ' ', { flatten: true, trim: false })
+      ).toEqual(['abc', 'de', 'f']);
+    });
+
+    test('works with flatten + trim', () => {
+      expect(
+        divider([' hello ', ' world  '], 2, { flatten: true, trim: true })
+      ).toEqual(['h', 'ello', 'w', 'orld']);
+    });
+
+    test('excludes empty strings if excludeEmpty is true', () => {
+      expect(divider(['a', ', ,', 'b'], ',', { exclude: 'none' })).toEqual([
+        ['a'],
+        [' '],
+        ['b'],
+      ]);
+      expect(divider(['a', ', ,', 'b'], ',', { exclude: 'empty' })).toEqual([
+        ['a'],
+        [' '],
+        ['b'],
+      ]);
+      expect(
+        divider(['a', ', ,', 'b'], ',', { exclude: 'whitespace' })
+      ).toEqual([['a'], ['b']]);
+    });
   });
 
   test('empty separators', () => {
@@ -178,37 +234,5 @@ describe('divider with string[]', () => {
     expect(divider(['hello'], 5)).toEqual([['hello']]);
     expect(divider(['hello'], 10)).toEqual([['hello']]);
     expect(divider(['hello'], '😃')).toEqual([['hello']]);
-  });
-});
-
-describe('divider with trim option', () => {
-  test('trims whitespace in string mode', () => {
-    expect(divider('  a  b   c  ', ' ', { trim: true })).toEqual([
-      'a',
-      'b',
-      'c',
-    ]);
-  });
-
-  test('trims whitespace in string[] mode', () => {
-    expect(
-      divider(['  abc  ', ' de f '], ' ', { flatten: true, trim: true })
-    ).toEqual(['abc', 'de', 'f']);
-  });
-
-  test('does not trim when trim is false (string[])', () => {
-    expect(
-      divider(['  abc  ', ' de f '], ' ', { flatten: true, trim: false })
-    ).toEqual(['abc', 'de', 'f']);
-  });
-
-  test('works with flatten + trim', () => {
-    expect(
-      divider([' hello ', ' world  '], 2, { flatten: true, trim: true })
-    ).toEqual(['h', 'ello', 'w', 'orld']);
-  });
-
-  test('handles edge case with only spaces', () => {
-    expect(divider('   ', ' ', { trim: true })).toEqual([]);
   });
 });
