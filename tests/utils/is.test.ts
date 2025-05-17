@@ -6,34 +6,36 @@ import {
   isStringArray,
   isNestedStringArray,
   isWhitespaceOnly,
+  isEmptyString,
+  isNoneMode,
 } from '../../src/utils/is';
 import type { DividerOptions } from '../../src/types';
 
 describe('isOptions', () => {
-  it('returns true for object with flatten', () => {
+  test('returns true for object with flatten', () => {
     const input: DividerOptions = { flatten: true };
     expect(isOptions(input)).toBe(true);
   });
 
-  it('returns true for object with trim', () => {
+  test('returns true for object with trim', () => {
     const input: DividerOptions = { trim: true };
     expect(isOptions(input)).toBe(true);
   });
 
-  it('returns true for object with excludeEmpty', () => {
-    const input: DividerOptions = { excludeEmpty: true };
+  test('returns true for object with excludeEmpty', () => {
+    const input: DividerOptions = { exclude: 'none' };
     expect(isOptions(input)).toBe(true);
   });
 
-  it('returns false for object with unrelated keys', () => {
+  test('returns false for object with unrelated keys', () => {
     expect(isOptions({ foo: 'bar' })).toBe(false);
   });
 
-  it('returns false for null', () => {
+  test('returns false for null', () => {
     expect(isOptions(null)).toBe(false);
   });
 
-  it('returns false for non-object values', () => {
+  test('returns false for non-object values', () => {
     expect(isOptions('string')).toBe(false);
     expect(isOptions(123)).toBe(false);
     expect(isOptions(true)).toBe(false);
@@ -186,23 +188,54 @@ describe('isNestedStringArray', () => {
 });
 
 describe('isWhitespaceOnly', () => {
-  it('true for an empty string', () => {
+  test('true for an empty string', () => {
     expect(isWhitespaceOnly('')).toBe(true);
   });
 
-  it('true for a string with only spaces', () => {
+  test('true for a string with only spaces', () => {
     expect(isWhitespaceOnly('   ')).toBe(true);
   });
 
-  it('true for a string with tabs and newlines only', () => {
+  test('true for a string with tabs and newlines only', () => {
     expect(isWhitespaceOnly('\t\n\r')).toBe(true);
   });
 
-  it('false for a non-empty string', () => {
+  test('false for a non-empty string', () => {
     expect(isWhitespaceOnly('a')).toBe(false);
   });
 
-  it('false for a string with spaces and characters', () => {
+  test('false for a string with spaces and characters', () => {
     expect(isWhitespaceOnly('  a  ')).toBe(false);
+  });
+});
+
+describe('isEmptyString', () => {
+  test('true for an empty string', () => {
+    expect(isEmptyString('')).toBe(true);
+  });
+
+  test('false for a non-empty string', () => {
+    expect(isEmptyString(' ')).toBe(false);
+    expect(isEmptyString('abc')).toBe(false);
+  });
+});
+
+describe('isNoneMode', () => {
+  test('true for "none"', () => {
+    expect(isNoneMode('none')).toBe(true);
+  });
+
+  test('false for other strings', () => {
+    expect(isNoneMode('empty')).toBe(false);
+    expect(isNoneMode('whitespace')).toBe(false);
+    expect(isNoneMode('')).toBe(false);
+  });
+
+  test('false for non-string types', () => {
+    expect(isNoneMode(undefined)).toBe(false);
+    expect(isNoneMode(null)).toBe(false);
+    expect(isNoneMode(0)).toBe(false);
+    expect(isNoneMode({})).toBe(false);
+    expect(isNoneMode([])).toBe(false);
   });
 });

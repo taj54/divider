@@ -1,5 +1,4 @@
-import { DividerOptions } from '@/types';
-import { dividerOptionKeys } from '@/utils/constants';
+import type { DividerOptions, DividerExcludeMode } from '@/types';
 
 export function isString(arg: unknown): arg is string {
   return typeof arg === 'string';
@@ -11,7 +10,8 @@ export function isNumber(arg: unknown): arg is number {
 
 export function isOptions(arg: unknown): arg is DividerOptions {
   if (typeof arg !== 'object' || arg === null) return false;
-  return dividerOptionKeys.some((key) => key in arg);
+
+  return 'flatten' in arg || 'trim' in arg || 'exclude' in arg;
 }
 
 export function isEmptyArray<T>(input: T[]): boolean {
@@ -42,4 +42,12 @@ export function isNestedStringArray(input: unknown): input is string[][] {
 
 export function isWhitespaceOnly(s: string) {
   return s.trim() === '';
+}
+
+export function isEmptyString(s: string): boolean {
+  return s === '';
+}
+
+export function isNoneMode(mode: unknown): mode is 'none' {
+  return mode === 'none';
 }

@@ -1,12 +1,14 @@
-import { dividerOptionKeys } from '@/utils/constants';
-
-export type DividerOptionKey = (typeof dividerOptionKeys)[number];
+export type DividerExcludeMode = 'none' | 'empty' | 'whitespace';
 
 export type DividerResult<T extends string | string[]> = T extends string
   ? string[]
   : string[][];
 
-export type DividerOptions = Partial<Record<DividerOptionKey, boolean>>;
+export type DividerOptions = {
+  flatten?: boolean;
+  trim?: boolean;
+  exclude?: DividerExcludeMode;
+};
 
 export type DividerLoopOptions = DividerOptions & {
   startOffset?: number;

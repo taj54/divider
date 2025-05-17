@@ -4,8 +4,9 @@ import {
   isNumber,
   isOptions,
   isNestedStringArray,
-  isWhitespaceOnly,
+  isNoneMode,
 } from '@/utils/is';
+import { excludePredicateMap } from '@/utils/exclude-predicate';
 
 /**
  * Extracts `options` object and cleans argument list.
@@ -62,7 +63,7 @@ export function applyDividerOptions<T extends string | string[]>(
 ): DividerResult<T> {
   let output = result;
 
-  // First, apply trimming if needed
+  // 1. Apply trim
   if (options.trim) {
     const trim = (s: string) => s.trim();
     output = isNestedStringArray(output)
@@ -70,15 +71,28 @@ export function applyDividerOptions<T extends string | string[]>(
       : output.map(trim).filter(Boolean);
   }
 
-  // Then, apply flattening if needed
+  // 2. Apply flatten
   if (options.flatten) {
     output = output.flat();
   }
 
-  if (options.excludeEmpty) {
+  // 3. Apply exclude rules
+  if (!isNoneMode(options.exclude)) {
+    const exclude = options.exclude ?? 'none';
+    let shouldKeep: (s: string) => boolean = () => true;
+
+    if (exclude in excludePredicateMap) {
+      shouldKeep = excludePredicateMap[exclude];
+    }
+
+    const filterNested = (arr: string[][]) =>
+      arr.map((row) => row.filter(shouldKeep)).filter((row) => row.length > 0);
+
+    const filterFlat = (arr: string[]) => arr.filter(shouldKeep);
+
     output = isNestedStringArray(output)
-      ? output.filter((arr) => arr.some((s) => !isWhitespaceOnly(s)))
-      : output.filter((s) => !isWhitespaceOnly(s));
+      ? filterNested(output)
+      : filterFlat(output);
   }
 
   return output as DividerResult<T>;
