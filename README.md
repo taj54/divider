@@ -168,20 +168,20 @@ const result3 = dividerNumberString(['abc123', '45z'], { flatten: true });
 
 ## 🎯 General Options
 
-| Option         | Type      | Default | Description                                                               |
-| -------------- | --------- | ------- | ------------------------------------------------------------------------- |
-| `flatten`      | `boolean` | `false` | If `true`, the resulting nested arrays are flattened into a single array. |
-| `trim`         | `boolean` | `false` | If `true`, trims whitespace from each divided segment.                    |
-| `excludeEmpty` | `boolean` | `false` | If `true`, removes empty strings or strings with only whitespace.         |
+| Option    | Type      | Default | Description                                                               |
+| --------- | --------- | ------- | ------------------------------------------------------------------------- | -------- | ----------------------------------------------------------------------- |
+| `flatten` | `boolean` | `false` | If `true`, the resulting nested arrays are flattened into a single array. |
+| `trim`    | `boolean` | `false` | If `true`, trims whitespace from each divided segment.                    |
+| `exclude` | `'none'   | 'empty' | 'whitespace'`                                                             | `'none'` | Filter out specific segments: empty (`''`) or whitespace-only (`'   '`) |
 
 ### `flatten` (default: `false`)
 
 ```ts
 const words = ['hello', 'world'];
-const result1 = divider(words, 2);
+const result = divider(words, 2);
 // [['he', 'llo'], ['wo', 'rld']]
 
-const result2 = divider(words, 2, { flatten: true });
+const result = divider(words, 2, { flatten: true });
 // ['he', 'llo', 'wo', 'rld']
 ```
 
@@ -191,24 +191,30 @@ const result2 = divider(words, 2, { flatten: true });
 const result = divider('  hello world  ', 7, { trim: true });
 // ['hello', 'world']
 
-const result2 = divider(['  a  ', ' b  c '], ' ', {
+const result = divider(['  a  ', ' b  c '], ' ', {
   flatten: true,
   trim: true,
 });
 // ['a', 'b', 'c']
 ```
 
-### `excludeEmpty` (default: `false`)
+### `exclude` (default: `'none'`)
+
+Control how segments like empty strings (`''`) or whitespace-only strings (`'   '`) are handled.
 
 ```ts
-// Remove empty strings or strings with only spaces
-const result = divider('a, ,b', ',', { trim: true, excludeEmpty: true });
+// Remove truly empty strings
+const result1 = divider('a,,b', ',', { exclude: 'empty' });
 // ['a', 'b']
 
-const result2 = divider(['  a  ', ' ', '  b'], ' ', {
-  flatten: true,
+// Remove both empty and whitespace-only strings
+const result2 = divider('a, ,b', ',', { exclude: 'whitespace' });
+// ['a', 'b']
+
+// You can combine with `trim` for clearer results
+const result3 = divider('a, ,b', ',', {
   trim: true,
-  excludeEmpty: true,
+  exclude: 'whitespace',
 });
 // ['a', 'b']
 ```
