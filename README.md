@@ -168,11 +168,11 @@ const result3 = dividerNumberString(['abc123', '45z'], { flatten: true });
 
 ## 🎯 General Options
 
-| Option    | Type      | Default | Description                                                               |
-| --------- | --------- | ------- | ------------------------------------------------------------------------- | -------- | ----------------------------------------------------------------------- |
-| `flatten` | `boolean` | `false` | If `true`, the resulting nested arrays are flattened into a single array. |
-| `trim`    | `boolean` | `false` | If `true`, trims whitespace from each divided segment.                    |
-| `exclude` | `'none'   | 'empty' | 'whitespace'`                                                             | `'none'` | Filter out specific segments: empty (`''`) or whitespace-only (`'   '`) |
+| Option    | Type                                 | Default  | Description                                                               |
+| --------- | ------------------------------------ | -------- | ------------------------------------------------------------------------- |
+| `flatten` | `boolean`                            | `false`  | If `true`, the resulting nested arrays are flattened into a single array. |
+| `trim`    | `boolean`                            | `false`  | If `true`, trims whitespace from each divided segment.                    |
+| `exclude` | `'none'  /  'empty'  / 'whitespace'` | `'none'` | See detailed explanation below                                            |
 
 ### `flatten` (default: `false`)
 
@@ -200,19 +200,25 @@ const result = divider(['  a  ', ' b  c '], ' ', {
 
 ### `exclude` (default: `'none'`)
 
+| Option         | Description                                                              |
+| -------------- | ------------------------------------------------------------------------ |
+| `'none'`       | Do not exclude any segments (all results are kept).                      |
+| `'empty'`      | Exclude empty strings (`''`).                                            |
+| `'whitespace'` | Exclude strings that contain only whitespace characters (e.g., `'   '`). |
+
 Control how segments like empty strings (`''`) or whitespace-only strings (`'   '`) are handled.
 
 ```ts
 // Remove truly empty strings
-const result1 = divider('a,,b', ',', { exclude: 'empty' });
+const result = divider('a,,b', ',', { exclude: 'empty' });
 // ['a', 'b']
 
 // Remove both empty and whitespace-only strings
-const result2 = divider('a, ,b', ',', { exclude: 'whitespace' });
+const result = divider('a, ,b', ',', { exclude: 'whitespace' });
 // ['a', 'b']
 
 // You can combine with `trim` for clearer results
-const result3 = divider('a, ,b', ',', {
+const result = divider('a, ,b', ',', {
   trim: true,
   exclude: 'whitespace',
 });
