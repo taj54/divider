@@ -37,4 +37,18 @@ describe('divideString', () => {
   test('handles consecutive string separators correctly', () => {
     expect(divideString('hello--world', [], ['-'])).toEqual(['hello', 'world']);
   });
+
+  test('throws an error if numSeparators contains non-number values', () => {
+    expect(() =>
+      // @ts-expect-error intentional misuse
+      divideString('hello', ['not-a-number'], [])
+    ).toThrow('Invalid numeric separators');
+  });
+
+  test('throws an error if numSeparators is not an array', () => {
+    expect(() =>
+      // @ts-expect-error intentional misuse
+      divideString('hello', 'not-an-array', [])
+    ).toThrow('Invalid numeric separators');
+  });
 });
