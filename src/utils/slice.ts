@@ -1,5 +1,19 @@
 import { isEmptyArray } from '@/utils/is';
 
+/**
+ * Slices a string into segments based on an array of index positions.
+ *
+ * Each index defines a cutting point. The string is sliced from the current
+ * start position up to each index. Invalid or overlapping indexes are ignored.
+ *
+ * @example
+ * sliceByIndexes('hello world', [2, 5])
+ * // => ['he', 'llo', ' world']
+ *
+ * @param input - The input string to slice.
+ * @param indexes - An array of index positions to slice at. Must be in ascending order.
+ * @returns An array of string segments.
+ */
 export function sliceByIndexes(input: string, indexes: number[]): string[] {
   if (isEmptyArray(indexes)) return [input];
 
