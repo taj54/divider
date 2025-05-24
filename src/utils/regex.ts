@@ -18,17 +18,22 @@ export function getRegex(separators: string[]): RegExp | null {
 
   const key = JSON.stringify(separators);
 
-  if (!regexCache.has(key)) {
-    const pattern = separators.reduce(
-      (acc, sep) => acc + escapeRegExp(sep),
-      ''
-    );
-    regexCache.set(key, new RegExp(`[${pattern}]`, 'g'));
-  }
+  if (regexCache.has(key)) return regexCache.get(key)!;
 
+  const pattern = separators.reduce((acc, sep) => acc + escapeRegExp(sep), '');
+  regexCache.set(key, new RegExp(`[${pattern}]`, 'g'));
   return regexCache.get(key)!;
 }
 
+/**
+ * Escapes special characters in a string to be used safely in a regular expression.
+ *
+ * For example, '.' becomes '\.', '*' becomes '\*', etc.
+ * This prevents unintended behavior when dynamically constructing RegExp patterns.
+ *
+ * @param str - The string to escape.
+ * @returns The escaped string, safe for use in RegExp constructors.
+ */
 function escapeRegExp(str: string): string {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
