@@ -1,4 +1,5 @@
-import type { DividerOptions, DividerExcludeMode } from '@/types';
+import type { DividerOptions } from '@/types';
+import { DividerExcludeModes } from '@/constants';
 
 /**
  * Checks whether the given argument is a string.
@@ -18,10 +19,11 @@ export function isNumber(arg: unknown): arg is number {
  * Checks whether the given argument is a valid DividerOptions object.
  * It must be a non-null object and contain at least one of the known option keys.
  */
-export function isOptions(arg: unknown): arg is DividerOptions {
-  if (typeof arg !== 'object' || arg === null) return false;
+export function isOptions(value: unknown): value is DividerOptions {
+  if (typeof value !== 'object' || value === null) return false;
+  const options = value as Record<string, unknown>;
 
-  return 'flatten' in arg || 'trim' in arg || 'exclude' in arg;
+  return 'flatten' in options || 'trim' in options || 'exclude' in options;
 }
 
 /**
@@ -82,6 +84,8 @@ export function isEmptyString(s: string): boolean {
 /**
  * Checks whether the given value is exactly the string 'none'.
  */
-export function isNoneMode(mode: unknown): mode is 'none' {
-  return mode === 'none';
+export function isNoneMode(
+  mode: unknown
+): mode is typeof DividerExcludeModes.NONE {
+  return mode === DividerExcludeModes.NONE;
 }
