@@ -23,11 +23,7 @@ export function isOptions(value: unknown): value is DividerOptions {
   if (typeof value !== 'object' || value === null) return false;
   const options = value as Record<string, unknown>;
 
-  // Check if any of the known option keys are present in the object
-  return (
-    dividerOptionKeys.some((key) => key in options) ||
-    'exclude' in options
-  );
+  return dividerOptionKeys.some((key) => key in options);
 }
 
 /**

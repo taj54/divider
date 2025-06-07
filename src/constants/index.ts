@@ -20,10 +20,11 @@ export const DividerExcludeModes = {
  *
  * - `flatten`: Whether to flatten nested arrays into a single level
  * - `trim`: Whether to trim whitespace from string segments
+ * - `exclude`: The exclusion mode to apply to segments (e.g., 'none', 'empty', 'whitespace')
  */
-export const dividerOptionKeys = ['flatten', 'trim'] as const;
+export const dividerOptionKeys = ['flatten', 'trim', 'exclude'] as const;
 
 /**
  * Type representing a valid divider option key.
  */
-export type DividerOptionKey = typeof dividerOptionKeys[number];
+export type DividerOptionKey = (typeof dividerOptionKeys)[number];
