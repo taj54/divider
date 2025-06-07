@@ -23,7 +23,7 @@ export function isOptions(value: unknown): value is DividerOptions {
   if (typeof value !== 'object' || value === null) return false;
   const options = value as Record<string, unknown>;
 
-  return dividerOptionKeys.some((key) => key in options);
+  return dividerOptionKeys.some((key) => Object.hasOwn(options, key));
 }
 
 /**
