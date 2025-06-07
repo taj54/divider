@@ -1,0 +1,46 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: About Divider library
+globs:
+  - "**/*"
+alwaysApply: true
+---
+
+# Divider Development Guide
+
+## Context
+- `divider` is a utility library for dividing a string or an array of strings based on index positions or delimiters.
+- Full specifications are described in the README. Please read it carefully before development.
+
+## Development Policy
+
+- **Use** TypeScript (`.ts`) for all code.
+- **Write types** as strictly as possible (use `type` or `interface`).
+- **Follow linter rules**: ESLint with our project config (no any lint errors).
+- **Create unit tests**: Ensure tests cover:
+  - Normal cases (valid inputs)
+  - Edge cases (empty strings, empty arrays)
+  - Error cases (invalid types if applicable)
+- **Aim for readable code**:
+  - Clear function and variable names
+  - Small and single-responsibility functions
+  - No magic numbers (define constants)
+  - Add comments **about why** certain code is written (not just what it does)
+
+## Directory Structure Rules
+
+- Main functions → `src/core`
+- Type definitions → `src/types`
+- Utility functions → `src/utils`
+- Tests → Mirror `src/` structure under `tests/`
+
+## Coding Style Guide
+
+- Clarify method and variable names (avoid abbreviations).
+- Avoid magic numbers: define constants and export if reused.
+- Prefer immutability (avoid mutating parameters).
+- Run tests locally with `pnpm test` before pushing changes.
