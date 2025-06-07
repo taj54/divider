@@ -13,3 +13,18 @@ export const DividerExcludeModes = {
   EMPTY: 'empty',
   WHITESPACE: 'whitespace',
 } as const;
+
+/**
+ * List of valid option keys for the divider functions.
+ * These keys are used to validate and process divider options.
+ *
+ * - `flatten`: Whether to flatten nested arrays into a single level
+ * - `trim`: Whether to trim whitespace from string segments
+ * - `exclude`: The exclusion mode to apply to segments (e.g., 'none', 'empty', 'whitespace')
+ */
+export const dividerOptionKeys = ['flatten', 'trim', 'exclude'] as const;
+
+/**
+ * Type representing a valid divider option key.
+ */
+export type DividerOptionKey = (typeof dividerOptionKeys)[number];

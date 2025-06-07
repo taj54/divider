@@ -1,5 +1,5 @@
 import type { DividerOptions } from '@/types';
-import { DividerExcludeModes } from '@/constants';
+import { DividerExcludeModes, dividerOptionKeys } from '@/constants';
 
 /**
  * Checks whether the given argument is a string.
@@ -23,7 +23,7 @@ export function isOptions(value: unknown): value is DividerOptions {
   if (typeof value !== 'object' || value === null) return false;
   const options = value as Record<string, unknown>;
 
-  return 'flatten' in options || 'trim' in options || 'exclude' in options;
+  return dividerOptionKeys.some((key) => Object.hasOwn(options, key));
 }
 
 /**
