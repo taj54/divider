@@ -23,8 +23,3 @@ export const DividerExcludeModes = {
  * - `exclude`: The exclusion mode to apply to segments (e.g., 'none', 'empty', 'whitespace')
  */
 export const dividerOptionKeys = ['flatten', 'trim', 'exclude'] as const;
-
-/**
- * Type representing a valid divider option key.
- */
-export type DividerOptionKey = (typeof dividerOptionKeys)[number];
