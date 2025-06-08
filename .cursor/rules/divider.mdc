@@ -36,7 +36,7 @@ alwaysApply: true
 - Main functions → `src/core`
 - Type definitions → `src/types`
 - Utility functions → `src/utils`
-- Tests → Mirror `src/` structure under `tests/`
+- Tests → Mirror `src/` structure under `tests/` (e.g., `tests/core/splitString.test.ts`)
 
 ## Coding Style Guide
 
@@ -44,3 +44,12 @@ alwaysApply: true
 - Avoid magic numbers: define constants and export if reused.
 - Prefer immutability (avoid mutating parameters).
 - Run tests locally with `pnpm test` before pushing changes.
+
+## Tests
+
+- Test cases should follow **BDD (Behavior Driven Development)** principles: describe behavior in natural language.
+- Test implementation should follow the **AAA (Arrange-Act-Assert)** pattern for clear structure.
+- Cover:
+  - Normal cases (valid inputs)
+  - Edge cases (empty strings, empty arrays)
+  - Error cases (invalid types if applicable)
