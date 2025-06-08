@@ -17,7 +17,6 @@ import { applyDividerOptions } from '@/utils/option';
  * @param input - String or array of strings to divide
  * @param args - Array of separators (numbers/strings) and optional options object
  * @returns Divided string segments based on input type and options
- * @throws {DividerValidationError} If input or separators are invalid
  */
 export function divider<T extends DividerInput>(
   input: T,

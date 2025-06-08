@@ -25,4 +25,15 @@ describe('generateIndexes', () => {
     expect(generateIndexes('', 2)).toEqual([]);
     expect(generateIndexes('', 2, 1)).toEqual([]);
   });
+
+  test('empty array and warns if size is not positive integer', () => {
+    const spy = jest.spyOn(console, 'warn').mockImplementation(() => { });
+
+    expect(generateIndexes('abc', 0)).toEqual([]);
+    expect(generateIndexes('abc', -1)).toEqual([]);
+    expect(generateIndexes('abc', 1.5)).toEqual([]);
+    expect(generateIndexes('abc', NaN)).toEqual([]);
+
+    spy.mockRestore();
+  });
 });

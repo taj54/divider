@@ -7,6 +7,7 @@ describe('applyDividerOptions', () => {
       ['c ', ' d '],
     ];
     const options = { trim: true } as const;
+
     expect(applyDividerOptions(result, options)).toEqual([
       ['a', 'b'],
       ['c', 'd'],
@@ -19,6 +20,7 @@ describe('applyDividerOptions', () => {
       ['c', 'd'],
     ];
     const options = { flatten: true } as const;
+
     expect(applyDividerOptions(result, options)).toEqual(['a', 'b', 'c', 'd']);
   });
 
@@ -28,6 +30,7 @@ describe('applyDividerOptions', () => {
       ['c ', 'd'],
     ];
     const options = { trim: true, flatten: true } as const;
+
     expect(applyDividerOptions(result, options)).toEqual(['a', 'b', 'c', 'd']);
   });
 
@@ -37,7 +40,14 @@ describe('applyDividerOptions', () => {
       ['c', 'd'],
     ];
     const options = {} as const;
+
     expect(applyDividerOptions(result, options)).toEqual(result);
+  });
+
+  test('handles unknown exclude mode gracefully', () => {
+    const result = [['a', '', ' '], ['b']];
+
+    expect(applyDividerOptions(result, { exclude: 'unknown' } as any)).toEqual([['a', '', ' '], ['b']]);
   });
 });
 
