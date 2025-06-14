@@ -39,6 +39,11 @@ bun add @nyaomaru/divider
 yarn add @nyaomaru/divider
 ```
 
+## 📖 Documentation
+
+- 📝 Guide: [https://divider-docs.vercel.app](https://divider-docs.vercel.app)
+- 🧪 API Reference: [https://nyaomaru.github.io/divider/](https://nyaomaru.github.io/divider/)
+
 ## 📖 Usage
 
 👉 [Check out the full documentation here!](https://divider-docs.vercel.app/)
