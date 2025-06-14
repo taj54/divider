@@ -5,3 +5,5 @@ coverage
 
 # But only keep rules directory
 !.cursor/rules
+
+docs/api
