@@ -16,7 +16,7 @@ export function isNumber(arg: unknown): arg is number {
 }
 
 /**
- * Checks whether the given argument is a object.
+ * Checks whether the given argument is an object.
  */
 export function isObject(arg: unknown): arg is object {
   return typeof arg === 'object' && arg !== null;
