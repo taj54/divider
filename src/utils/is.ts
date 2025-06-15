@@ -27,7 +27,7 @@ export function isObject(arg: unknown): arg is object {
  * It must be a non-null object and contain at least one of the known option keys.
  */
 export function isOptions(value: unknown): value is DividerOptions {
-  if (!isObject(value) || value === null) return false;
+  if (!isObject(value)) return false;
   const options = value as Record<string, unknown>;
 
   return dividerOptionKeys.some((key) => Object.hasOwn(options, key));
