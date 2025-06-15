@@ -5,10 +5,10 @@ import { applyDividerOptions } from '@/utils/option';
 
 /**
  * Divides a string or array of strings by separating numbers from non-numbers.
- * 
+ *
  * This function splits input by detecting transitions between numeric and non-numeric characters.
  * For example, "abc123def" would be split into ["abc", "123", "def"].
- * 
+ *
  * @param input - String or array of strings to divide
  * @param options - Optional configuration options for the division process
  * @returns Array of segments where numbers and non-numbers are separated

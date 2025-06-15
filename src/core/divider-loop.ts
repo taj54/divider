@@ -6,13 +6,13 @@ import { divider } from '@/core/divider';
 
 /**
  * Divides input into chunks of specified size with optional configuration.
- * 
+ *
  * This function provides a way to split input into equal-sized chunks with additional control:
  * - Can specify starting offset for the chunking
  * - Can limit the maximum number of chunks produced
  * - Supports both string and array inputs
  * - When maxChunks is specified, remaining content is merged into the last chunk
- * 
+ *
  * @param input - String or array of strings to divide into chunks
  * @param size - Size of each chunk
  * @param options - Configuration options for chunking behavior
