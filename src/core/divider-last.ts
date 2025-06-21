@@ -1,4 +1,5 @@
 import { divider } from '@/core/divider';
+import { getLastElement } from '@/utils/array';
 import type { DividerSeparators } from '@/types';
 
 /**
@@ -16,6 +17,5 @@ export function dividerLast(
   ...args: DividerSeparators
 ): string {
   const result = divider(input, ...args, { flatten: true }) as string[];
-
-  return result.at(-1) ?? '';
+  return getLastElement(result, '');
 }
