@@ -6,14 +6,24 @@ import { divider } from '@/core/divider';
 import { PERFORMANCE_CONSTANTS } from '@/constants';
 
 /**
- * Determines if the chunks array needs to be truncated based on maxChunks setting
+ * Determines whether the chunks array should be truncated
+ * based on the maxChunks setting.
+ *
+ * @param chunks - The array of string chunks to evaluate
+ * @param maxChunks - The maximum number of chunks allowed
+ * @returns True if truncation is needed, false otherwise
  */
 function needsTruncation(chunks: string[], maxChunks: number): boolean {
   return isNumber(maxChunks) && 0 < maxChunks && maxChunks < chunks.length;
 }
 
 /**
- * Truncates chunks array to maxChunks length, merging remaining chunks into the last one
+ * Truncates the chunks array to the specified maxChunks length.
+ * The remaining chunks are merged into the last chunk.
+ *
+ * @param chunks - The original array of string chunks
+ * @param maxChunks - The maximum number of chunks to retain
+ * @returns A new array of chunks with at most maxChunks elements
  */
 function truncateChunks(chunks: string[], maxChunks: number): string[] {
   const headCount = maxChunks - 1;
@@ -23,7 +33,14 @@ function truncateChunks(chunks: string[], maxChunks: number): string[] {
 }
 
 /**
- * Applies chunking logic to a single string
+ * Splits the input string into chunks based on size and offset,
+ * and optionally truncates the result if it exceeds maxChunks.
+ *
+ * @param str - The input string to chunk
+ * @param size - The size of each chunk
+ * @param startOffset - The starting offset for chunking
+ * @param maxChunks - The maximum number of chunks to allow
+ * @returns An array of string chunks, possibly truncated
  */
 function applyChunking(
   str: string,
