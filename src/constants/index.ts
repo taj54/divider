@@ -23,3 +23,17 @@ export const DividerExcludeModes = {
  * - `exclude`: The exclusion mode to apply to segments (e.g., 'none', 'empty', 'whitespace')
  */
 export const dividerOptionKeys = ['flatten', 'trim', 'exclude'] as const;
+
+/**
+ * Performance and behavior constants
+ */
+export const PERFORMANCE_CONSTANTS = {
+  /** Maximum number of cached regex patterns to prevent memory leaks */
+  MAX_REGEX_CACHE_SIZE: 100,
+  /** Default chunk size for dividerLoop when not specified */
+  DEFAULT_CHUNK_SIZE: 1,
+  /** Default start offset for dividerLoop */
+  DEFAULT_START_OFFSET: 0,
+  /** Default max chunks for dividerLoop (0 = no limit) */
+  DEFAULT_MAX_CHUNKS: 0,
+} as const;

@@ -3,6 +3,39 @@ import { generateIndexes } from '@/utils/chunk';
 import { applyDividerOptions } from '@/utils/option';
 import type { DividerLoopOptions, DividerResult } from '@/types';
 import { divider } from '@/core/divider';
+import { PERFORMANCE_CONSTANTS } from '@/constants';
+
+/**
+ * Determines if the chunks array needs to be truncated based on maxChunks setting
+ */
+function needsTruncation(chunks: string[], maxChunks: number): boolean {
+  return isNumber(maxChunks) && 0 < maxChunks && maxChunks < chunks.length;
+}
+
+/**
+ * Truncates chunks array to maxChunks length, merging remaining chunks into the last one
+ */
+function truncateChunks(chunks: string[], maxChunks: number): string[] {
+  const HEAD_COUNT = maxChunks - 1;
+  const head = chunks.slice(0, HEAD_COUNT);
+  const tail = chunks.slice(HEAD_COUNT).join('');
+  return [...head, tail];
+}
+
+/**
+ * Applies chunking logic to a single string
+ */
+function applyChunking(
+  str: string,
+  size: number,
+  startOffset: number,
+  maxChunks: number
+): string[] {
+  const chunks = divider(str, ...generateIndexes(str, size, startOffset));
+  return needsTruncation(chunks, maxChunks)
+    ? truncateChunks(chunks, maxChunks)
+    : chunks;
+}
 
 /**
  * Divides input into chunks of specified size with optional configuration.
@@ -35,39 +68,15 @@ export function dividerLoop<T extends string | string[]>(
   }
 
   const finalOptions = options ?? {};
-  // If maxChunks is 0 or omitted, no truncation is applied
-  const { startOffset = 0, maxChunks = 0 } = finalOptions;
-
-  /**
-   * Applies chunking logic to a single string
-   * @param str - String to be chunked
-   * @returns Array of chunks
-   */
-  const applyChunking = (str: string): string[] => {
-    const chunks = divider(str, ...generateIndexes(str, size, startOffset));
-    return needsTruncation(chunks) ? truncateChunks(chunks) : chunks;
-  };
-
-  /**
-   * Determines if the chunks array needs to be truncated based on maxChunks setting
-   */
-  const needsTruncation = (chunks: string[]): boolean =>
-    isNumber(maxChunks) && 0 < maxChunks && maxChunks < chunks.length;
-
-  /**
-   * Truncates chunks array to maxChunks length, merging remaining chunks into the last one
-   */
-  const truncateChunks = (chunks: string[]): string[] => {
-    const HEAD_COUNT = maxChunks - 1;
-    const head = chunks.slice(0, HEAD_COUNT);
-    const tail = chunks.slice(HEAD_COUNT).join('');
-    return [...head, tail];
-  };
+  const {
+    startOffset = PERFORMANCE_CONSTANTS.DEFAULT_START_OFFSET,
+    maxChunks = PERFORMANCE_CONSTANTS.DEFAULT_MAX_CHUNKS,
+  } = finalOptions;
 
   // Process input based on its type (string or string[])
   const result = isString(input)
-    ? applyChunking(input)
-    : input.map(applyChunking);
+    ? applyChunking(input, size, startOffset, maxChunks)
+    : input.map((str) => applyChunking(str, size, startOffset, maxChunks));
 
   return applyDividerOptions<T>(result, finalOptions);
 }
