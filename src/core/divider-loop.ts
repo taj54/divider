@@ -16,9 +16,9 @@ function needsTruncation(chunks: string[], maxChunks: number): boolean {
  * Truncates chunks array to maxChunks length, merging remaining chunks into the last one
  */
 function truncateChunks(chunks: string[], maxChunks: number): string[] {
-  const HEAD_COUNT = maxChunks - 1;
-  const head = chunks.slice(0, HEAD_COUNT);
-  const tail = chunks.slice(HEAD_COUNT).join('');
+  const headCount = maxChunks - 1;
+  const head = chunks.slice(0, headCount);
+  const tail = chunks.slice(headCount).join('');
   return [...head, tail];
 }
 
