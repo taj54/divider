@@ -3,7 +3,7 @@ import pluginJs from '@eslint/js';
 
 export default defineConfig([
   pluginJs.configs.recommended,
-  globalIgnores(['dist/*']),
+  globalIgnores(['dist/*', 'docs/*']),
   {
     rules: {
       'no-unused-vars': 'warn',
