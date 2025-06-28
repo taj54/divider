@@ -6,7 +6,7 @@ import { divider } from '@/core/divider';
 import { PERFORMANCE_CONSTANTS } from '@/constants';
 
 // Constants for better maintainability
-const CHUNK_TRUNCATION_THRESHOLD = 0;
+const MIN_ALLOWED_CHUNKS = 0;
 
 /**
  * Determines whether the chunks array should be truncated
@@ -17,7 +17,7 @@ const CHUNK_TRUNCATION_THRESHOLD = 0;
  * @returns True if truncation is needed, false otherwise
  */
 function shouldTruncateChunks(chunks: string[], maxChunks: number): boolean {
-  return isNumber(maxChunks) && maxChunks > CHUNK_TRUNCATION_THRESHOLD && maxChunks < chunks.length;
+  return isNumber(maxChunks) && maxChunks > MIN_ALLOWED_CHUNKS && maxChunks < chunks.length;
 }
 
 /**
@@ -60,42 +60,6 @@ function createChunksFromString(
 }
 
 /**
- * Processes a single string input by creating chunks with the specified parameters.
- *
- * @param input - The string to process
- * @param size - Size of each chunk
- * @param startOffset - Starting position for chunking
- * @param maxChunks - Maximum number of chunks allowed
- * @returns Array of string chunks
- */
-function processStringInput(
-  input: string,
-  size: number,
-  startOffset: number,
-  maxChunks: number
-): string[] {
-  return createChunksFromString(input, size, startOffset, maxChunks);
-}
-
-/**
- * Processes an array of strings by creating chunks for each string.
- *
- * @param input - The array of strings to process
- * @param size - Size of each chunk
- * @param startOffset - Starting position for chunking
- * @param maxChunks - Maximum number of chunks allowed
- * @returns Array of string arrays (chunks for each input string)
- */
-function processStringArrayInput(
-  input: string[],
-  size: number,
-  startOffset: number,
-  maxChunks: number
-): string[][] {
-  return input.map((str) => createChunksFromString(str, size, startOffset, maxChunks));
-}
-
-/**
  * Divides input into chunks of specified size with optional configuration.
  *
  * This function provides a way to split input into equal-sized chunks with additional control:
@@ -133,8 +97,8 @@ export function dividerLoop<T extends string | string[]>(
 
   // Process input based on its type (string or string[])
   const result = isString(input)
-    ? processStringInput(input, size, startOffset, maxChunks)
-    : processStringArrayInput(input, size, startOffset, maxChunks);
+    ? createChunksFromString(input, size, startOffset, maxChunks)
+    : input.map((str) => createChunksFromString(str, size, startOffset, maxChunks));
 
   return applyDividerOptions<T>(result, finalOptions);
 }
