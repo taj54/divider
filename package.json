@@ -17,6 +17,8 @@
   },
   "scripts": {
     "test": "jest",
+    "test:performance": "jest --config jest.performance.config.cjs",
+    "test:unit": "jest --testPathIgnorePatterns=performance",
     "lint": "eslint .",
     "build": "tsup",
     "prepack": "pnpm run build",
