@@ -7,10 +7,9 @@ module.exports = {
     '^@/(.+)': '<rootDir>/src/$1',
   },
   testMatch: [
-    '**/tests/**/*.test.ts'
+    '**/tests/performance/**/*.performance.test.ts'
   ],
   testPathIgnorePatterns: [
-    '<rootDir>/tests/integration/',
-    '<rootDir>/tests/performance/'
+    '<rootDir>/tests/integration/'
   ],
-};
+}; 
