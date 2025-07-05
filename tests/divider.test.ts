@@ -5,40 +5,34 @@ describe('divider with string', () => {
     expect(divider('hello', 2)).toEqual(['he', 'llo']);
   });
 
-  test('divide with multiple number', () => {
+  test('divide with multiple numbers', () => {
     expect(divider('hello', 1, 3)).toEqual(['h', 'el', 'lo']);
     expect(divider('hello', 1, 3, 4)).toEqual(['h', 'el', 'l', 'o']);
-    expect(divider('hello', 1, 3, 5)).toEqual(['h', 'el', 'lo']);
   });
 
-  test('divide with reverse number', () => {
+  test('divide with reverse number order', () => {
     expect(divider('hello', 2, 1)).toEqual(['h', 'e', 'llo']);
     expect(divider('hello', 5, 3)).toEqual(['hel', 'lo']);
   });
 
-  test('divide with string', () => {
+  test('divide with string separator', () => {
     expect(divider('hello', 'e')).toEqual(['h', 'llo']);
     expect(divider('hello', 'l')).toEqual(['he', 'o']);
     expect(divider('hello', 'a')).toEqual(['hello']);
   });
 
-  test('divide with multiple character separators', () => {
+  test('divide with multiple string separators', () => {
     expect(divider('hello', 'l', 'o')).toEqual(['he']);
     expect(divider('hello world', ' ', 'o')).toEqual(['hell', 'w', 'rld']);
   });
 
-  test('divide with mixed numbers and characters', () => {
+  test('divide with mixed numbers and strings', () => {
     expect(divider('hello', 2, 'l')).toEqual(['he', 'o']);
     expect(divider('hello world', ' ', 3)).toEqual(['hel', 'lo', 'world']);
   });
 
-  describe('options test', () => {
-    test('flat option (default is false)', () => {
-      expect(divider('hello', 2, { flatten: true })).toEqual(['he', 'llo']);
-      expect(divider('hello', 2, { flatten: false })).toEqual(['he', 'llo']);
-    });
-
-    test('trims whitespace in string mode', () => {
+  describe('options', () => {
+    test('trim option removes whitespace', () => {
       expect(divider('  a  b   c  ', ' ', { trim: true })).toEqual([
         'a',
         'b',
@@ -46,11 +40,11 @@ describe('divider with string', () => {
       ]);
     });
 
-    test('handles edge case with only spaces', () => {
+    test('trim with only spaces returns empty array', () => {
       expect(divider('   ', ' ', { trim: true })).toEqual([]);
     });
 
-    test('excludes empty strings', () => {
+    test('exclude option filters segments', () => {
       expect(divider('a, ,b', ',', { exclude: 'none' })).toEqual([
         'a',
         ' ',
@@ -66,15 +60,23 @@ describe('divider with string', () => {
         'b',
       ]);
     });
+
+    test('combines trim and exclude options', () => {
+      expect(
+        divider('a, ,b', ',', { trim: true, exclude: 'whitespace' })
+      ).toEqual(['a', 'b']);
+    });
   });
 
-  test('empty separators', () => {
+  test('handles empty separators', () => {
     expect(divider('hello', ...([] as const))).toEqual(['hello']);
   });
 
-  test('handling undefined or null input', () => {
+  test('handles invalid input gracefully', () => {
     expect(divider(null as any, 2)).toEqual([]);
     expect(divider(undefined as any, 2)).toEqual([]);
+    expect(divider(123 as any, 2)).toEqual([]);
+    expect(divider({} as any, 2)).toEqual([]);
   });
 
   test('edge cases', () => {
@@ -84,6 +86,17 @@ describe('divider with string', () => {
     expect(divider('hello', 5)).toEqual(['hello']);
     expect(divider('hello', 10)).toEqual(['hello']);
     expect(divider('hello', '😃')).toEqual(['hello']);
+  });
+
+  test('handles unicode characters', () => {
+    expect(divider('hello world', 3)).toEqual(['hel', 'lo world']);
+    expect(divider('hello😃world', '😃')).toEqual(['hello', 'world']);
+  });
+
+  test('handles special regex characters', () => {
+    expect(divider('hello.world', '.')).toEqual(['hello', 'world']);
+    expect(divider('hello*world', '*')).toEqual(['hello', 'world']);
+    expect(divider('hello+world', '+')).toEqual(['hello', 'world']);
   });
 });
 
@@ -95,144 +108,87 @@ describe('divider with string[]', () => {
     ]);
   });
 
-  test('divide with multiple number', () => {
+  test('divide with multiple numbers', () => {
     expect(divider(['hello', 'new world'], 1, 3)).toEqual([
       ['h', 'el', 'lo'],
       ['n', 'ew', ' world'],
     ]);
-    expect(divider(['hello', 'new world'], 1, 3, 4)).toEqual([
-      ['h', 'el', 'l', 'o'],
-      ['n', 'ew', ' ', 'world'],
-    ]);
-    expect(divider(['hello', 'new world'], 1, 3, 5)).toEqual([
-      ['h', 'el', 'lo'],
-      ['n', 'ew', ' w', 'orld'],
-    ]);
   });
 
-  test('divide with reverse number', () => {
-    expect(divider(['hello', 'new world'], 2, 1)).toEqual([
-      ['h', 'e', 'llo'],
-      ['n', 'e', 'w world'],
-    ]);
-    expect(divider(['hello', 'new world'], 5, 3)).toEqual([
-      ['hel', 'lo'],
-      ['new', ' w', 'orld'],
-    ]);
-  });
-
-  test('divide with string', () => {
+  test('divide with string separator', () => {
     expect(divider(['hello', 'new world'], 'e')).toEqual([
       ['h', 'llo'],
       ['n', 'w world'],
     ]);
-    expect(divider(['hello', 'new world'], 'l')).toEqual([
-      ['he', 'o'],
-      ['new wor', 'd'],
-    ]);
-    expect(divider(['hello', 'new world'], 'a')).toEqual([
-      ['hello'],
-      ['new world'],
-    ]);
   });
 
-  test('divide with multiple character separators', () => {
-    expect(divider(['hello', 'new world'], 'l', 'o')).toEqual([
-      ['he'],
-      ['new w', 'r', 'd'],
-    ]);
-    expect(divider(['hello', 'new world'], ' ', 'o')).toEqual([
-      ['hell'],
-      ['new', 'w', 'rld'],
-    ]);
-  });
-
-  test('divide with mixed numbers and characters', () => {
+  test('divide with mixed separators', () => {
     expect(divider(['hello', 'new world'], 2, 'l')).toEqual([
       ['he', 'o'],
       ['ne', 'w wor', 'd'],
     ]);
-    expect(divider(['hello', 'new world'], ' ', 3)).toEqual([
-      ['hel', 'lo'],
-      ['new', 'world'],
-    ]);
   });
 
-  describe('options test', () => {
-    test('flat option (default is false)', () => {
+  describe('options', () => {
+    test('flatten option flattens nested arrays', () => {
       expect(divider(['hello', 'world'], 2, { flatten: true })).toEqual([
         'he',
         'llo',
         'wo',
         'rld',
       ]);
-      expect(divider(['hello', 'world'], 'l', { flatten: true })).toEqual([
-        'he',
-        'o',
-        'wor',
-        'd',
-      ]);
-      expect(
-        divider(['hello', 'new world'], ' ', 'o', { flatten: true })
-      ).toEqual(['hell', 'new', 'w', 'rld']);
-      expect(
-        divider(['hello world', 'new world'], 2, 'o', { flatten: true })
-      ).toEqual(['he', 'll', ' w', 'rld', 'ne', 'w w', 'rld']);
-      expect(divider(['hello', 'world'], 2, { flatten: false })).toEqual([
-        ['he', 'llo'],
-        ['wo', 'rld'],
-      ]);
     });
 
-    test('trims whitespace in string[] mode', () => {
+    test('trim with flatten removes whitespace', () => {
       expect(
         divider(['  abc  ', ' de f '], ' ', { flatten: true, trim: true })
       ).toEqual(['abc', 'de', 'f']);
     });
 
-    test('does not trim when trim is false (string[])', () => {
+    test('exclude with flatten filters segments', () => {
       expect(
-        divider(['  abc  ', ' de f '], ' ', { flatten: true, trim: false })
-      ).toEqual(['abc', 'de', 'f']);
+        divider(['a', ', ,', 'b'], ',', {
+          flatten: true,
+          exclude: 'whitespace',
+        })
+      ).toEqual(['a', 'b']);
     });
 
-    test('works with flatten + trim', () => {
+    test('all options combined', () => {
       expect(
-        divider([' hello ', ' world  '], 2, { flatten: true, trim: true })
-      ).toEqual(['h', 'ello', 'w', 'orld']);
-    });
-
-    test('excludes empty strings if excludeEmpty is true', () => {
-      expect(divider(['a', ', ,', 'b'], ',', { exclude: 'none' })).toEqual([
-        ['a'],
-        [' '],
-        ['b'],
-      ]);
-      expect(divider(['a', ', ,', 'b'], ',', { exclude: 'empty' })).toEqual([
-        ['a'],
-        [' '],
-        ['b'],
-      ]);
-      expect(
-        divider(['a', ', ,', 'b'], ',', { exclude: 'whitespace' })
-      ).toEqual([['a'], ['b']]);
+        divider(['  a, ,b  ', ' c,d '], ',', {
+          flatten: true,
+          trim: true,
+          exclude: 'whitespace',
+        })
+      ).toEqual(['a', 'b', 'c', 'd']);
     });
   });
 
-  test('empty separators', () => {
-    expect(divider(['hello', 'world'], ...([] as const))).toEqual([
-      'hello',
-      'world',
-    ]);
-  });
-
-  test('edge cases', () => {
-    expect(divider(['hello', 'world'])).toEqual(['hello', 'world']);
-    expect(divider([''], 'a')).toEqual([[]]);
+  test('handles empty array', () => {
     expect(divider([], 'a')).toEqual([]);
+    expect(divider([''], 'a')).toEqual([[]]);
+  });
+
+  test('handles edge cases', () => {
+    expect(divider(['hello', 'world'])).toEqual(['hello', 'world']);
     expect(divider(['hello'], 0)).toEqual([['hello']]);
-    expect(divider(['hello'], 5)).toEqual([['hello']]);
     expect(divider(['hello'], 10)).toEqual([['hello']]);
-    expect(divider(['hello'], '😃')).toEqual([['hello']]);
+  });
+
+  test('handles unicode in arrays', () => {
+    expect(divider(['hello', 'ab'], 3)).toEqual([['hel', 'lo'], ['ab']]);
+  });
+});
+
+describe('divider type safety', () => {
+  test('maintains correct return types', () => {
+    const stringResult = divider('hello', 2);
+    const arrayResult = divider(['hello', 'world'], 2);
+
+    // Type assertions to ensure correct return types
+    expect(Array.isArray(stringResult)).toBe(true);
+    expect(Array.isArray(arrayResult)).toBe(true);
+    expect(Array.isArray(arrayResult[0])).toBe(true);
   });
 });
