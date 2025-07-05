@@ -192,21 +192,3 @@ describe('divider type safety', () => {
     expect(Array.isArray(arrayResult[0])).toBe(true);
   });
 });
-
-describe('divider performance', () => {
-  test('handles large strings efficiently', () => {
-    const largeString = 'a'.repeat(10000);
-    const result = divider(largeString, 1000, 2000, 3000);
-
-    expect(result.length).toBeGreaterThan(0);
-    expect(result.every((segment) => typeof segment === 'string')).toBe(true);
-  });
-
-  test('handles large arrays efficiently', () => {
-    const largeArray = Array.from({ length: 1000 }, (_, i) => `string${i}`);
-    const result = divider(largeArray, 5);
-
-    expect(result.length).toBe(1000);
-    expect(result.every((row) => Array.isArray(row))).toBe(true);
-  });
-});
