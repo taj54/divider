@@ -4,8 +4,6 @@ export const TEST_STRINGS = {
   WORLD: 'world',
   HELLO_WORLD: 'hello world',
   UNICODE: 'hello😃world',
-  SPECIAL_CHARS: 'hello.world',
-  WHITESPACE: '  a  b   c  ',
   WHITESPACE_ALT: '  ab  cd ef  ',
   EMPTY: '',
   SPACES_ONLY: '   ',
@@ -104,4 +102,4 @@ export const EXPECTED_RESULTS = {
       edgeCases: ['world', 'world', 'world', 'world', 'world', 'world'],
     },
   },
-} as const; 
+} as const;
