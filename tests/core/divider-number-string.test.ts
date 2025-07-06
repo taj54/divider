@@ -1,22 +1,23 @@
 import { dividerNumberString } from '../../src/core/divider-number-string';
+import { TEST_STRINGS, TEST_ARRAYS } from '../fixtures/test-data';
 
 describe('dividerNumberString with string', () => {
   test('divide number and string', () => {
-    expect(dividerNumberString('abc123def')).toEqual(['abc', '123', 'def']);
+    expect(dividerNumberString(TEST_STRINGS.ABC123DEF)).toEqual(['abc', '123', 'def']);
   });
 
   test('handles strings with only number or string', () => {
-    expect(dividerNumberString('123')).toEqual(['123']);
-    expect(dividerNumberString('abc')).toEqual(['abc']);
+    expect(dividerNumberString(TEST_STRINGS.NUM123)).toEqual(['123']);
+    expect(dividerNumberString(TEST_STRINGS.ABC)).toEqual(['abc']);
   });
 
   test('handles empty string', () => {
-    expect(dividerNumberString('')).toEqual([]);
+    expect(dividerNumberString(TEST_STRINGS.EMPTY)).toEqual([]);
   });
 });
 
 describe('dividerNumberString with string[]', () => {
-  const input = ['abc123', '45z'];
+  const input = TEST_ARRAYS.ABC123_45Z;
 
   test('returns nested array by default', () => {
     expect(dividerNumberString(input)).toEqual([
@@ -44,7 +45,7 @@ describe('dividerNumberString with string[]', () => {
 
 describe('dividerNumberString with trim option', () => {
   test('trims each part in string mode', () => {
-    expect(dividerNumberString(' abc 123 ', { trim: true })).toEqual([
+    expect(dividerNumberString(TEST_STRINGS.ABC123_SPACED, { trim: true })).toEqual([
       'abc',
       '123',
     ]);
@@ -52,18 +53,18 @@ describe('dividerNumberString with trim option', () => {
 
   test('trims and flattens with string[] input', () => {
     expect(
-      dividerNumberString(['  a1 ', ' b2 '], { flatten: true, trim: true })
+      dividerNumberString(TEST_ARRAYS.A1_B2_SPACED, { flatten: true, trim: true })
     ).toEqual(['a', '1', 'b', '2']);
   });
 
   test('preserves empty parts if trim is false', () => {
     expect(
-      dividerNumberString([' a1 ', ' b2 '], { flatten: true, trim: false })
+      dividerNumberString(TEST_ARRAYS.A1_B2_SPACED_2, { flatten: true, trim: false })
     ).toEqual([' a', '1', ' ', ' b', '2', ' ']);
   });
 
   test('removes empty strings after trim', () => {
-    expect(dividerNumberString(['   '], { flatten: true, trim: true })).toEqual(
+    expect(dividerNumberString(TEST_ARRAYS.SPACES_ONLY, { flatten: true, trim: true })).toEqual(
       []
     );
   });
