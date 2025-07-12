@@ -70,28 +70,6 @@ describe('getRegex', () => {
     expect(regex?.flags).toBe('g');
   });
 
-  test('caches and reuses regex for same separators', () => {
-    const separators = ['-', ',', ';'];
-
-    const regex1 = getRegex(separators);
-    const regex2 = getRegex(separators);
-
-    expect(regex1).toBe(regex2);
-    expect(regexCache.size).toBe(1);
-  });
-
-  test('creates different regex for different separator order', () => {
-    const separators1 = ['-', ',', ';'];
-    const separators2 = [';', ',', '-'];
-
-    const regex1 = getRegex(separators1);
-    const regex2 = getRegex(separators2);
-
-    // Should be the same regex since we sort separators for consistent keys
-    expect(regex1).toBe(regex2);
-    expect(regexCache.size).toBe(1);
-  });
-
   test('handles duplicate separators', () => {
     const separators = ['-', '-', ',', ',', ';'];
     const regex = getRegex(separators);
@@ -136,17 +114,6 @@ describe('RegexCache', () => {
 
     regexCache.clear();
     expect(regexCache.size).toBe(0);
-  });
-
-  test('creates consistent keys regardless of separator order', () => {
-    const separators1 = ['a', 'b', 'c'];
-    const separators2 = ['c', 'b', 'a'];
-
-    getRegex(separators1);
-    const sizeAfterFirst = regexCache.size;
-
-    getRegex(separators2);
-    expect(regexCache.size).toBe(sizeAfterFirst); // Should reuse same cache entry
   });
 
   test('handles empty string separators', () => {

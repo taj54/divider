@@ -66,9 +66,9 @@ class RegexCache {
    */
   private createKey(separators: string[]): string {
     // Normalize separators: dedupe, filter out empty strings, and sort
-    const normalizedSeparators = Array.from(new Set(separators))
-      .filter((s) => s !== '')
-      .sort();
+    const normalizedSeparators = Array.from(new Set(separators)).filter(
+      (s) => s !== ''
+    );
     // Use join with separator that's unlikely to appear in actual separators
     return normalizedSeparators.join(CACHE_KEY_SEPARATOR);
   }
