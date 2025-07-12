@@ -67,7 +67,7 @@ class RegexCache {
   private createKey(separators: string[]): string {
     // Normalize separators: dedupe, filter out empty strings, and sort
     const normalizedSeparators = Array.from(new Set(separators)).filter(
-      (s) => s !== ''
+      (separator) => separator !== ''
     );
     // Use join with separator that's unlikely to appear in actual separators
     return normalizedSeparators.join(CACHE_KEY_SEPARATOR);
@@ -117,7 +117,7 @@ export function getRegex(separators: string[]): RegExp | null {
   // Compile new regex and cache it
   // Remove duplicates and handle empty strings
   const uniqueSeparators = Array.from(new Set(separators)).filter(
-    (sep) => sep !== ''
+    (separator) => separator !== ''
   );
 
   if (uniqueSeparators.length === 0) {
