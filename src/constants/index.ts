@@ -37,3 +37,8 @@ export const PERFORMANCE_CONSTANTS = {
   /** Default max chunks for dividerLoop (0 = no limit) */
   DEFAULT_MAX_CHUNKS: 0,
 } as const;
+
+/**
+ * Separator character used for cache key concatenation.
+ */
+export const CACHE_KEY_SEPARATOR = '\x00';

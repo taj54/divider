@@ -1,5 +1,5 @@
 import { isEmptyArray } from '@/utils/is';
-import { PERFORMANCE_CONSTANTS } from '@/constants';
+import { PERFORMANCE_CONSTANTS, CACHE_KEY_SEPARATOR } from '@/constants';
 
 /**
  * Enhanced regex cache with LRU (Least Recently Used) eviction policy.
@@ -65,9 +65,12 @@ class RegexCache {
    * @returns Cache key string
    */
   private createKey(separators: string[]): string {
-    // Sort for consistent key generation regardless of input order
+    // Normalize separators: dedupe, filter out empty strings, and sort
+    const normalizedSeparators = Array.from(new Set(separators))
+      .filter((s) => s !== '')
+      .sort();
     // Use join with separator that's unlikely to appear in actual separators
-    return separators.slice().sort().join('\x00');
+    return normalizedSeparators.join(CACHE_KEY_SEPARATOR);
   }
 
   /**
@@ -123,9 +126,7 @@ export function getRegex(separators: string[]): RegExp | null {
   }
 
   // Build pattern using alternation for multi-character support
-  const pattern = uniqueSeparators
-    .map(escapeRegExp)
-    .join('|');
+  const pattern = uniqueSeparators.map(escapeRegExp).join('|');
   const regex = new RegExp(`(?:${pattern})`, 'g');
 
   regexCache.set(separators, regex);
