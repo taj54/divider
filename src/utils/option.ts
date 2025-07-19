@@ -95,5 +95,5 @@ export function applyDividerOptions<T extends string | string[]>(
       : filterFlat(output);
   }
 
-  return output;
+  return output as DividerResult<T>;
 }
