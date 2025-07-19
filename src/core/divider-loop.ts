@@ -90,7 +90,7 @@ export function dividerLoop<T extends string | string[]>(
   // Validate chunk size
   if (!isPositiveInteger(size)) {
     console.warn('dividerLoop: chunk size must be a positive number');
-    return [];
+    return [] as DividerResult<T>;
   }
 
   const finalOptions = options ?? {};
