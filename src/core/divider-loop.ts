@@ -17,7 +17,11 @@ const MIN_ALLOWED_CHUNKS = 0;
  * @returns True if truncation is needed, false otherwise
  */
 function shouldTruncateChunks(chunks: string[], maxChunks: number): boolean {
-  return isNumber(maxChunks) && maxChunks > MIN_ALLOWED_CHUNKS && maxChunks < chunks.length;
+  return (
+    isNumber(maxChunks) &&
+    maxChunks > MIN_ALLOWED_CHUNKS &&
+    maxChunks < chunks.length
+  );
 }
 
 /**
@@ -86,7 +90,7 @@ export function dividerLoop<T extends string | string[]>(
   // Validate chunk size
   if (!isPositiveInteger(size)) {
     console.warn('dividerLoop: chunk size must be a positive number');
-    return [] as DividerResult<T>;
+    return [];
   }
 
   const finalOptions = options ?? {};
@@ -98,7 +102,9 @@ export function dividerLoop<T extends string | string[]>(
   // Process input based on its type (string or string[])
   const result = isString(input)
     ? createChunksFromString(input, size, startOffset, maxChunks)
-    : input.map((str) => createChunksFromString(str, size, startOffset, maxChunks));
+    : input.map((str) =>
+        createChunksFromString(str, size, startOffset, maxChunks)
+      );
 
   return applyDividerOptions<T>(result, finalOptions);
 }

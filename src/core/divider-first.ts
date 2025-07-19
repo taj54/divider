@@ -4,7 +4,7 @@ import type { DividerSeparators } from '@/types';
 
 /**
  * Extracts the first segment after dividing the input using specified separators.
- * 
+ *
  * @param input - A string or array of strings to divide
  * @param args - Array of separators (numbers/strings) to use for division
  * @returns The first segment after division, or an empty string if no segments are found
