@@ -10,37 +10,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - chore: formatting by @nyaomaru in https://github.com/nyaomaru/divider/pull/199
-- Release: v1.8.16 by @github-actions[bot] in https://github.com/nyaomaru/divider/pull/200
 
 ### Chore
 
 - chore(deps): Update dependency @types/node to v22.16.5 by @renovate[bot] in https://github.com/nyaomaru/divider/pull/197
 - chore(deps): Update jest monorepo to v30 (major) by @renovate[bot] in https://github.com/nyaomaru/divider/pull/198
+- Release: v1.8.16 by @github-actions[bot] in https://github.com/nyaomaru/divider/pull/200
 
 ## [v1.8.15] - 2025-07-12
 
 ### Changed
 
-- Extract reusable test datas by @nyaomaru in https://github.com/nyaomaru/divider/pull/192
+- Extract reusable test data by @nyaomaru in https://github.com/nyaomaru/divider/pull/192
 - Refactor regex cache strategy by @nyaomaru in https://github.com/nyaomaru/divider/pull/195
-- Release: v1.8.15 by @github-actions[bot] in https://github.com/nyaomaru/divider/pull/196
 
 ### Chore
 
 - chore(deps): Update dependency prettier to v3.6.2 by @renovate[bot] in https://github.com/nyaomaru/divider/pull/193
 - chore(deps): Update eslint monorepo to v9.31.0 by @renovate[bot] in https://github.com/nyaomaru/divider/pull/194
+- Release: v1.8.15 by @github-actions[bot] in https://github.com/nyaomaru/divider/pull/196
 
 ## [v1.8.14] - 2025-07-05
 
 ### Changed
 
-- Rrefactor test case by @nyaomaru in https://github.com/nyaomaru/divider/pull/190
-- Release: v1.8.14 by @github-actions in https://github.com/nyaomaru/divider/pull/191
+- Refactor test case by @nyaomaru in https://github.com/nyaomaru/divider/pull/190
 
 ### Chore
 
 - chore(deps): Update dependency typedoc to v0.28.7 by @renovate in https://github.com/nyaomaru/divider/pull/189
 - chore(deps): Update dependency @types/node to v22.16.0 by @renovate in https://github.com/nyaomaru/divider/pull/188
+- Release: v1.8.14 by @github-actions in https://github.com/nyaomaru/divider/pull/191
 
 ## [v1.8.13] - 2025-06-29
 
@@ -57,18 +57,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Refactor divider loop by @nyaomaru in https://github.com/nyaomaru/divider/pull/184
-- Release: v1.8.12 by @github-actions in https://github.com/nyaomaru/divider/pull/185
 
 ### Chore
 
 - chore(deps): Update dependency tsx to v4.20.3 by @renovate in https://github.com/nyaomaru/divider/pull/183
 - chore(deps): Update dependency eslint-plugin-prettier to v5.5.1 by @renovate in https://github.com/nyaomaru/divider/pull/182
+- Release: v1.8.12 by @github-actions in https://github.com/nyaomaru/divider/pull/185
 
 ## [v1.8.11] - 2025-06-22
 
 ### Changed
 
 - Extract dividerLoop functions and define constants by @nyaomaru in https://github.com/nyaomaru/divider/pull/180
+
+### Chore
+
 - Release: v1.8.11 by @github-actions in https://github.com/nyaomaru/divider/pull/181
 
 ## [v1.8.10] - 2025-06-21
@@ -76,20 +79,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Refactor divider-first and divider-last by @nyaomaru in https://github.com/nyaomaru/divider/pull/178
-- Release: v1.8.10 by @github-actions in https://github.com/nyaomaru/divider/pull/179
 
 ### Chore
 
 - chore(deps): Update dependency ts-jest to v29.4.0 by @renovate in https://github.com/nyaomaru/divider/pull/177
 - chore(deps): Update dependency @types/node to v22.15.32 by @renovate in https://github.com/nyaomaru/divider/pull/176
+- Release: v1.8.10 by @github-actions in https://github.com/nyaomaru/divider/pull/179
 
 ## [v1.8.9] - 2025-06-15
 
 ### Added
 
 - Add isOption to check object type by @nyaomaru in https://github.com/nyaomaru/divider/pull/174
-
-### Changed
 
 ## [v1.8.8] - 2025-06-14
 
@@ -100,22 +101,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Update README for typedoc by @nyaomaru in https://github.com/nyaomaru/divider/pull/172
-- Release: v1.8.8 by @github-actions in https://github.com/nyaomaru/divider/pull/173
 
 ### Chore
 
 - chore(deps): Update eslint monorepo to v9.29.0 by @renovate in https://github.com/nyaomaru/divider/pull/170
+- Release: v1.8.8 by @github-actions in https://github.com/nyaomaru/divider/pull/173
 
 ## [v1.8.7] - 2025-06-08
 
 ### Changed
 
 - Improve test coverage by @nyaomaru in https://github.com/nyaomaru/divider/pull/168
-- Release: v1.8.7 by @github-actions in https://github.com/nyaomaru/divider/pull/169
 
 ### Fixed
 
 - Fix unused types by @nyaomaru in https://github.com/nyaomaru/divider/pull/167
+
+### Chore
+
+- Release: v1.8.7 by @github-actions in https://github.com/nyaomaru/divider/pull/169
 
 ## [v1.8.6] - 2025-06-07
 
@@ -126,12 +130,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Create constants for divider option keys by @nyaomaru in https://github.com/nyaomaru/divider/pull/164
-- Release: v1.8.6 by @github-actions in https://github.com/nyaomaru/divider/pull/166
 
 ### Chore
 
 - chore(deps): Update dependency eslint-plugin-prettier to v5.4.1 by @renovate in https://github.com/nyaomaru/divider/pull/163
 - chore(deps): Update dependency @types/node to v22.15.30 by @renovate in https://github.com/nyaomaru/divider/pull/162
+- Release: v1.8.6 by @github-actions in https://github.com/nyaomaru/divider/pull/166
 
 ## [v1.8.5] - 2025-06-01
 
@@ -139,19 +143,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add comments to functions by @nyaomaru in https://github.com/nyaomaru/divider/pull/159
 
-### Changed
-
-- Release: v1.8.5 by @github-actions in https://github.com/nyaomaru/divider/pull/161
-
 ### Removed
 
 - Remove unused contants by @nyaomaru in https://github.com/nyaomaru/divider/pull/160
+
+### Chore
+
+- Release: v1.8.5 by @github-actions in https://github.com/nyaomaru/divider/pull/161
 
 ## [v1.8.4] - 2025-05-31
 
 ### Changed
 
 - Refactor types by @nyaomaru in https://github.com/nyaomaru/divider/pull/157
+
+### Chore
+
 - Release: v1.8.4 by @github-actions in https://github.com/nyaomaru/divider/pull/158
 
 ## [v1.8.3] - 2025-05-25
@@ -159,6 +166,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Refactor dividerLoop logic by @nyaomaru in https://github.com/nyaomaru/divider/pull/155
+
+### Chore
+
 - Release: v1.8.3 by @github-actions in https://github.com/nyaomaru/divider/pull/156
 
 ## [v1.8.2] - 2025-05-24
@@ -166,6 +176,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Refactor regex early return by @nyaomaru in https://github.com/nyaomaru/divider/pull/153
+
+### Chore
+
 - Release: v1.8.2 by @github-actions in https://github.com/nyaomaru/divider/pull/154
 
 ## [v1.8.1] - 2025-05-18
@@ -174,25 +187,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fix throw error and add tests by @nyaomaru in https://github.com/nyaomaru/divider/pull/151
 
-### Changed
-
-- Release: v1.8.1 by @github-actions in https://github.com/nyaomaru/divider/pull/152
-
 ### Chore
 
 - chore: update README by @nyaomaru in https://github.com/nyaomaru/divider/pull/150
+- Release: v1.8.1 by @github-actions in https://github.com/nyaomaru/divider/pull/152
 
 ## [v1.8.0] - 2025-05-17
 
 ### Changed
 
 - Unify excludeEmpty with exclude option by @nyaomaru in https://github.com/nyaomaru/divider/pull/148
-- Release: v1.8.0 by @github-actions in https://github.com/nyaomaru/divider/pull/149
 
 ### Chore
 
 - chore(deps): Update dependency eslint-config-prettier to v10.1.5 by @renovate in https://github.com/nyaomaru/divider/pull/147
 - chore(deps): Update dependency @types/node to v22.15.18 by @renovate in https://github.com/nyaomaru/divider/pull/146
+- Release: v1.8.0 by @github-actions in https://github.com/nyaomaru/divider/pull/149
 
 ## [v1.7.4] - 2025-05-11
 
@@ -203,6 +213,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Update README by @nyaomaru in https://github.com/nyaomaru/divider/pull/143
+
+### Chore
+
 - Release: v1.7.4 by @github-actions in https://github.com/nyaomaru/divider/pull/145
 
 ## [v1.7.3] - 2025-05-10
@@ -211,16 +224,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add startOffset option to dividerLoop by @nyaomaru in https://github.com/nyaomaru/divider/pull/141
 
-### Changed
+### Chore
 
 - chore(deps): bump 20250506 by @nyaomaru in https://github.com/nyaomaru/divider/pull/140
 - Release: v1.7.3 by @github-actions in https://github.com/nyaomaru/divider/pull/142
 
 ## [v1.7.2] - 2025-05-05
-
-### Changed
-
-- Release: v1.7.2 by @github-actions in https://github.com/nyaomaru/divider/pull/139
 
 ### Fixed
 
@@ -229,6 +238,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Chore
 
 - chore(deps): Update dependency eslint-plugin-prettier to v5.3.1 by @renovate in https://github.com/nyaomaru/divider/pull/137
+- Release: v1.7.2 by @github-actions in https://github.com/nyaomaru/divider/pull/139
 
 ## [v1.7.1] - 2025-05-04
 
@@ -239,6 +249,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Refactor folder structure by @nyaomaru in https://github.com/nyaomaru/divider/pull/133
+
+### Chore
+
 - Release: v1.7.1 by @github-actions in https://github.com/nyaomaru/divider/pull/135
 
 ## [v1.7.0] - 2025-05-03
@@ -247,20 +260,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add excludeEmpty option and fix type structure by @nyaomaru in https://github.com/nyaomaru/divider/pull/131
 
-### Changed
-
-- Release: v1.7.0 by @github-actions in https://github.com/nyaomaru/divider/pull/132
-
 ### Chore
 
 - chore(deps): Update pnpm/action-setup action to v4 by @renovate in https://github.com/nyaomaru/divider/pull/130
 - chore(deps): Update dependency @types/node to v22.15.3 by @renovate in https://github.com/nyaomaru/divider/pull/129
+- Release: v1.7.0 by @github-actions in https://github.com/nyaomaru/divider/pull/132
 
 ## [v1.6.2] - 2025-04-27
 
 ### Changed
 
 - Merge options to option by @nyaomaru in https://github.com/nyaomaru/divider/pull/127
+
+### Chore
+
 - Release: v1.6.2 by @github-actions in https://github.com/nyaomaru/divider/pull/128
 
 ## [v1.6.1] - 2025-04-26
@@ -283,7 +296,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add `trim` option by @nyaomaru in https://github.com/nyaomaru/divider/pull/120
 
-### Changed
+### Chore
 
 - Release: v1.6.0 by @github-actions in https://github.com/nyaomaru/divider/pull/121
 
@@ -292,12 +305,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Extract `divideNumberString` to utils by @nyaomaru in https://github.com/nyaomaru/divider/pull/118
-- Release: v1.5.3 by @github-actions in https://github.com/nyaomaru/divider/pull/119
 
 ### Chore
 
 - chore(deps): Update dependency @types/node to v22.14.1 by @renovate in https://github.com/nyaomaru/divider/pull/117
 - chore(deps): Update dependency eslint-config-prettier to v10.1.2 by @renovate in https://github.com/nyaomaru/divider/pull/116
+- Release: v1.5.3 by @github-actions in https://github.com/nyaomaru/divider/pull/119
 
 ## [v1.5.2] - 2025-04-13
 
@@ -308,17 +321,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Reduce cycromatic complexity for divider by @nyaomaru in https://github.com/nyaomaru/divider/pull/114
+
+### Chore
+
 - Release: v1.5.2 by @github-actions in https://github.com/nyaomaru/divider/pull/115
 
 ## [v1.5.1] - 2025-04-12
 
-### Changed
-
-- Release: v1.5.1 by @github-actions in https://github.com/nyaomaru/divider/pull/112
-
 ### Fixed
 
 - hotfix: module not found by @nyaomaru in https://github.com/nyaomaru/divider/pull/111
+
+### Chore
+
+- Release: v1.5.1 by @github-actions in https://github.com/nyaomaru/divider/pull/112
 
 ## [v1.5.0] - 2025-04-12
 
@@ -326,14 +342,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add dividerNumberString by @nyaomaru in https://github.com/nyaomaru/divider/pull/108
 
-### Changed
-
-- Release: v1.5.0 by @github-actions in https://github.com/nyaomaru/divider/pull/109
-
 ### Chore
 
 - chore(deps): Update dependency typescript to v5.8.3 by @renovate in https://github.com/nyaomaru/divider/pull/107
 - chore(deps): Update dependency eslint-plugin-prettier to v5.2.6 by @renovate in https://github.com/nyaomaru/divider/pull/106
+- Release: v1.5.0 by @github-actions in https://github.com/nyaomaru/divider/pull/109
 
 ## [v1.4.1] - 2025-04-06
 
@@ -341,7 +354,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Remove unused flatten option and add isPositiveInteger by @nyaomaru in https://github.com/nyaomaru/divider/pull/104
 
-### Changed
+### Chore
 
 - Release: v1.4.1 by @github-actions in https://github.com/nyaomaru/divider/pull/105
 
@@ -351,7 +364,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add dividerLoop by @nyaomaru in https://github.com/nyaomaru/divider/pull/102
 
-### Changed
+### Chore
 
 - Release: v1.4.0 by @github-actions in https://github.com/nyaomaru/divider/pull/103
 
@@ -361,20 +374,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add sort ascending by @nyaomaru in https://github.com/nyaomaru/divider/pull/100
 
-### Changed
-
-- Release: v1.3.7 by @github-actions in https://github.com/nyaomaru/divider/pull/101
-
 ### Chore
 
 - chore(deps): Update dependency @types/node to v22.13.14 by @renovate in https://github.com/nyaomaru/divider/pull/98
 - chore(deps): Update dependency eslint-plugin-prettier to v5.2.5 by @renovate in https://github.com/nyaomaru/divider/pull/99
+- Release: v1.3.7 by @github-actions in https://github.com/nyaomaru/divider/pull/101
 
 ## [v1.3.6] - 2025-03-30
 
 ### Changed
 
 - Ensure array by @nyaomaru in https://github.com/nyaomaru/divider/pull/96
+
+### Chore
+
 - Release: v1.3.6 by @github-actions in https://github.com/nyaomaru/divider/pull/97
 
 ## [v1.3.5] - 2025-03-29
@@ -382,13 +395,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Refactor by @nyaomaru in https://github.com/nyaomaru/divider/pull/94
+
+### Chore
+
 - Release: v1.3.5 by @github-actions in https://github.com/nyaomaru/divider/pull/95
 
 ## [v1.3.4] - 2025-03-28
-
-### Changed
-
-- Release: v1.3.4 by @github-actions in https://github.com/nyaomaru/divider/pull/93
 
 ### Fixed
 
@@ -396,15 +408,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Revert "Fix explicit return of accumulator object" by @nyaomaru in https://github.com/nyaomaru/divider/pull/91
 - Fix cloned args by @nyaomaru in https://github.com/nyaomaru/divider/pull/92
 
+### Chore
+
+- Release: v1.3.4 by @github-actions in https://github.com/nyaomaru/divider/pull/93
+
 ## [v1.3.3] - 2025-03-27
-
-### Changed
-
-- Release: v1.3.3 by @github-actions in https://github.com/nyaomaru/divider/pull/89
 
 ### Fixed
 
 - Fix args mutation by @nyaomaru in https://github.com/nyaomaru/divider/pull/88
+
+### Chore
+
+- Release: v1.3.3 by @github-actions in https://github.com/nyaomaru/divider/pull/89
 
 ## [v1.3.2] - 2025-03-26
 
@@ -412,25 +428,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add isString and isNumber by @nyaomaru in https://github.com/nyaomaru/divider/pull/86
 
-### Changed
+### Chore
 
 - Release: v1.3.2 by @github-actions in https://github.com/nyaomaru/divider/pull/87
 
 ## [v1.3.1] - 2025-03-25
 
-### Changed
-
-- Release: v1.3.1 by @github-actions in https://github.com/nyaomaru/divider/pull/85
-
 ### Fixed
 
 - Fix unnecessary generics by @nyaomaru in https://github.com/nyaomaru/divider/pull/84
 
+### Chore
+
+- Release: v1.3.1 by @github-actions in https://github.com/nyaomaru/divider/pull/85
+
 ## [v1.3.0] - 2025-03-24
-
-### Changed
-
-- Release: v1.3.0 by @github-actions in https://github.com/nyaomaru/divider/pull/83
 
 ### Fixed
 
@@ -441,6 +453,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - chore(deps): Update dependency @types/node to v22.13.12 by @renovate in https://github.com/nyaomaru/divider/pull/79
 - chore(deps): Update dependency eslint-plugin-prettier to v5.2.4 by @renovate in https://github.com/nyaomaru/divider/pull/80
+- Release: v1.3.0 by @github-actions in https://github.com/nyaomaru/divider/pull/83
 
 ## [v1.2.0] - 2025-03-20
 
@@ -449,7 +462,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add templates of issue and PR by @nyaomaru in https://github.com/nyaomaru/divider/pull/68
 - Add divider last by @nyaomaru in https://github.com/nyaomaru/divider/pull/69
 
-### Changed
+### Chore
 
 - Release: v1.2.0 by @github-actions in https://github.com/nyaomaru/divider/pull/70
 
@@ -459,7 +472,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add dividerFirst by @nyaomaru in https://github.com/nyaomaru/divider/pull/66
 
-### Changed
+### Chore
 
 - Release: v1.1.0 by @github-actions in https://github.com/nyaomaru/divider/pull/67
 
@@ -470,6 +483,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update README by @nyaomaru in https://github.com/nyaomaru/divider/pull/62
 - Add bugs link by @nyaomaru in https://github.com/nyaomaru/divider/pull/63
 - Add divider args type and fix type difinition by @nyaomaru in https://github.com/nyaomaru/divider/pull/64
+
+### Chore
+
 - Release: v1.0.21 by @github-actions in https://github.com/nyaomaru/divider/pull/65
 
 ## [v1.0.20] - 2025-03-17
@@ -477,6 +493,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Fix divider result type by @nyaomaru in https://github.com/nyaomaru/divider/pull/60
+
+### Chore
+
 - Release: v1.0.20 by @github-actions in https://github.com/nyaomaru/divider/pull/61
 
 ## [v1.0.19] - 2025-03-16
@@ -484,6 +503,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Input type validation and console warn by @nyaomaru in https://github.com/nyaomaru/divider/pull/58
+
+### Chore
+
 - Release: v1.0.19 by @github-actions in https://github.com/nyaomaru/divider/pull/59
 
 ## [v1.0.18] - 2025-03-15
@@ -491,6 +513,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Refactor divider by @nyaomaru in https://github.com/nyaomaru/divider/pull/56
+
+### Chore
+
 - Release: v1.0.18 by @github-actions in https://github.com/nyaomaru/divider/pull/57
 
 ## [v1.0.17] - 2025-03-14
@@ -498,6 +523,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Fix type export bug by @nyaomaru in https://github.com/nyaomaru/divider/pull/54
+
+### Chore
+
 - Release: v1.0.17 by @github-actions in https://github.com/nyaomaru/divider/pull/55
 
 ## [v1.0.16] - 2025-03-14
@@ -505,6 +533,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Fix build setting by @nyaomaru in https://github.com/nyaomaru/divider/pull/52
+
+### Chore
+
 - Release: v1.0.16 by @github-actions in https://github.com/nyaomaru/divider/pull/53
 
 ## [v1.0.15] - 2025-03-13
@@ -512,6 +543,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Fix renovate config schedule by @nyaomaru in https://github.com/nyaomaru/divider/pull/44
+
+### Chore
+
 - chore(deps): Update dependency node to v22 by @renovate in https://github.com/nyaomaru/divider/pull/48
 - chore(deps): Update actions/setup-node action to v4 by @renovate in https://github.com/nyaomaru/divider/pull/47
 - chore(deps): Update dependency eslint-config-prettier to v10.1.1 by @renovate in https://github.com/nyaomaru/divider/pull/45
@@ -522,6 +556,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add test for new directory structure by @nyaomaru in https://github.com/nyaomaru/divider/pull/35
+
+### Chore
+
 - chore: Configure Renovate by @renovate in https://github.com/nyaomaru/divider/pull/37
 - chore(deps): update dependency @types/node to v22.13.10 by @renovate in https://github.com/nyaomaru/divider/pull/38
 - chore(deps): update dependency prettier to v3.5.3 by @renovate in https://github.com/nyaomaru/divider/pull/39
@@ -532,6 +569,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add test case by @nyaomaru in https://github.com/nyaomaru/divider/pull/31
+
+### Chore
+
 - Release: v1.0.12 by @github-actions in https://github.com/nyaomaru/divider/pull/32
 
 ## [v1.0.11] - 2025-03-09
@@ -539,6 +579,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Fix regex key by @nyaomaru in https://github.com/nyaomaru/divider/pull/29
+
+### Chore
+
 - Release: v1.0.11 by @github-actions in https://github.com/nyaomaru/divider/pull/30
 
 ## [v1.0.10] - 2025-03-08
@@ -546,6 +589,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Optimize slice function by @nyaomaru in https://github.com/nyaomaru/divider/pull/27
+
+### Chore
+
 - Release: v1.0.10 by @github-actions in https://github.com/nyaomaru/divider/pull/28
 
 ## [v1.0.9] - 2025-03-07
@@ -556,6 +602,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update package info by @nyaomaru in https://github.com/nyaomaru/divider/pull/23
 - Update DividerResult type by @nyaomaru in https://github.com/nyaomaru/divider/pull/24
 - Fix brunch version by @nyaomaru in https://github.com/nyaomaru/divider/pull/25
+
+### Chore
+
 - Release: v1.0.9 by @github-actions in https://github.com/nyaomaru/divider/pull/26
 
 ## [v1.0.8] - 2025-03-06
@@ -565,6 +614,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update README by @nyaomaru in https://github.com/nyaomaru/divider/pull/18
 - Refactor file structure and performance tuning by @nyaomaru in https://github.com/nyaomaru/divider/pull/19
 - Automate bump by @nyaomaru in https://github.com/nyaomaru/divider/pull/20
+
+### Chore
+
 - Release: v1.0.8 by @github-actions in https://github.com/nyaomaru/divider/pull/21
 
 ## [v1.0.7] - 2025-03-05
@@ -572,6 +624,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Create regex at once by @nyaomaru in https://github.com/nyaomaru/divider/pull/16
+
+### Chore
+
 - 1.0.7 by @nyaomaru in https://github.com/nyaomaru/divider/pull/17
 
 ## [v1.0.6] - 2025-03-04
@@ -579,6 +634,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Fix memory efficiency about sliceByIndexes by @nyaomaru in https://github.com/nyaomaru/divider/pull/14
+
+### Chore
+
 - 1.0.6 by @nyaomaru in https://github.com/nyaomaru/divider/pull/15
 
 ## [v1.0.5] - 2025-03-02
@@ -587,6 +645,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - fix: type guard by @nyaomaru in https://github.com/nyaomaru/divider/pull/11
 - Performance tuning by @nyaomaru in https://github.com/nyaomaru/divider/pull/12
+
+### Chore
+
 - 1.0.5 by @nyaomaru in https://github.com/nyaomaru/divider/pull/13
 
 ## [v1.0.4] - 2025-03-01
@@ -595,6 +656,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - test: add flat option case by @nyaomaru in https://github.com/nyaomaru/divider/pull/8
 - fix divider return type by @nyaomaru in https://github.com/nyaomaru/divider/pull/9
+
+### Chore
+
 - bump to v1.0.4 by @nyaomaru in https://github.com/nyaomaru/divider/pull/10
 
 ## [v1.0.3] - 2025-02-27
