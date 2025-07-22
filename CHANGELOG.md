@@ -549,7 +549,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - chore(deps): Update dependency node to v22 by @renovate in https://github.com/nyaomaru/divider/pull/48
 - chore(deps): Update actions/setup-node action to v4 by @renovate in https://github.com/nyaomaru/divider/pull/47
 - chore(deps): Update dependency eslint-config-prettier to v10.1.1 by @renovate in https://github.com/nyaomaru/divider/pull/45
-- chore(deps): Update dependency typesc...
+- chore(deps): Update dependency typescript to v5.8.2 by @renovate in https://github.com/nyaomaru/divider/pull/46
 
 ## [v1.0.14] - 2025-03-12
 
@@ -562,7 +562,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - chore: Configure Renovate by @renovate in https://github.com/nyaomaru/divider/pull/37
 - chore(deps): update dependency @types/node to v22.13.10 by @renovate in https://github.com/nyaomaru/divider/pull/38
 - chore(deps): update dependency prettier to v3.5.3 by @renovate in https://github.com/nyaomaru/divider/pull/39
-- chore(deps): update dependency ts-jest to v29.2.6 by @ren...
+- chore(deps): update dependency ts-jest to v29.2.6 by @renovate in https://github.com/nyaomaru/divider/pull/41
 
 ## [v1.0.12] - 2025-03-10
 
