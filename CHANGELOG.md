@@ -145,7 +145,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-- Remove unused contants by @nyaomaru in https://github.com/nyaomaru/divider/pull/160
+- Remove unused constants by @nyaomaru in https://github.com/nyaomaru/divider/pull/160
 
 ### Chore
 
@@ -482,7 +482,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Update README by @nyaomaru in https://github.com/nyaomaru/divider/pull/62
 - Add bugs link by @nyaomaru in https://github.com/nyaomaru/divider/pull/63
-- Add divider args type and fix type difinition by @nyaomaru in https://github.com/nyaomaru/divider/pull/64
+- Add divider args type and fix type definition by @nyaomaru in https://github.com/nyaomaru/divider/pull/64
 
 ### Chore
 
