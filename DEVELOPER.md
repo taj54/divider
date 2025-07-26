@@ -56,6 +56,10 @@ Common development scripts:
 | `pnpm lint`             | Run ESLint for code quality                   |
 | `pnpm typedoc`          | Generate API documentation with Typedoc       |
 
+## 🌱 Environment Variables
+
+No environment variables are required for local development.
+
 ## 🔗 Related Docs
 
 - `README.md` – General usage & install guide
