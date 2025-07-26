@@ -49,7 +49,7 @@ Common development scripts:
 
 | Command                 | Description                                   |
 | ----------------------- | --------------------------------------------- |
-| `pnpm build`            | Build the library using TSup                  |
+| `pnpm build`            | Build the library using tsup                  |
 | `pnpm test`             | Run all tests (unit + performance) via vitest |
 | `pnpm test:performance` | Benchmark `divider` against common scenarios  |
 | `pnpm test:unit`        | Run isolated unit tests                       |
