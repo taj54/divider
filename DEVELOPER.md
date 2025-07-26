@@ -49,12 +49,12 @@ Common development scripts:
 
 | Command                 | Description                                   |
 | ----------------------- | --------------------------------------------- |
-| `pnpm build`            | Build the library using tsup                  |
+| `pnpm build`            | Build the library using TSup                  |
 | `pnpm test`             | Run all tests (unit + performance) via vitest |
 | `pnpm test:performance` | Benchmark `divider` against common scenarios  |
 | `pnpm test:unit`        | Run isolated unit tests                       |
 | `pnpm lint`             | Run ESLint for code quality                   |
-| `pnpm typedoc`          | Generate API documentation with Typedoc       |
+| `pnpm typedoc`          | Generate API documentation with TypeDoc       |
 
 ## 🌱 Environment Variables
 
