@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.17] - 2025-07-27
+
+### Added
+
+- `DEVELOPER.md`: Contributor guide with setup instructions, project structure, and scripts (#211)
+- `CHANGELOG.md`: Introduced changelog to track releases and changes (#204)
+
+### Changed
+
+- Removed unused `description` field from package.json (#207)
+
+### Chore
+
+- Updated `eslint-plugin-prettier` to v5.5.3 (#202)
+- Updated `eslint-config-prettier` to v10.1.8 (#201)
+
 ## [v1.8.16] - 2025-07-19
 
 ### Changed
