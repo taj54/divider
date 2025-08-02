@@ -1,4 +1,4 @@
-import { emailDivider } from '../../src/presets/emailDivider';
+import { emailDivider } from '../../src/presets/email-divider';
 
 describe('emailDivider', () => {
   it('should return ["user", "domain.com"] for a standard email', () => {
