@@ -248,24 +248,8 @@ const result = divider('a, ,b', ',', {
 
 ## 🛠 Contributing
 
-Welcome your contributions! If you want to add features or fix issues, feel free to submit a PR!
+We welcome contributions!
 
-For development setup, project structure, and scripts, see [DEVELOPER.md](./DEVELOPER.md).
+Please read our [CONTRIBUTING.md](./CONTRIBUTING.md) guide before submitting a PR.
 
-### Setup
-
-```sh
-pnpm install
-```
-
-### Test
-
-```sh
-pnpm test
-```
-
-### Contribution Guidelines
-
-- If you add new functions, please add corresponding tests in the `tests` directory.
-- No strict rules—just keep it clean and readable!
-- Thank you for your contribution. 😺
+Thank you for your contribution. 😺
