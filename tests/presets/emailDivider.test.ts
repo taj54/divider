@@ -64,4 +64,31 @@ describe('emailDivider', () => {
 
     expect(result).toEqual(['user', 'domain.com']);
   });
+
+  it('should split domain into subdomain and TLD when splitTLD is true', () => {
+    const input = 'user@sub.example.com';
+    const options = { splitTLD: true };
+
+    const result = emailDivider(input, options);
+
+    expect(result).toEqual(['user', 'sub', 'example', 'com']);
+  });
+
+  it('should not split domain when splitTLD is false', () => {
+    const input = 'user@sub.example.com';
+    const options = { splitTLD: false };
+
+    const result = emailDivider(input, options);
+
+    expect(result).toEqual(['user', 'sub.example.com']);
+  });
+
+  it('should return original result if splitTLD is true but "@" is not present', () => {
+    const input = 'plainstring';
+    const options = { splitTLD: true };
+
+    const result = emailDivider(input, options);
+
+    expect(result).toEqual(['plainstring']);
+  });
 });
