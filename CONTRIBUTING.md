@@ -52,7 +52,7 @@ Examples:
 
 Follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/):
 
-(Sometimes I forget to set names. lol)
+(Don't worry if you forget it—happens to the best of us!)
 
 ```sh
 type(scope): brief description
