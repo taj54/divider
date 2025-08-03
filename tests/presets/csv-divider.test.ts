@@ -72,4 +72,43 @@ describe('csvDivider', () => {
 
     expect(result).toEqual(['', 'a', '', 'b']);
   });
+  it('handles completely empty input', () => {
+    const input = '';
+
+    const result = csvDivider(input);
+
+    expect(result).toEqual(['']);
+  });
+
+  it('handles input with only commas', () => {
+    const input = ',,';
+
+    const result = csvDivider(input);
+
+    expect(result).toEqual(['', '', '']);
+  });
+
+  it('handles trailing quoted field with comma inside', () => {
+    const input = 'a,"b,c"';
+
+    const result = csvDivider(input);
+
+    expect(result).toEqual(['a', 'b,c']);
+  });
+
+  it('handles unclosed quote gracefully (lenient parsing)', () => {
+    const input = '"a,b';
+
+    const result = csvDivider(input);
+
+    expect(result).toEqual(['a,b']); // Still parses as one field
+  });
+
+  it('handles only a quoted escaped quote', () => {
+    const input = '"""","b"';
+
+    const result = csvDivider(input);
+
+    expect(result).toEqual(['"', 'b']);
+  });
 });
