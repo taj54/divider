@@ -7,6 +7,11 @@ const ESCAPED_QUOTE_LENGTH = 2;
 /**
  * Divides a CSV string into fields, handling quoted values and optional trimming.
  *
+ * - Handles escaped quotes like: "She said ""Hi"""
+ * - Respects quoted commas: "a, b",c → ['a, b', 'c']
+ * - Optional `trim` to remove surrounding whitespace
+ * - Optional `quoteChar` (default: `"`), useful for custom CSV dialects
+ *
  * @param input - The CSV-formatted string
  * @param options - Optional settings: trim whitespace, custom quote character
  * @returns An array of string segments
@@ -17,6 +22,10 @@ export function csvDivider(
 ): DividerStringResult {
   const { trim = false, quoteChar = '"' } = options;
   const result: string[] = [];
+
+  if (input === '') {
+    return [''];
+  }
 
   let current = '';
   let inQuotes = false;
