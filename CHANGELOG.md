@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.8.18] - 2025-08-03
+
+### Added
+
+- `CONTRIBUTING.md`: Contributor onboarding guide with PR process and contribution steps (#216)
+- CI improvements: Added `lint` and `test` checks to the release workflow (#213)
+
+### Chore
+
+- Updated `jest` to v30.0.5 (#214)
+- Updated `eslint` monorepo to v9.32.0 (#215)
+- Updated `CHANGELOG.md` for v1.8.17 (#212)
+
+### Contributors
+
+- Thanks to @taj54 for their first contribution! 🎉
+
 ## [1.8.17] - 2025-07-27
 
 ### Added
