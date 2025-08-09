@@ -6,4 +6,5 @@ export type EmailDividerOptions = Pick<DividerOptions, 'trim'> & {
 
 export type CsvDividerOptions = Pick<DividerOptions, 'trim'> & {
   quoteChar?: '"' | "'";
+  delimiter?: string;
 };
