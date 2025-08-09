@@ -1,6 +1,6 @@
 import type { DividerStringResult } from '@/types';
 import type { CsvDividerOptions } from '@/types/preset';
-import { quotedSplit } from '@/utils/quoted';
+import { quotedDivide } from '@/utils/quoted';
 
 /** CSV preset built on top of divider-powered quoted splitter. */
 export function csvDivider(
@@ -8,7 +8,7 @@ export function csvDivider(
   options: CsvDividerOptions = {}
 ): DividerStringResult {
   const { delimiter = ',', quoteChar = '"', trim = false } = options;
-  return quotedSplit(line, {
+  return quotedDivide(line, {
     delimiter,
     quote: quoteChar,
     trim,

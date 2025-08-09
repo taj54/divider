@@ -3,6 +3,8 @@ import { WHITE_SPACE, TAB } from '@/constants';
 
 /** Divide by `separator` while preserving consecutive/trailing empties. */
 export function dividePreserve(input: string, separator: string): string[] {
+  if (input === '') return [''];
+
   const divided = divider(input, separator);
   return divided.join(separator) === input ? divided : input.split(separator);
 }
@@ -78,12 +80,12 @@ export function stripOuterQuotes(
 }
 
 /**
- * Quoted-aware split built on top of `divider`.
+ * Quoted-aware divide built on top of `divider`.
  * - Tokenize by delimiter (preserving empties)
  * - Merge tokens while inside quotes
  * - Remove outer quotes, restore escaped quotes, optionally trim
  */
-export function quotedSplit(
+export function quotedDivide(
   line: string,
   {
     delimiter = ',',
