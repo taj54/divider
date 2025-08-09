@@ -1,17 +1,18 @@
 import { divider } from '@/core/divider';
+import { WHITE_SPACE, TAB } from '@/constants';
 
-/** Split by `sep` while preserving consecutive/trailing empties. */
-export function splitPreserve(input: string, sep: string): string[] {
-  const viaCore = divider(input, sep);
-  return viaCore.join(sep) === input ? viaCore : input.split(sep);
+/** Divide by `separator` while preserving consecutive/trailing empties. */
+export function dividePreserve(input: string, separator: string): string[] {
+  const divided = divider(input, separator);
+  return divided.join(separator) === input ? divided : input.split(separator);
 }
 
 /** Count quotes excluding escaped pairs (""). Assumes single-char `quote`. */
 export function countUnescaped(text: string, quote: string): number {
   const pair = quote + quote;
   let count = 0;
-  for (const chunk of splitPreserve(text, pair)) {
-    count += splitPreserve(chunk, quote).length - 1;
+  for (const chunk of dividePreserve(text, pair)) {
+    count += dividePreserve(chunk, quote).length - 1;
   }
   return count;
 }
@@ -23,7 +24,7 @@ export function stripOuterQuotes(
   { lenient = true }: { lenient?: boolean } = {}
 ): string {
   const escapedPair = quoteChar + quoteChar;
-  const isWhitespace = (char: string) => char === ' ' || char === '\t';
+  const isWhitespace = (char: string) => char === WHITE_SPACE || char === TAB;
   const restoreEscapedQuotes = (fieldText: string) =>
     fieldText.split(escapedPair).join(quoteChar);
 
@@ -98,25 +99,28 @@ export function quotedSplit(
 ): string[] {
   if (line === '') return [''];
 
-  const pieces = splitPreserve(line, delimiter);
+  const pieces = dividePreserve(line, delimiter);
   const fields: string[] = [];
-  let buffer = '';
+  let currentFieldBuffer = '';
   let insideQuotes = false;
 
   const flush = () => {
-    let fieldValue = stripOuterQuotes(buffer, quote, { lenient });
+    let fieldValue = stripOuterQuotes(currentFieldBuffer, quote, { lenient });
     if (trim) fieldValue = fieldValue.trim();
     fields.push(fieldValue);
-    buffer = '';
+    currentFieldBuffer = '';
   };
 
   for (const piece of pieces) {
-    buffer = buffer === '' ? piece : buffer + delimiter + piece;
-    insideQuotes = countUnescaped(buffer, quote) % 2 === 1;
+    currentFieldBuffer =
+      currentFieldBuffer === ''
+        ? piece
+        : currentFieldBuffer + delimiter + piece;
+    insideQuotes = countUnescaped(currentFieldBuffer, quote) % 2 === 1;
     if (!insideQuotes) flush();
   }
 
-  if (buffer !== '') flush();
+  if (currentFieldBuffer !== '') flush();
 
   return fields;
 }
