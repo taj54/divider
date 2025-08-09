@@ -11,7 +11,6 @@ export function countUnescaped(text: string, quote: string): number {
   const pair = quote + quote;
   let count = 0;
   for (const chunk of splitPreserve(text, pair)) {
-    // occurrences of a single quote == splits - 1
     count += splitPreserve(chunk, quote).length - 1;
   }
   return count;
@@ -20,38 +19,61 @@ export function countUnescaped(text: string, quote: string): number {
 /** Remove an outer quote pair (keep surrounding spaces) and restore "" -> ". */
 export function stripOuterQuotes(
   text: string,
-  quote: string,
+  quoteChar: string,
   { lenient = true }: { lenient?: boolean } = {}
 ): string {
-  const pair = quote + quote;
-  const isSpace = (c: string) => c === ' ' || c === '\t';
+  const escapedPair = quoteChar + quoteChar;
+  const isWhitespace = (char: string) => char === ' ' || char === '\t';
+  const restoreEscapedQuotes = (fieldText: string) =>
+    fieldText.split(escapedPair).join(quoteChar);
 
-  let left = 0,
-    right = text.length - 1;
-  while (left <= right && isSpace(text[left])) left++;
-  while (right >= left && isSpace(text[right])) right--;
+  // Find first/last non-space indices
+  let left = 0;
+  let right = text.length - 1;
+  while (left <= right && isWhitespace(text[left])) left++;
+  while (right >= left && isWhitespace(text[right])) right--;
 
-  if (left <= right) {
-    const starts = text[left] === quote;
-    const ends = text[right] === quote;
-    if (starts && ends && right > left) {
-      // Remove both quotes as a pair
-      text =
-        text.slice(0, left) +
-        text.slice(left + 1, right) +
-        text.slice(right + 1);
-    } else if (lenient && starts) {
-      // Remove only the starting quote (unclosed or mismatched)
-      text = text.slice(0, left) + text.slice(left + 1);
-      // Optionally remove a trailing quote (after spaces)
-      let r = text.length - 1;
-      while (r >= 0 && isSpace(text[r])) r--;
-      if (r >= 0 && text[r] === quote)
-        text = text.slice(0, r) + text.slice(r + 1);
-    }
+  // All spaces or empty → nothing to strip
+  if (left > right) return restoreEscapedQuotes(text);
+
+  const startsWithQuote = text[left] === quoteChar;
+  if (!startsWithQuote) return restoreEscapedQuotes(text);
+
+  const endsWithQuote = text[right] === quoteChar;
+
+  // Matched pair → strip both
+  if (endsWithQuote && right > left) {
+    const withoutPair =
+      text.slice(0, left) + text.slice(left + 1, right) + text.slice(right + 1);
+    return restoreEscapedQuotes(withoutPair);
   }
 
-  return text.split(pair).join(quote);
+  // Unclosed/mismatched start quote
+  if (!lenient) return restoreEscapedQuotes(text);
+
+  // Strip only the starting quote
+  let result = text.slice(0, left) + text.slice(left + 1);
+
+  // Find the index of the last non-space character
+  let lastNonSpaceIndexAfterTrim = result.length - 1;
+  while (
+    lastNonSpaceIndexAfterTrim >= 0 &&
+    isWhitespace(result[lastNonSpaceIndexAfterTrim])
+  ) {
+    lastNonSpaceIndexAfterTrim--;
+  }
+
+  // If it's a trailing quote, remove it
+  if (
+    lastNonSpaceIndexAfterTrim >= 0 &&
+    result[lastNonSpaceIndexAfterTrim] === quoteChar
+  ) {
+    result =
+      result.slice(0, lastNonSpaceIndexAfterTrim) +
+      result.slice(lastNonSpaceIndexAfterTrim + 1);
+  }
+
+  return restoreEscapedQuotes(result);
 }
 
 /**
@@ -82,9 +104,9 @@ export function quotedSplit(
   let insideQuotes = false;
 
   const flush = () => {
-    let v = stripOuterQuotes(buffer, quote, { lenient });
-    if (trim) v = v.trim();
-    fields.push(v);
+    let fieldValue = stripOuterQuotes(buffer, quote, { lenient });
+    if (trim) fieldValue = fieldValue.trim();
+    fields.push(fieldValue);
     buffer = '';
   };
 
@@ -95,5 +117,6 @@ export function quotedSplit(
   }
 
   if (buffer !== '') flush();
+
   return fields;
 }
