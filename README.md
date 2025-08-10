@@ -175,32 +175,12 @@ const result3 = dividerNumberString(['abc123', '45z'], { flatten: true });
 
 Some common use cases are wrapped as presets for convenience.
 
-#### `emailDivider()`
+| Preset name  | Description                                              |
+| ------------ | -------------------------------------------------------- |
+| emailDivider | Split email into [local-part, domain] (by '@')           |
+| csvDivider   | Split comma-separated strings, with quoted field support |
 
-Split an email address into its local and domain parts.
-
-```ts
-import { emailDivider } from '@nyaomaru/divider';
-
-const result = emailDivider('user@example.com');
-// ['user', 'example.com']
-```
-
-You can also split the domain part into subdomain and TLD by enabling the splitTLD option:
-
-```ts
-const result = emailDivider('user@mail.example.co.uk', { splitTLD: true });
-// ['user', 'mail', 'example', 'co', 'uk']
-```
-
-Trim whitespace from both parts if needed:
-
-```ts
-const result = emailDivider('  user@example.com  ', { trim: true });
-// ['user', 'example.com']
-```
-
-🛎 If multiple @ symbols are found, all segments are returned and a warning is logged.
+[Presets detail](src/presets/README.md)
 
 ## 🎯 General Options
 
