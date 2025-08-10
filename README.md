@@ -175,10 +175,11 @@ const result3 = dividerNumberString(['abc123', '45z'], { flatten: true });
 
 Some common use cases are wrapped as presets for convenience.
 
-| Preset name  | Description                                              |
-| ------------ | -------------------------------------------------------- |
-| emailDivider | Split email into [local-part, domain] (by '@')           |
-| csvDivider   | Split comma-separated strings, with quoted field support |
+| Preset name    | Description                                              |
+| -------------- | -------------------------------------------------------- |
+| `emailDivider` | Split email into [local-part, domain] (by '@')           |
+| `csvDivider`   | Split comma-separated strings, with quoted field support |
+| `pathDivider`  | Split file paths by / or \|                              |
 
 [Presets detail](src/presets/README.md)
 

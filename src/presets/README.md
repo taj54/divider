@@ -1,8 +1,8 @@
-### 📌 Presets
+# 📌 Presets
 
 Some common use cases are wrapped as presets for convenience.
 
-#### `emailDivider()`
+## `emailDivider()`
 
 Split an email address into its local and domain parts.
 
@@ -29,7 +29,7 @@ const result = emailDivider('  user@example.com  ', { trim: true });
 
 🛎 If multiple @ symbols are found, all segments are returned and a warning is logged.
 
-#### `csvDivider()`
+## `csvDivider()`
 
 Splits a CSV line into an array of fields, handling quoted values correctly.
 Internally uses a quoted-aware splitter built on top of `divider`.
@@ -104,3 +104,44 @@ const result = csvDivider('');
     - Character used to wrap fields containing special characters (one character only).
   - `trim` (default: `false`)
     - If true, trims leading and trailing whitespace from field values after removing quotes.
+
+## `pathDivider()`
+
+Splits a file path string into segments using both forward slash (/) and pipe (|) as separators.
+
+```ts
+import { pathDivider } from '@nyaomaru/divider';
+
+pathDivider('/usr/local/bin');
+// ['usr', 'local', 'bin']
+
+pathDivider('foo|bar/baz');
+// ['foo', 'bar', 'baz']
+```
+
+Collapse empty segments (default):
+
+```ts
+pathDivider('/a//b/');
+// ['a', 'b']
+```
+
+Keep empty segments:
+
+```ts
+pathDivider('/a//b/', { collapse: false });
+// ['', 'a', '', 'b', '']
+```
+
+Trim whitespace from each segment:
+
+```ts
+pathDivider(' a / b | c ', { trim: true });
+// ['a', 'b', 'c']
+```
+
+- Options
+  - `trim` (default: `false`)
+    - If true, trims leading and trailing whitespace from each segment.
+  - `collapse` (default: `true`)
+    - If true, removes empty segments caused by repeated or trailing separators.
