@@ -16,22 +16,22 @@ export type DividerResult<T extends DividerInput> = T extends StringInput
   : DividerArrayResult;
 
 // Options with better documentation
-export interface DividerOptions {
+export type DividerOptions = {
   /** If true, flattens nested arrays into a single array */
   flatten?: boolean;
   /** If true, trims whitespace from each divided segment */
   trim?: boolean;
   /** Controls how empty or whitespace segments are handled */
   exclude?: DividerExcludeMode;
-}
+};
 
 // Extended options for loop operations
-export interface DividerLoopOptions extends DividerOptions {
+export type DividerLoopOptions = DividerOptions & {
   /** Starting position for the division (0-based) */
   startOffset?: number;
   /** Maximum number of chunks to produce */
   maxChunks?: number;
-}
+};
 
 // Separator types for better type safety
 export type NumericSeparator = number;
