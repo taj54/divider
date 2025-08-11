@@ -4,7 +4,14 @@ import type { PathDividerOptions } from '@/types/preset';
 import { dividePreserve } from '@/utils/quoted';
 import { PATH_SEPARATORS } from '@/constants';
 
-/** Split a file path by '/' or '|' into segments. */
+/**
+ * Divides a path string into segments using path separators.
+ * @param input - The path string to divide
+ * @param options - Configuration options for path division
+ * @param options.trim - Whether to trim whitespace from segments
+ * @param options.collapse - Whether to collapse consecutive separators and filter empty segments
+ * @returns Array of path segments
+ */
 export function pathDivider(
   input: string,
   options: PathDividerOptions = {}
