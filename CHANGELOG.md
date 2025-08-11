@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.9.0] - 2025-08-10
+
+### Added
+
+- **New Presets**:
+  - `emailDivider()`: Split email addresses into local and domain parts, with optional TLD splitting and trimming. (#209)
+  - `csvDivider()`: CSV-aware splitter with quoted field support, custom delimiters, and trimming. (#218)
+  - `pathDivider()`: Path splitter using `/` and `|` as separators, with options for collapsing empty segments and trimming. (#222)
+- Exported `pathDivider` from the main entry point. (#225)
+
+### Changed
+
+- Replaced unnecessary `interface` definitions with `type` for cleaner type annotations. (#226)
+
+### Chore
+
+- Updated `CHANGELOG.md` for v1.8.18. (#219)
+- Dependency updates:
+  - `ts-jest` to v29.4.1 (#220)
+  - `typedoc` to v0.28.9 (#221)
+  - `typedoc` to v0.28.10 (#224)
+  - `eslint-plugin-prettier` to v5.5.4 (#223)
+
 ## [v1.8.18] - 2025-08-03
 
 ### Added
