@@ -158,11 +158,11 @@ const result5 = dividerLoop('abcdefghij', 3, { maxChunks: 2 });
 ```ts
 import { dividerNumberString } from '@nyaomaru/divider';
 
-// Split numbers and letters from a string
+// Divide numbers and letters from a string
 const result = dividerNumberString('abc123def456');
 // ['abc', '123', 'def', '456']
 
-// Split each string in a string[]
+// Divide each string in a string[]
 const result2 = dividerNumberString(['abc123', '45z']);
 // [['abc', '123'], ['45', 'z']]
 
@@ -175,11 +175,11 @@ const result3 = dividerNumberString(['abc123', '45z'], { flatten: true });
 
 Some common use cases are wrapped as presets for convenience.
 
-| Preset name    | Description                                              |
-| -------------- | -------------------------------------------------------- |
-| `emailDivider` | Split email into [local-part, domain] (by '@')           |
-| `csvDivider`   | Split comma-separated strings, with quoted field support |
-| `pathDivider`  | Split file paths by / or \|                              |
+| Preset name    | Description                                               |
+| -------------- | --------------------------------------------------------- |
+| `emailDivider` | Divide email into [local-part, domain] (by '@')           |
+| `csvDivider`   | Divide comma-separated strings, with quoted field support |
+| `pathDivider`  | Divide file paths by / or \|                              |
 
 [Presets detail](src/presets/README.md)
 
