@@ -52,3 +52,11 @@ export const WHITE_SPACE = ' ';
  * Tab character constant used for indentation and formatting.
  */
 export const TAB = '\t';
+
+/**
+ * Path separator constants used throughout the application.
+ */
+export const PATH_SEPARATORS = {
+  SLASH: '/',
+  ALT: '|',
+} as const;
