@@ -1,6 +1,6 @@
 import { divider } from '@/core/divider';
 import { getLastElement } from '@/utils/array';
-import type { DividerSeparators } from '@/types';
+import type { DividerInput, DividerSeparators } from '@/types';
 
 /**
  * Extracts the last segment after dividing the input using specified separators.
@@ -13,7 +13,7 @@ import type { DividerSeparators } from '@/types';
  * dividerLast("abc123def", 3) // returns "def"
  */
 export function dividerLast(
-  input: string | string[],
+  input: DividerInput,
   ...args: DividerSeparators
 ): string {
   const result = divider(input, ...args, { flatten: true }) as string[];

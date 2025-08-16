@@ -1,5 +1,5 @@
 import { isString } from '@/utils/is';
-import type { DividerOptions, DividerResult } from '@/types';
+import type { DividerInput, DividerOptions, DividerResult } from '@/types';
 import { divideNumberString } from '@/utils/divide';
 import { applyDividerOptions } from '@/utils/option';
 
@@ -16,7 +16,7 @@ import { applyDividerOptions } from '@/utils/option';
  * dividerNumberString("abc123def") // returns ["abc", "123", "def"]
  * dividerNumberString("test42") // returns ["test", "42"]
  */
-export function dividerNumberString<T extends string | string[]>(
+export function dividerNumberString<T extends DividerInput>(
   input: T,
   options?: DividerOptions
 ): DividerResult<T> {

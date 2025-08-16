@@ -1,6 +1,6 @@
 import { divider } from '@/core/divider';
 import { getFirstElement } from '@/utils/array';
-import type { DividerSeparators } from '@/types';
+import type { DividerInput, DividerSeparators } from '@/types';
 
 /**
  * Extracts the first segment after dividing the input using specified separators.
@@ -13,7 +13,7 @@ import type { DividerSeparators } from '@/types';
  * dividerFirst("abc123def", 3) // returns "abc"
  */
 export function dividerFirst(
-  input: string | string[],
+  input: DividerInput,
   ...args: DividerSeparators
 ): string {
   const result = divider(input, ...args, { flatten: true }) as string[];

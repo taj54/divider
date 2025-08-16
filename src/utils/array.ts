@@ -13,7 +13,7 @@ import { isString } from '@/utils/is';
  * @param input - A string or array of strings
  * @returns A normalized string array
  */
-export function ensureStringArray<T extends string | string[]>(
+export function ensureStringArray<T extends string | readonly string[]>(
   input: T
 ): DividerResult<T> {
   return (isString(input) ? [input] : input) as DividerResult<T>;
@@ -26,7 +26,7 @@ export function ensureStringArray<T extends string | string[]>(
  * @param fallback - The fallback value if array is empty (default: '')
  * @returns The first element or fallback value
  */
-export function getFirstElement<T>(array: T[], fallback: T): T {
+export function getFirstElement<T>(array: readonly T[], fallback: T): T {
   return array[0] ?? fallback;
 }
 
@@ -37,6 +37,6 @@ export function getFirstElement<T>(array: T[], fallback: T): T {
  * @param fallback - The fallback value if array is empty (default: '')
  * @returns The last element or fallback value
  */
-export function getLastElement<T>(array: T[], fallback: T): T {
+export function getLastElement<T>(array: readonly T[], fallback: T): T {
   return array.at(-1) ?? fallback;
 }

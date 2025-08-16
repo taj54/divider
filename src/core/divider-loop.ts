@@ -1,7 +1,7 @@
 import { isString, isNumber, isPositiveInteger } from '@/utils/is';
 import { generateIndexes } from '@/utils/chunk';
 import { applyDividerOptions } from '@/utils/option';
-import type { DividerLoopOptions, DividerResult } from '@/types';
+import type { DividerInput, DividerLoopOptions, DividerResult } from '@/types';
 import { divider } from '@/core/divider';
 import { PERFORMANCE_CONSTANTS } from '@/constants';
 
@@ -82,7 +82,7 @@ function createChunksFromString(
  * dividerLoop("abcdef", 2) // returns ["ab", "cd", "ef"]
  * dividerLoop("abcdef", 2, { maxChunks: 2 }) // returns ["ab", "cdef"]
  */
-export function dividerLoop<T extends string | string[]>(
+export function dividerLoop<T extends DividerInput>(
   input: T,
   size: number,
   options?: DividerLoopOptions
