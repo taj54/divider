@@ -5,7 +5,7 @@ export type DividerExcludeMode =
 
 // Type guard for string input
 export type StringInput = string;
-export type StringArrayInput = string[];
+export type StringArrayInput = readonly string[];
 export type DividerInput = StringInput | StringArrayInput;
 
 // Result types with more specific naming

@@ -57,7 +57,7 @@ export function extractOptions<F extends boolean>(
  * @param options - The `DividerOptions` that determine how to modify the result.
  * @returns The processed result after applying the options.
  */
-export function applyDividerOptions<T extends string | string[]>(
+export function applyDividerOptions<T extends string | readonly string[]>(
   result: string[] | string[][],
   options: DividerOptions
 ): DividerResult<T> {
