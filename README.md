@@ -265,3 +265,9 @@ We welcome contributions!
 Please read our [CONTRIBUTING.md](./CONTRIBUTING.md) guide before submitting a PR.
 
 Thank you for your contribution. 😺
+
+## 📚 Additional Documents
+
+- [DEVELOPER.md](./DEVELOPER.md) — Development setup and contributor guide
+- [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) — Community standards and conduct
+- [CHANGELOG.md](./CHANGELOG.md) — Version history and notable changes
