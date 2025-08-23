@@ -1,4 +1,9 @@
-import type { DividerOptions, DividerResult } from '@/types';
+import type {
+  DividerOptions,
+  DividerResult,
+  DividerStringResult,
+  DividerArrayResult,
+} from '@/types';
 import {
   isString,
   isNumber,
@@ -22,9 +27,7 @@ import { excludePredicateMap } from '@/utils/exclude-predicate';
  *   - `cleanedArgs`: An array of strings and numbers only.
  *   - `options`: The extracted `DividerOptions` object (or an empty object if none found).
  */
-export function extractOptions<F extends boolean>(
-  args: (string | number | DividerOptions)[]
-): {
+export function extractOptions(args: (string | number | DividerOptions)[]): {
   cleanedArgs: (string | number)[];
   options: DividerOptions;
 } {
@@ -58,7 +61,7 @@ export function extractOptions<F extends boolean>(
  * @returns The processed result after applying the options.
  */
 export function applyDividerOptions<T extends string | readonly string[]>(
-  result: string[] | string[][],
+  result: DividerStringResult | DividerArrayResult,
   options: DividerOptions
 ): DividerResult<T> {
   let output = result;
@@ -85,10 +88,10 @@ export function applyDividerOptions<T extends string | readonly string[]>(
       shouldKeep = excludePredicateMap[exclude];
     }
 
-    const filterNested = (arr: string[][]) =>
+    const filterNested = (arr: DividerArrayResult) =>
       arr.map((row) => row.filter(shouldKeep)).filter((row) => row.length > 0);
 
-    const filterFlat = (arr: string[]) => arr.filter(shouldKeep);
+    const filterFlat = (arr: DividerStringResult) => arr.filter(shouldKeep);
 
     output = isNestedStringArray(output)
       ? filterNested(output)
