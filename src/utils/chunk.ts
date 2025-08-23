@@ -1,34 +1,41 @@
-import { isPositiveInteger } from '@/utils/is';
+import { isNumber } from '@/utils/is';
+
+// Constants for better maintainability
+const MIN_ALLOWED_CHUNKS = 0;
 
 /**
- * Generates an array of index positions to divide a string into chunks.
+ * Determines whether the chunks array should be truncated
+ * based on the maxChunks setting.
  *
- * This function calculates split points by repeatedly adding the given `size`
- * starting from the specified `startOffset`. These split points can be used
- * with the `divider()` function to chunk a string.
- *
- * @param str - The target string to be divided
- * @param size - The chunk size (must be a positive integer)
- * @param startOffset - Optional starting index offset (default: 0)
- * @returns An array of index positions where the string should be split
- *
- * @example
- * generateIndexes('abcdefg', 2)       // → [2, 4, 6]
- * generateIndexes('abcdefg', 3, 1)    // → [4]
+ * @param chunks - The array of string chunks to evaluate
+ * @param maxChunks - The maximum number of chunks allowed
+ * @returns True if truncation is needed, false otherwise
  */
-export function generateIndexes(
-  str: string,
-  size: number,
-  startOffset = 0
-): number[] {
-  if (!isPositiveInteger(size)) {
-    console.warn('generateIndexes: size must be a positive integer');
-    return [];
-  }
+export function shouldTruncateChunks(
+  chunks: string[],
+  maxChunks: number
+): boolean {
+  return (
+    isNumber(maxChunks) &&
+    maxChunks > MIN_ALLOWED_CHUNKS &&
+    maxChunks < chunks.length
+  );
+}
 
-  const result: number[] = [];
-  for (let i = startOffset + size; i < str.length; i += size) {
-    result.push(i);
-  }
-  return result;
+/**
+ * Truncates the chunks array to the specified maxChunks length.
+ * The remaining chunks are merged into the last chunk.
+ *
+ * @param chunks - The original array of string chunks
+ * @param maxChunks - The maximum number of chunks to retain
+ * @returns A new array of chunks with at most maxChunks elements
+ */
+export function truncateChunksToMax(
+  chunks: string[],
+  maxChunks: number
+): string[] {
+  const headCount = maxChunks - 1;
+  const head = chunks.slice(0, headCount);
+  const tail = chunks.slice(headCount).join('');
+  return [...head, tail];
 }

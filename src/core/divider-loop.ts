@@ -1,43 +1,10 @@
-import { isString, isNumber, isPositiveInteger } from '@/utils/is';
-import { generateIndexes } from '@/utils/chunk';
+import { isString, isPositiveInteger } from '@/utils/is';
+import { generateIndexes } from '@/utils/generate-indexes';
 import { applyDividerOptions } from '@/utils/option';
+import { shouldTruncateChunks, truncateChunksToMax } from '@/utils/chunk';
 import type { DividerInput, DividerLoopOptions, DividerResult } from '@/types';
 import { divider } from '@/core/divider';
 import { PERFORMANCE_CONSTANTS } from '@/constants';
-
-// Constants for better maintainability
-const MIN_ALLOWED_CHUNKS = 0;
-
-/**
- * Determines whether the chunks array should be truncated
- * based on the maxChunks setting.
- *
- * @param chunks - The array of string chunks to evaluate
- * @param maxChunks - The maximum number of chunks allowed
- * @returns True if truncation is needed, false otherwise
- */
-function shouldTruncateChunks(chunks: string[], maxChunks: number): boolean {
-  return (
-    isNumber(maxChunks) &&
-    maxChunks > MIN_ALLOWED_CHUNKS &&
-    maxChunks < chunks.length
-  );
-}
-
-/**
- * Truncates the chunks array to the specified maxChunks length.
- * The remaining chunks are merged into the last chunk.
- *
- * @param chunks - The original array of string chunks
- * @param maxChunks - The maximum number of chunks to retain
- * @returns A new array of chunks with at most maxChunks elements
- */
-function truncateChunksToMax(chunks: string[], maxChunks: number): string[] {
-  const headCount = maxChunks - 1;
-  const head = chunks.slice(0, headCount);
-  const tail = chunks.slice(headCount).join('');
-  return [...head, tail];
-}
 
 /**
  * Splits the input string into chunks based on size and offset,
