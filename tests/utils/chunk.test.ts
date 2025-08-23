@@ -1,39 +1,82 @@
-import { generateIndexes } from '../../src/utils/chunk';
+import {
+  shouldTruncateChunks,
+  truncateChunksToMax,
+} from '../../src/utils/chunk';
 
-describe('generateIndexes', () => {
-  test('generates indexes with default startOffset (0)', () => {
-    expect(generateIndexes('abcdefg', 2)).toEqual([2, 4, 6]);
-    expect(generateIndexes('abcdef', 3)).toEqual([3]);
-    expect(generateIndexes('abcd', 5)).toEqual([]);
+describe('shouldTruncateChunks', () => {
+  it('returns false when maxChunks is 0 (no limit)', () => {
+    expect(shouldTruncateChunks(['a', 'b', 'c'], 0)).toBe(false);
   });
 
-  test('generates indexes with startOffset > 0', () => {
-    expect(generateIndexes('abcdefg', 2, 1)).toEqual([3, 5]);
-    expect(generateIndexes('abcdefg', 3, 1)).toEqual([4]);
-    expect(generateIndexes('abcdefg', 3, 2)).toEqual([5]);
+  it('returns false when maxChunks is negative', () => {
+    expect(shouldTruncateChunks(['a', 'b', 'c'], -1)).toBe(false);
   });
 
-  test('empty array if size is too large (startOffset considered)', () => {
-    expect(generateIndexes('abc', 3, 1)).toEqual([]);
+  it('returns false when maxChunks is equal to chunks length', () => {
+    expect(shouldTruncateChunks(['a', 'b', 'c'], 3)).toBe(false);
   });
 
-  test('handles startOffset === string.length', () => {
-    expect(generateIndexes('abc', 2, 3)).toEqual([]);
+  it('returns false when maxChunks is greater than chunks length', () => {
+    expect(shouldTruncateChunks(['a', 'b', 'c'], 10)).toBe(false);
   });
 
-  test('handles empty string', () => {
-    expect(generateIndexes('', 2)).toEqual([]);
-    expect(generateIndexes('', 2, 1)).toEqual([]);
+  it('returns true when 0 < maxChunks < chunks.length', () => {
+    expect(shouldTruncateChunks(['a', 'b', 'c', 'd'], 3)).toBe(true);
+    expect(shouldTruncateChunks(['a', 'b', 'c', 'd'], 1)).toBe(true);
   });
 
-  test('empty array and warns if size is not positive integer', () => {
-    const spy = jest.spyOn(console, 'warn').mockImplementation(() => { });
+  it('returns false for NaN maxChunks (guarded by isNumber)', () => {
+    expect(shouldTruncateChunks(['a', 'b', 'c'], Number('NaN'))).toBe(false);
+  });
+});
 
-    expect(generateIndexes('abc', 0)).toEqual([]);
-    expect(generateIndexes('abc', -1)).toEqual([]);
-    expect(generateIndexes('abc', 1.5)).toEqual([]);
-    expect(generateIndexes('abc', NaN)).toEqual([]);
+describe('truncateChunksToMax', () => {
+  it('merges tail parts into the last chunk when maxChunks < length', () => {
+    const input = ['ab', 'cd', 'ef', 'gh', 'ij'];
 
-    spy.mockRestore();
+    const result = truncateChunksToMax(input, 3);
+
+    expect(result).toEqual(['ab', 'cd', 'efghij']);
+  });
+
+  it('works when maxChunks = 1 (everything collapses into one chunk)', () => {
+    const input = ['a', 'b', 'c', 'd'];
+
+    const result = truncateChunksToMax(input, 1);
+
+    expect(result).toEqual(['abcd']);
+  });
+
+  it('does not mutate the original array', () => {
+    const input = ['a', 'b', 'c'];
+    const copy = [...input];
+
+    truncateChunksToMax(input, 2);
+
+    expect(input).toEqual(copy);
+  });
+
+  it('preserves order when merging tail', () => {
+    const input = ['x', 'y', 'z1', 'z2'];
+
+    const result = truncateChunksToMax(input, 2);
+
+    expect(result).toEqual(['x', 'yz1z2']);
+  });
+
+  it('handles unicode / multibyte content correctly', () => {
+    const input = ['🍣', '寿', '司', '🍵'];
+
+    const result = truncateChunksToMax(input, 2);
+
+    expect(result).toEqual(['🍣', '寿司🍵']);
+  });
+
+  it('edge: maxChunks just below length merges only the last element', () => {
+    const input = ['a', 'b', 'c', 'd'];
+
+    const result = truncateChunksToMax(input, 3);
+
+    expect(result).toEqual(['a', 'b', 'cd']);
   });
 });
