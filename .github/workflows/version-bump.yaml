@@ -16,7 +16,6 @@ on:
           - patch
           - minor
           - major
-
 jobs:
   bump:
     runs-on: ubuntu-latest
