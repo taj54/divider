@@ -1,3 +1,22 @@
+## v1.9.3 2025-08-30
+
+### Changed
+
+- Merge pull request #243 from nyaomaru/chore/update-version-bump
+- use universal version bump to bump version
+- Merge pull request #242 from nyaomaru/chore/copilot-setting
+- Update .github/prompts/typedoc.prompt.md
+- Update .github/prompts/jsdoc.prompt.md
+- add copilot setting
+- Merge pull request #241 from nyaomaru/refactor/readonly-args
+- add args array type readonly
+- Merge pull request #238 from nyaomaru/renovate/tsx-4.x-lockfile
+- Update dependency tsx to v4.20.5
+- Merge pull request #239 from nyaomaru/renovate/typescript-5.x-lockfile
+- Update dependency typescript to v5.9.2
+- Merge pull request #237 from nyaomaru/chore-change-log
+- update CHANGELOG v1.9.2
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
