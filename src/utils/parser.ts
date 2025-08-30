@@ -17,8 +17,8 @@ import { sortAscending } from '@/utils/sort';
  */
 export function divideString(
   input: string,
-  numSeparators: number[],
-  strSeparators: string[]
+  numSeparators: readonly number[],
+  strSeparators: readonly string[]
 ): string[] {
   if (isEmptyArray(numSeparators) && isEmptyArray(strSeparators)) {
     return [input];

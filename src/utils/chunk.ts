@@ -12,7 +12,7 @@ const MIN_ALLOWED_CHUNKS = 0;
  * @returns True if truncation is needed, false otherwise
  */
 export function shouldTruncateChunks(
-  chunks: string[],
+  chunks: readonly string[],
   maxChunks: number
 ): boolean {
   return (
@@ -31,7 +31,7 @@ export function shouldTruncateChunks(
  * @returns A new array of chunks with at most maxChunks elements
  */
 export function truncateChunksToMax(
-  chunks: string[],
+  chunks: readonly string[],
   maxChunks: number
 ): string[] {
   const headCount = maxChunks - 1;
