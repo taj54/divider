@@ -14,7 +14,10 @@ import { isEmptyArray } from '@/utils/is';
  * @param indexes - An array of index positions to slice at. Must be in ascending order.
  * @returns An array of string segments.
  */
-export function sliceByIndexes(input: string, indexes: number[]): string[] {
+export function sliceByIndexes(
+  input: string,
+  indexes: readonly number[]
+): string[] {
   if (isEmptyArray(indexes)) return [input];
 
   const parts: string[] = [];

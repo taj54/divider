@@ -19,7 +19,7 @@ class RegexCache {
    * @param separators - Array of string separators
    * @returns Cached RegExp or null if not found
    */
-  get(separators: string[]): RegExp | null {
+  get(separators: readonly string[]): RegExp | null {
     const key = this.createKey(separators);
     const regex = this.cache.get(key);
 
@@ -38,7 +38,7 @@ class RegexCache {
    * @param separators - Array of string separators
    * @param regex - Compiled RegExp to cache
    */
-  set(separators: string[], regex: RegExp): void {
+  set(separators: readonly string[], regex: RegExp): void {
     const key = this.createKey(separators);
 
     // If key already exists, remove it first to update position
@@ -64,7 +64,7 @@ class RegexCache {
    * @param separators - Array of string separators
    * @returns Cache key string
    */
-  private createKey(separators: string[]): string {
+  private createKey(separators: readonly string[]): string {
     // Normalize separators: dedupe, filter out empty strings, and sort
     const normalizedSeparators = Array.from(new Set(separators)).filter(
       (separator) => separator !== ''
@@ -107,7 +107,7 @@ const regexCache = new RegexCache();
  * @param separators - Array of strings to use as delimiters.
  * @returns A global RegExp to match any of the delimiters, or `null` if input is empty.
  */
-export function getRegex(separators: string[]): RegExp | null {
+export function getRegex(separators: readonly string[]): RegExp | null {
   if (isEmptyArray(separators)) return null;
 
   // Check cache first

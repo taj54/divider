@@ -11,6 +11,6 @@
  * @param numbers - The array of numbers to sort.
  * @returns A new array sorted in ascending numerical order.
  */
-export function sortAscending(numbers: number[]): number[] {
+export function sortAscending(numbers: readonly number[]): number[] {
   return [...numbers].sort((a, b) => a - b);
 }

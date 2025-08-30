@@ -13,7 +13,7 @@ import { isString, isNumber } from '@/utils/is';
  * @param args - An array containing strings and/or numbers
  * @returns An object with `numSeparators` and `strSeparators` arrays
  */
-export function classifySeparators(args: (string | number)[]) {
+export function classifySeparators(args: readonly (string | number)[]) {
   return args.reduce(
     (acc, arg) => {
       if (isNumber(arg)) acc.numSeparators.push(arg);

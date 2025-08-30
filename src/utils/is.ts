@@ -36,7 +36,7 @@ export function isOptions(value: unknown): value is DividerOptions {
 /**
  * Checks whether the given array is empty.
  */
-export function isEmptyArray<T>(input: T[]): boolean {
+export function isEmptyArray<T>(input: readonly T[]): boolean {
   return Array.isArray(input) && input.length === 0;
 }
 
