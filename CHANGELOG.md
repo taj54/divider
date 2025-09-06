@@ -1,21 +1,24 @@
-## v1.9.4 2025-09-06
-
-### Changed
-
-- Merge pull request #246 from nyaomaru/renovate/jest-monorepo
-- Merge pull request #247 from nyaomaru/renovate/actions-checkout-5.x
-- Merge pull request #248 from nyaomaru/refactor/utils-more-readable
-- use isEmptyString
-- use constants
-- Update actions/checkout action to v5
-- Update dependency jest to v30.1.3
-
 # Changelog
 
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [v1.9.4] - 2025-09-06
+
+### Changed
+
+- Refactored utility functions for better readability (#248)
+  - Replaced custom empty string checks with `isEmptyString`
+  - Reused shared constants instead of inline literals
+
+### Chore
+
+- Updated `CHANGELOG.md` for v1.9.3
+- Dependency updates:
+  - `jest` monorepo to v30.1.3 (#246)
+  - `actions/checkout` GitHub Action to v5 (#247)
 
 ## [v1.9.3] - 2025-08-30
 
