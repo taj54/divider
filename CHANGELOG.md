@@ -1,3 +1,15 @@
+## v1.9.4 2025-09-06
+
+### Changed
+
+- Merge pull request #246 from nyaomaru/renovate/jest-monorepo
+- Merge pull request #247 from nyaomaru/renovate/actions-checkout-5.x
+- Merge pull request #248 from nyaomaru/refactor/utils-more-readable
+- use isEmptyString
+- use constants
+- Update actions/checkout action to v5
+- Update dependency jest to v30.1.3
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
