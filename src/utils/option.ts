@@ -12,6 +12,7 @@ import {
   isNoneMode,
 } from '@/utils/is';
 import { excludePredicateMap } from '@/utils/exclude-predicate';
+import { DividerExcludeModes } from '@/constants';
 
 /**
  * Extracts `options` object and cleans argument list.
@@ -81,7 +82,7 @@ export function applyDividerOptions<T extends string | readonly string[]>(
 
   // 3. Apply exclude rules
   if (!isNoneMode(options.exclude)) {
-    const exclude = options.exclude ?? 'none';
+    const exclude = options.exclude ?? DividerExcludeModes.NONE;
     let shouldKeep: (s: string) => boolean = () => true;
 
     if (exclude in excludePredicateMap) {
