@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Chore
 
-- Updated `CHANGELOG.md` for v1.9.3
+- Updated `CHANGELOG.md` for v1.9.3 (#245)
 - Dependency updates:
   - `jest` monorepo to v30.1.3 (#246)
   - `actions/checkout` GitHub Action to v5 (#247)
