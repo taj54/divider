@@ -1,9 +1,10 @@
 import { divider } from '@/core/divider';
 import { WHITE_SPACE, TAB } from '@/constants';
+import { isEmptyString } from '@/utils/is';
 
 /** Divide by `separator` while preserving consecutive/trailing empties. */
 export function dividePreserve(input: string, separator: string): string[] {
-  if (input === '') return [''];
+  if (isEmptyString(input)) return [''];
 
   const divided = divider(input, separator);
   return divided.join(separator) === input ? divided : input.split(separator);
@@ -99,7 +100,7 @@ export function quotedDivide(
     lenient?: boolean;
   } = {}
 ): string[] {
-  if (line === '') return [''];
+  if (isEmptyString(line)) return [''];
 
   const pieces = dividePreserve(line, delimiter);
   const fields: string[] = [];
