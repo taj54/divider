@@ -97,9 +97,9 @@ Capture the reason this exists. If there’s time-bound context or deprecation i
  * Get congested time slots for the expo.
  * Background: Implemented for the 2025 Osaka Expo; scheduled for removal later.
  */
-const getExpoConfusedTime = (targetDate: Date): Promise<Time[]> => {
+const getExpoCongestedTime = (targetDate: Date): Promise<Time[]> => {
   // ...
-  return confusedTimeList;
+  return congestedTimeList;
 };
 ```
 
@@ -114,7 +114,7 @@ Document the interface of the function with `@param` / `@returns`. Add `@example
  * @param targetDate Target date to retrieve congested time windows for.
  * @returns Array of congested time windows.
  */
-const getExpoConfusedTime = (targetDate: Date): Promise<Time[]> => {
+const getExpoCongestedTime = (targetDate: Date): Promise<Time[]> => {
   /* ... */
 };
 ```
