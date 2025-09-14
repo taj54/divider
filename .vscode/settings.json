@@ -1,0 +1,10 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "deno.enable": true,
+  "deno.enablePaths": ["tests-deno"],
+  "deno.unstable": ["sloppy-imports"],
+  "deno.suggest.imports.hosts": {
+    "https://jsr.io": true
+  }
+}

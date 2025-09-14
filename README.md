@@ -8,6 +8,9 @@
     <a href="https://www.npmjs.com/package/@nyaomaru/divider">
         <img src="https://img.shields.io/npm/v/@nyaomaru/divider.svg?sanitize=true" alt="npm version">
     </a>
+    <a href="https://jsr.io/@nyaomaru/divider">
+        <img src="https://img.shields.io/badge/JSR-@nyaomaru/divider-blue" alt="JSR">
+    </a>
     <a href="https://github.com/nyaomaru/divider/blob/main/LICENSE">
         <img src="https://img.shields.io/npm/l/@nyaomaru/divider.svg?sanitize=true" alt="License">
     </a>
@@ -37,6 +40,32 @@ bun add @nyaomaru/divider
 
 # Using yarn
 yarn add @nyaomaru/divider
+```
+
+### Deno / Bun (via JSR)
+
+This package is also published on JSR and works in Deno and Bun without a bundler.
+
+```ts
+// Deno/Bun: import directly from JSR
+import { divider } from 'jsr:@nyaomaru/divider';
+```
+
+Version pinning examples:
+
+```ts
+// Pin a major version (recommended)
+import { divider } from 'jsr:@nyaomaru/divider@^1';
+
+// Or pin an exact version
+import { divider } from 'jsr:@nyaomaru/divider@1.9.4';
+```
+
+For Bun, you can also add it to your project manifest:
+
+```sh
+# Pin a major version in Bun
+bun add jsr:@nyaomaru/divider@^1
 ```
 
 ## 📖 Documentation
@@ -271,3 +300,15 @@ Thank you for your contribution. 😺
 - [DEVELOPER.md](./DEVELOPER.md) — Development setup and contributor guide
 - [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) — Community standards and conduct
 - [CHANGELOG.md](./CHANGELOG.md) — Version history and notable changes
+
+## 🟦 Deno / JSR Notes
+
+- Import path alias `@/` is supported in Deno via the included `deno.json` import map.
+- Type-check locally with Deno: `deno task check` (or `deno check ./src/index.ts`).
+- Publish to JSR from a tagged commit: `deno publish`.
+- CI: On PRs, we run `deno fmt --check` / `deno lint` / `deno check` / `deno test`.
+- CI JSR publish runs `deno publish` when a GitHub Release is published (OIDC-based; no personal token required).
+- `deno test` is configured to only target `tests-deno/**` (Bun/Jest tests are excluded).
+- For local development, Deno's `unstable` `sloppy-imports` is enabled to resolve the `@/` alias (this does not affect JSR publishing or consumers).
+- VSCode: to enable Bun type completions, add `bun-types` as a dev dependency and include `"bun-types"` in `tests-bun/tsconfig.json` `types` (this repo is preconfigured).
+- VSCode: the Deno extension is enabled only for `tests-deno/` (see `.vscode/settings.json`), which fixes typings for `jsr:@std/assert`.

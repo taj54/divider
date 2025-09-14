@@ -10,7 +10,7 @@ import type { DividerInput, DividerSeparators } from '@/types';
  * @returns The last segment after division, or an empty string if no segments are found
  * @example
  * dividerLast("hello-world", "-") // returns "world"
- * dividerLast("abc123def", 3) // returns "def"
+ * dividerLast("abc123def", "3") // returns "def"
  */
 export function dividerLast(
   input: DividerInput,
