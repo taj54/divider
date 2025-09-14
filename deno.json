@@ -1,4 +1,7 @@
 {
+  "name": "@nyaomaru/divider",
+  "version": "1.9.5",
+  "exports": "./src/mod.ts",
   "imports": {
     "@/": "./src/"
   },
