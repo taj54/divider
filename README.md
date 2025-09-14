@@ -8,6 +8,9 @@
     <a href="https://www.npmjs.com/package/@nyaomaru/divider">
         <img src="https://img.shields.io/npm/v/@nyaomaru/divider.svg?sanitize=true" alt="npm version">
     </a>
+    <a href="https://jsr.io/@nyaomaru/divider">
+        <img src="https://img.shields.io/badge/JSR-@nyaomaru/divider-blue" alt="JSR">
+    </a>
     <a href="https://github.com/nyaomaru/divider/blob/main/LICENSE">
         <img src="https://img.shields.io/npm/l/@nyaomaru/divider.svg?sanitize=true" alt="License">
     </a>
@@ -37,6 +40,32 @@ bun add @nyaomaru/divider
 
 # Using yarn
 yarn add @nyaomaru/divider
+```
+
+### Deno / Bun (via JSR)
+
+This package is also published on JSR and works in Deno and Bun without a bundler.
+
+```ts
+// Deno/Bun: import directly from JSR
+import { divider } from 'jsr:@nyaomaru/divider';
+```
+
+Version pinning examples:
+
+```ts
+// Pin a major version (recommended)
+import { divider } from 'jsr:@nyaomaru/divider@^1';
+
+// Or pin an exact version
+import { divider } from 'jsr:@nyaomaru/divider@1.9.4';
+```
+
+For Bun, you can also add it to your project manifest:
+
+```sh
+# Pin a major version in Bun
+bun add jsr:@nyaomaru/divider@^1
 ```
 
 ## 📖 Documentation
@@ -271,3 +300,15 @@ Thank you for your contribution. 😺
 - [DEVELOPER.md](./DEVELOPER.md) — Development setup and contributor guide
 - [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) — Community standards and conduct
 - [CHANGELOG.md](./CHANGELOG.md) — Version history and notable changes
+
+## 🟦 Deno / JSR Notes
+
+- Import path alias `@/` is supported in Deno via the included `deno.json` import map.
+- Type-check locally with Deno: `deno task check` (or `deno check ./src/index.ts`).
+- Publish to JSR from a tagged commit: `deno publish`.
+- CI: PR で `deno fmt --check` / `deno lint` / `deno check` / `deno test` を実行します。
+- CI での JSR 公開は GitHub Release 作成時に `deno publish` を実行（`JSR_TOKEN` シークレットが必要）。
+- `deno test` は `tests-deno/**` のみを対象に実行するよう設定済みです（Bun/Jest のテストは含まれません）。
+- ローカル開発では Deno でのエイリアス解決のため `unstable` の `sloppy-imports` を有効化しています（JSR 公開や利用に影響はありません）。
+- VSCode で Bun の型補完を有効にするには `pnpm add -D bun-types` を追加し、`tests-bun/tsconfig.json` の `types` に `"bun-types"` を含めてください（本リポジトリは設定済み）。
+- VSCode: Deno 拡張を `tests-deno/` のみで有効化しています（`.vscode/settings.json`）。これにより `jsr:@std/assert` の型エラーが解消します。
