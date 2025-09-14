@@ -306,9 +306,9 @@ Thank you for your contribution. 😺
 - Import path alias `@/` is supported in Deno via the included `deno.json` import map.
 - Type-check locally with Deno: `deno task check` (or `deno check ./src/index.ts`).
 - Publish to JSR from a tagged commit: `deno publish`.
-- CI: PR で `deno fmt --check` / `deno lint` / `deno check` / `deno test` を実行します。
-- CI での JSR 公開は GitHub Release 作成時に `deno publish` を実行（`JSR_TOKEN` シークレットが必要）。
-- `deno test` は `tests-deno/**` のみを対象に実行するよう設定済みです（Bun/Jest のテストは含まれません）。
-- ローカル開発では Deno でのエイリアス解決のため `unstable` の `sloppy-imports` を有効化しています（JSR 公開や利用に影響はありません）。
-- VSCode で Bun の型補完を有効にするには `pnpm add -D bun-types` を追加し、`tests-bun/tsconfig.json` の `types` に `"bun-types"` を含めてください（本リポジトリは設定済み）。
-- VSCode: Deno 拡張を `tests-deno/` のみで有効化しています（`.vscode/settings.json`）。これにより `jsr:@std/assert` の型エラーが解消します。
+- CI: On PRs, we run `deno fmt --check` / `deno lint` / `deno check` / `deno test`.
+- CI JSR publish runs `deno publish` when a GitHub Release is published (OIDC-based; no personal token required).
+- `deno test` is configured to only target `tests-deno/**` (Bun/Jest tests are excluded).
+- For local development, Deno's `unstable` `sloppy-imports` is enabled to resolve the `@/` alias (this does not affect JSR publishing or consumers).
+- VSCode: to enable Bun type completions, add `bun-types` as a dev dependency and include `"bun-types"` in `tests-bun/tsconfig.json` `types` (this repo is preconfigured).
+- VSCode: the Deno extension is enabled only for `tests-deno/` (see `.vscode/settings.json`), which fixes typings for `jsr:@std/assert`.
