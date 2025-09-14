@@ -1,4 +1,7 @@
 {
+  "name": "@nyaomaru/divider",
+  "version": "1.9.5",
+  "exports": "./src/mod.ts",
   "imports": {
     "@/": "./src/"
   },
@@ -13,7 +16,7 @@
     "exclude": ["tests-bun/**", "tests/**"]
   },
   "tasks": {
-    "check": "deno check ./src/index.ts",
+    "check": "deno check ./src/mod.ts",
     "test": "deno test -q tests-deno",
     "lint": "deno lint",
     "fmt": "deno fmt",
