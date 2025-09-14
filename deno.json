@@ -1,0 +1,23 @@
+{
+  "imports": {
+    "@/": "./src/"
+  },
+  "unstable": ["sloppy-imports"],
+  "lint": {
+    "rules": {
+      "exclude": ["import-prefix-missing"]
+    }
+  },
+  "test": {
+    "include": ["tests-deno/**/*.ts"],
+    "exclude": ["tests-bun/**", "tests/**"]
+  },
+  "tasks": {
+    "check": "deno check ./src/index.ts",
+    "test": "deno test -q tests-deno",
+    "lint": "deno lint",
+    "fmt": "deno fmt",
+    "fmt:check": "deno fmt --check",
+    "publish": "deno publish"
+  }
+}
