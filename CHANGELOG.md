@@ -1,3 +1,39 @@
+## v1.9.6 2025-09-15
+
+### Added
+
+- deno support
+- jsr support
+- jsr support
+- bun support
+- deno support
+- bun support
+- deno support
+
+### Changed
+
+- Merge pull request #262 from nyaomaru/renovate/bun-types-1.x-lockfile
+- Merge pull request #261 from nyaomaru/renovate/node-22.x-lockfile
+- Update dependency bun-types to v1.2.22
+- Update dependency @types/node to v22.18.3
+- Merge pull request #260 from nyaomaru/fix/publish-jsr-error
+- deno.json
+- Merge pull request #259 from nyaomaru/fix/jsr-publish
+- Merge pull request #257 from nyaomaru/feat/jsr-support
+- update README
+- vscode setting
+- update publish-jsr
+- update README
+- update mise
+
+### Fixed
+
+- check path
+- publish error
+- type error
+- unexpected line
+- tsconfig error
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
