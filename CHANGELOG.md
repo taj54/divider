@@ -1,45 +1,33 @@
-## v1.9.6 2025-09-15
-
-### Added
-
-- deno support
-- jsr support
-- jsr support
-- bun support
-- deno support
-- bun support
-- deno support
-
-### Changed
-
-- Merge pull request #262 from nyaomaru/renovate/bun-types-1.x-lockfile
-- Merge pull request #261 from nyaomaru/renovate/node-22.x-lockfile
-- Update dependency bun-types to v1.2.22
-- Update dependency @types/node to v22.18.3
-- Merge pull request #260 from nyaomaru/fix/publish-jsr-error
-- deno.json
-- Merge pull request #259 from nyaomaru/fix/jsr-publish
-- Merge pull request #257 from nyaomaru/feat/jsr-support
-- update README
-- vscode setting
-- update publish-jsr
-- update README
-- update mise
-
-### Fixed
-
-- check path
-- publish error
-- type error
-- unexpected line
-- tsconfig error
-
 # Changelog
 
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [v1.9.6] - 2025-09-15
+
+### Added
+
+- Added support for JSR / Deno / Bun (#257)
+
+### Changed
+
+## Chore
+
+- Updated `bun-types` to v1.2.22 (#262)
+- Updated `@types/node` to v22.18.3 (#261)
+- Updated `deno.json` configuration (#259)
+- Updated publish-jsr workflow (#260)
+- Updated VSCode settings / `mise` configuration / README (#259)
+
+### Fixed
+
+- Fixed path resolution issues (#259)
+- Fixed JSR publish error (#260)
+- Fixed type error in build (#260)
+- Fixed unexpected line in config (#259)
+- Fixed `tsconfig` error (#259)
 
 ## [v1.9.5] - 2025-09-13
 
