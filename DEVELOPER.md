@@ -43,12 +43,14 @@ Using mise? It’s optional but comfy:
 
 ## Everyday Commands 🛠
 
-- Lint: `pnpm lint`
-- Test (unit): `pnpm test` or `pnpm run test:unit`
-- Test (perf): `pnpm run test:performance`
-- Build: `pnpm build`
-- Typedoc: `pnpm typedoc`
-- Targeted test run: `pnpm test -- tests/utils/array.test.ts`
+| Command                 | Description                                   |
+| ----------------------- | --------------------------------------------- |
+| `pnpm build`            | Build the library using tsup                  |
+| `pnpm test`             | Run all tests (unit + performance) via vitest |
+| `pnpm test:performance` | Benchmark `divider` against common scenarios  |
+| `pnpm test:unit`        | Run isolated unit tests                       |
+| `pnpm lint`             | Run ESLint for code quality                   |
+| `pnpm typedoc`          | Generate API documentation with TypeDoc       |
 
 Before pushing: `pnpm lint && pnpm test && pnpm build` ✅
 
@@ -111,3 +113,5 @@ Handy configs: `eslint.config.js`, `tsconfig.json`, `tsup.config.ts`, `jest.conf
 More docs: `README.md`, `CHANGELOG.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`
 
 Questions or ideas? Open an Issue/PR — we’re friendly! 😺
+
+Happy hacking! 🛠✨
