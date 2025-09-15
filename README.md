@@ -145,10 +145,10 @@ const firstArrayElement = dividerFirst(['hello', 'world'], 2);
 ```ts
 import { dividerLast } from '@nyaomaru/divider';
 
-const firstElement = dividerLast('hello world', ' ');
+const lastElement = dividerLast('hello world', ' ');
 // 'world'
 
-const firstArrayElement = dividerLast(['hello', 'world'], 2);
+const lastArrayElement = dividerLast(['hello', 'world'], 2);
 // 'rld'
 ```
 
