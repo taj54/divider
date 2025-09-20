@@ -1,5 +1,14 @@
-import { isEmptyArray } from '@/utils/is';
+import { isEmptyArray, isEmptyString } from '@/utils/is';
 import { PERFORMANCE_CONSTANTS, CACHE_KEY_SEPARATOR } from '@/constants';
+
+// WHY: Normalizing separators (dedupe + remove empties) is needed both for
+// cache key creation and pattern generation. Centralize the logic to avoid
+// divergence and accidental inconsistencies across call sites.
+function normalizeSeparators(separators: readonly string[]): string[] {
+  return Array.from(new Set(separators)).filter(
+    (separator) => !isEmptyString(separator)
+  );
+}
 
 /**
  * Enhanced regex cache with LRU (Least Recently Used) eviction policy.
@@ -65,10 +74,8 @@ class RegexCache {
    * @returns Cache key string
    */
   private createKey(separators: readonly string[]): string {
-    // Normalize separators: dedupe, filter out empty strings, and sort
-    const normalizedSeparators = Array.from(new Set(separators)).filter(
-      (separator) => separator !== ''
-    );
+    // Normalize separators: dedupe and filter out empty strings
+    const normalizedSeparators = normalizeSeparators(separators);
     // Use join with separator that's unlikely to appear in actual separators
     return normalizedSeparators.join(CACHE_KEY_SEPARATOR);
   }
@@ -116,9 +123,7 @@ export function getRegex(separators: readonly string[]): RegExp | null {
 
   // Compile new regex and cache it
   // Remove duplicates and handle empty strings
-  const uniqueSeparators = Array.from(new Set(separators)).filter(
-    (separator) => separator !== ''
-  );
+  const uniqueSeparators = normalizeSeparators(separators);
 
   if (uniqueSeparators.length === 0) {
     // If all separators were empty strings, return null
