@@ -11,5 +11,5 @@
  * @returns An array of segmented strings
  */
 export function divideNumberString(str: string): string[] {
-  return (str.match(/\d+|\D+/g) || []).filter(Boolean);
+  return (str.match(/\d+|\D+/g) ?? []).filter(Boolean);
 }
