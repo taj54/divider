@@ -1,24 +1,22 @@
-## v1.9.7 2025-09-20
-
-### Changed
-
-- Merge pull request #266 from nyaomaru/refactor/utils-regex-and-divide
-- Update src/utils/divide.ts
-- extract normalizeSeparators function
-- remove unnecessary filter
-- Merge pull request #265 from nyaomaru/chore/update-DEVELOPER
-- update DEVELOPER
-- update DEVELOPER
-- update DEVELOPER.md
-- Merge pull request #264 from nyaomaru/chore/fix-readme
-- fix README
-
 # Changelog
 
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [v1.9.7] - 2025-09-20
+
+### Changed
+
+- Refactored `utils/divide.ts` (#266)
+  - Extracted `normalizeSeparators` function
+  - Removed unnecessary filter
+
+### Chore
+
+- Updated `DEVELOPER.md` (#265)
+- Fixed README documentation (#264)
 
 ## [v1.9.6] - 2025-09-15
 
