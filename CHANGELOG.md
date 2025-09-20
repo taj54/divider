@@ -1,3 +1,18 @@
+## v1.9.7 2025-09-20
+
+### Changed
+
+- Merge pull request #266 from nyaomaru/refactor/utils-regex-and-divide
+- Update src/utils/divide.ts
+- extract normalizeSeparators function
+- remove unnecessary filter
+- Merge pull request #265 from nyaomaru/chore/update-DEVELOPER
+- update DEVELOPER
+- update DEVELOPER
+- update DEVELOPER.md
+- Merge pull request #264 from nyaomaru/chore/fix-readme
+- fix README
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
