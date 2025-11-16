@@ -5,6 +5,111 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [vv1.9.14] - 2025-11-15
+
+### Fixed
+
+- quoted comment by @nyaomaru in [#306](https://github.com/nyaomaru/divider/pull/306)
+
+### Chore
+
+- v1.9.13 by [bot] by @github-actions in [#301](https://github.com/nyaomaru/divider/pull/301)
+- Update dependency jest to v30.2.0 by [bot] by @renovate in [#303](https://github.com/nyaomaru/divider/pull/303)
+- Update dependency /node to v22.19.0 by @renovate[bot] by @types in [#302](https://github.com/nyaomaru/divider/pull/302)
+- Update eslint monorepo to v9.39.1 by [bot] by @renovate in [#305](https://github.com/nyaomaru/divider/pull/305)
+- Update dependency bun-types to v1.3.2 by [bot] by @renovate in [#304](https://github.com/nyaomaru/divider/pull/304)
+- update jsr badge by @nyaomaru in [#307](https://github.com/nyaomaru/divider/pull/307)
+- bump version to v1.9.14 by [bot] by @github-actions in [#308](https://github.com/nyaomaru/divider/pull/308)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v1.9.13...v1.9.14
+
+[vv1.9.14]: https://github.com/nyaomaru/divider/compare/v1.9.13...v1.9.14
+
+## [vv1.9.13] - 2025-11-02
+
+### Fixed
+
+- tighten divider option type by @nyaomaru in [#299](https://github.com/nyaomaru/divider/pull/299)
+
+### Chore
+
+- update CHANGELOG workflow by @nyaomaru in [#298](https://github.com/nyaomaru/divider/pull/298)
+- Update dependency bun-types to v1.3.1 by [bot] by @renovate in [#297](https://github.com/nyaomaru/divider/pull/297)
+- Update dependency typescript to v5.9.3 by [bot] by @renovate in [#296](https://github.com/nyaomaru/divider/pull/296)
+- bump version to v1.9.13 by [bot] by @github-actions in [#300](https://github.com/nyaomaru/divider/pull/300)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v1.9.12...v1.9.13
+
+[vv1.9.13]: https://github.com/nyaomaru/divider/compare/v1.9.12...v1.9.13
+
+## [v1.9.12] - 2025-10-25
+
+## v1.9.12 2025-10-25
+
+### Changed
+
+- Used isEmptyString for cleaner refactor (#294)
+
+### Chore
+
+- Updated logo image and README (#293)
+- Updated dependency @types/node to v22.18.12 (#291)
+- Updated dependency typedoc to v0.28.14 (#292)
+
+## [v1.9.11] - 2025-10-18
+
+### Changed
+
+- Added isPlainObject and comments (#289)
+- Removed unnecessary assertion (#288)
+
+### Chore
+
+- Updated dependency @types/node to v22.18.10 (#286)
+- Updated dependency ts-jest to v29.4.5 (#287)
+- Used mise in CI (#285)
+
+## [v1.9.10] - 2025-10-11
+
+### Added
+
+- Allow preserving empty divider segments (#283)
+
+### Chore
+
+- Updated dependency @types/node to v22.18.9 (#281)
+- Updated dependency typedoc to v0.28.13 (#282)
+- Fix release workflow (#279 #280)
+
+## [v1.9.9] - 2025-10-04
+
+### Changed
+
+- Refactored is utilities (#277)
+
+### Chore
+
+- Updated `tsx` to v4.20.6 (#275)
+- Updated `bun-types` to v1.2.23 (#274)
+- Bumped JSR version (#273)
+
+### Fixed
+
+- Corrected Node.js version and OIDC authentication in workflow (#276)
+
+## [v1.9.8] - 2025-09-27
+
+### Changed
+
+- Renamed constants for clarity (#270)
+- Updated `ts-jest` to v29.4.4 (#269)
+- Updated `@types/node` to v22.18.6 (#268)
+- Adjusted Codex settings (#271)
+
+### Fixed
+
+- Incorrect constant names (#270)
+
 ## [v1.9.7] - 2025-09-20
 
 ### Changed
@@ -24,9 +129,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added support for JSR / Deno / Bun (#257)
 
-### Changed
-
-## Chore
+### Chore
 
 - Updated `bun-types` to v1.2.22 (#262)
 - Updated `@types/node` to v22.18.3 (#261)
