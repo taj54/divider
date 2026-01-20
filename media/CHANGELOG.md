@@ -5,6 +5,166 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.9.22] - 2026-01-17
+
+### Changed
+
+- is nested string array by @nyaomaru in [#362](https://github.com/nyaomaru/divider/pull/362)
+
+### Chore
+
+- 1.9.21 by [bot] by @github-actions in [#357](https://github.com/nyaomaru/divider/pull/357)
+- Update dependency bun-types to v1.3.6 by [bot] by @renovate in [#358](https://github.com/nyaomaru/divider/pull/358)
+- Update dependency prettier to v3.8.0 by [bot] by @renovate in [#360](https://github.com/nyaomaru/divider/pull/360)
+- Update dependency /node to v22.19.7 by @renovate[bot] by @types in [#359](https://github.com/nyaomaru/divider/pull/359)
+- fix web_search config by @nyaomaru in [#361](https://github.com/nyaomaru/divider/pull/361)
+- Release: 1.9.22 by [bot] by @github-actions in [#363](https://github.com/nyaomaru/divider/pull/363)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v1.9.21...v1.9.22
+
+[v1.9.22]: https://github.com/nyaomaru/divider/compare/v1.9.21...v1.9.22
+
+## [v1.9.21] - 2026-01-10
+
+### Added
+
+- add left hook by @nyaomaru in [#354](https://github.com/nyaomaru/divider/pull/354)
+
+### Changed
+
+- reduce complexity warnings by @nyaomaru in [#355](https://github.com/nyaomaru/divider/pull/355)
+
+### Chore
+
+- update deno lock by @nyaomaru in [#351](https://github.com/nyaomaru/divider/pull/351)
+- 1.9.20 by [bot] by @github-actions in [#350](https://github.com/nyaomaru/divider/pull/350)
+- Update dependency /node to v22.19.5 by @renovate[bot] by @types in [#353](https://github.com/nyaomaru/divider/pull/353)
+- Update dependency pnpm to 10.28 by [bot] by @renovate in [#352](https://github.com/nyaomaru/divider/pull/352)
+- Release: 1.9.21 by [bot] by @github-actions in [#356](https://github.com/nyaomaru/divider/pull/356)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v1.9.20...v1.9.21
+
+[v1.9.21]: https://github.com/nyaomaru/divider/compare/v1.9.20...v1.9.21
+
+## [v1.9.20] - 2026-01-03
+
+### Changed
+
+- extract constants by @nyaomaru in [#348](https://github.com/nyaomaru/divider/pull/348)
+
+### Chore
+
+- 1.9.19 by [bot] by @github-actions in [#345](https://github.com/nyaomaru/divider/pull/345)
+- Update dependency pnpm to 10.27 by [bot] by @renovate in [#346](https://github.com/nyaomaru/divider/pull/346)
+- Update jdx/mise-action action to v3 by [bot] by @renovate in [#347](https://github.com/nyaomaru/divider/pull/347)
+- Release: 1.9.20 by [bot] by @github-actions in [#349](https://github.com/nyaomaru/divider/pull/349)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v1.9.19...v1.9.20
+
+[v1.9.20]: https://github.com/nyaomaru/divider/compare/v1.9.19...v1.9.20
+
+## [v1.9.19] - 2025-12-27
+
+### Added
+
+- query divider by @nyaomaru in [#343](https://github.com/nyaomaru/divider/pull/343)
+
+### Fixed
+
+- workflow lint error by @nyaomaru in [#341](https://github.com/nyaomaru/divider/pull/341)
+- version bump workflow by @nyaomaru in [#342](https://github.com/nyaomaru/divider/pull/342)
+
+### Chore
+
+- 1.9.18 by [bot] by @github-actions in [#340](https://github.com/nyaomaru/divider/pull/340)
+- Release: 1.9.19 by [bot] by @github-actions in [#344](https://github.com/nyaomaru/divider/pull/344)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v1.9.18...v1.9.19
+
+[v1.9.19]: https://github.com/nyaomaru/divider/compare/v1.9.18...v1.9.19
+
+## [v1.9.18] - 2025-12-20
+
+### Chore
+
+- 1.9.17 by [bot] by @github-actions in [#330](https://github.com/nyaomaru/divider/pull/330)
+- Update dependency /node to v22.19.3 by @renovate[bot] by @types in [#332](https://github.com/nyaomaru/divider/pull/332)
+- update comment by @nyaomaru in [#331](https://github.com/nyaomaru/divider/pull/331)
+- Update dependency bun-types to v1.3.5 by [bot] by @renovate in [#333](https://github.com/nyaomaru/divider/pull/333)
+- Update eslint monorepo to v9.39.2 by [bot] by @renovate in [#334](https://github.com/nyaomaru/divider/pull/334)
+- Update dependency pnpm to 10.26 by [bot] by @renovate in [#335](https://github.com/nyaomaru/divider/pull/335)
+- Update dependency prettier to v3.7.4 by [bot] by @renovate in [#336](https://github.com/nyaomaru/divider/pull/336)
+- Update dependency tsx to v4.21.0 by [bot] by @renovate in [#337](https://github.com/nyaomaru/divider/pull/337)
+- Update actions/setup-node action to v6 by [bot] by @renovate in [#338](https://github.com/nyaomaru/divider/pull/338)
+- bump version to v1.9.18 by [bot] by @github-actions in [#339](https://github.com/nyaomaru/divider/pull/339)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v1.9.17...v1.9.18
+
+[v1.9.18]: https://github.com/nyaomaru/divider/compare/v1.9.17...v1.9.18
+
+## [v1.9.17] - 2025-12-13
+
+### Fixed
+
+- unnecessary release_name by @nyaomaru in [#322](https://github.com/nyaomaru/divider/pull/322)
+
+### Changed
+
+- reuse explicit type definition by @nyaomaru in [#328](https://github.com/nyaomaru/divider/pull/328)
+
+### Chore
+
+- v1.9.16 by [bot] by @github-actions in [#321](https://github.com/nyaomaru/divider/pull/321)
+- Update dependency typedoc to v0.28.15 by [bot] by @renovate in [#323](https://github.com/nyaomaru/divider/pull/323)
+- Update dependency pnpm to 10.25 by [bot] by @renovate in [#324](https://github.com/nyaomaru/divider/pull/324)
+- Update dependency bun-types to v1.3.4 by [bot] by @renovate in [#325](https://github.com/nyaomaru/divider/pull/325)
+- Update dependency ts-jest to v29.4.6 by [bot] by @renovate in [#326](https://github.com/nyaomaru/divider/pull/326)
+- add comment by @nyaomaru in [#327](https://github.com/nyaomaru/divider/pull/327)
+- bump version to v1.9.17 by [bot] by @github-actions in [#329](https://github.com/nyaomaru/divider/pull/329)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v1.9.16...v1.9.17
+
+[v1.9.17]: https://github.com/nyaomaru/divider/compare/v1.9.16...v1.9.17
+
+## [vv1.9.16] - 2025-11-29
+
+### Fixed
+
+- npm publish error by @nyaomaru in [#319](https://github.com/nyaomaru/divider/pull/319)
+
+### Changed
+
+- delegate dividePreserve to divider with preserveEmpty by @nyaomaru in [#318](https://github.com/nyaomaru/divider/pull/318)
+
+### Chore
+
+- v1.9.15 by [bot] by @github-actions in [#315](https://github.com/nyaomaru/divider/pull/315)
+- Update actions/checkout action to v6 by [bot] by @renovate in [#317](https://github.com/nyaomaru/divider/pull/317)
+- Update dependency bun-types to v1.3.3 by [bot] by @renovate in [#316](https://github.com/nyaomaru/divider/pull/316)
+- bump version to v1.9.16 by [bot] by @github-actions in [#320](https://github.com/nyaomaru/divider/pull/320)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v1.9.15...v1.9.16
+
+[vv1.9.16]: https://github.com/nyaomaru/divider/compare/v1.9.15...v1.9.16
+
+## [vv1.9.15] - 2025-11-22
+
+### Changed
+
+- extract divider arg type by @nyaomaru in [#312](https://github.com/nyaomaru/divider/pull/312)
+
+### Chore
+
+- v1.9.14 by [bot] by @github-actions in [#309](https://github.com/nyaomaru/divider/pull/309)
+- Update dependency /node to v22.19.1 by @renovate[bot] by @types in [#310](https://github.com/nyaomaru/divider/pull/310)
+- Update dependency tsup to v8.5.1 by [bot] by @renovate in [#311](https://github.com/nyaomaru/divider/pull/311)
+- update dependencies to fix security alert by @nyaomaru in [#313](https://github.com/nyaomaru/divider/pull/313)
+- bump version to v1.9.15 by [bot] by @github-actions in [#314](https://github.com/nyaomaru/divider/pull/314)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v1.9.14...v1.9.15
+
+[vv1.9.15]: https://github.com/nyaomaru/divider/compare/v1.9.14...v1.9.15
+
 ## [vv1.9.14] - 2025-11-15
 
 ### Fixed
